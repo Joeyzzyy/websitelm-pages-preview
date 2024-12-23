@@ -1,7 +1,7 @@
 import { getArticleBySlug, getArticles, getCustomRecommendations } from '../../../lib/api/index';
 import { notFound } from 'next/navigation';
 import { ClientWrapper } from '../../../components/layouts/client-wrapper';
-import KreadoaiLayout from '../../../components/layouts/kreado/layout';
+import CommonLayout from '../../../components/layouts/layout';
 import Script from 'next/script'
 
 // 添加这个配置来启用动态路由
@@ -13,56 +13,26 @@ export const dynamicParams = true
 // 添加缓存控制
 export const revalidate = 86400; // 24小时重新验证一次
 
-// Layout 组件可以正常导入，因为它是服务器组件
-
 // 主页面组件
 export default async function ArticlePage({ params }) {
   try {
-    const { lang, slug } = params;
+    const resolvedParams = await Promise.resolve(params);
+    const { lang, slug } = resolvedParams;
     
     if (!['en', 'zh'].includes(lang)) {
       return notFound();
     }
 
-    // 使用 try-catch 但不再抛错误
+    // 确保等待数据加载完成
     const articleData = await getArticleBySlug(slug, lang, process.env.TOKEN);
-    console.log('articleData', articleData);
-
+    
+    // 立即处理错误情况
     if (!articleData?.data) {
       console.error(`Article not found for slug: ${slug}`);
       return notFound();
     }
     
     const article = articleData.data;
-    
-    // try {
-    //   // 获取推荐文章
-    //   const recommendations = await getCustomRecommendations({
-    //     pageId: article.pageId,
-    //     customerId: article.customerId,
-    //     title: article.title,
-    //     category: article.category,
-    //     lang: article.lang
-    //   });
-
-    //   if (recommendations && recommendations.recommended_articles.length >= 4) {
-    //     const recommendationSection = {
-    //       componentName: "MoreInsightsWithFourCards",
-    //       bottomContent: recommendations.recommended_articles.map(rec => ({
-    //         imageUrl: rec.imageUrl,
-    //         subTitle: rec.category?.toUpperCase() || 'ARTICLE',
-    //         title: rec.title
-    //       })).slice(0, 4) // 确保只取前4篇文章
-    //     };
-
-    //     // 将推荐部��添加到文章的 sections 中
-    //     article.sections.push(recommendationSection);
-    //   }
-    // } catch (error) {
-    //   // 推荐文章获取失败时静默处理，不影响主文章显示
-    //   console.warn('Failed to fetch recommendations:', error);
-    // }
-
     const articleSchema = {
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -80,12 +50,11 @@ export default async function ArticlePage({ params }) {
         name: 'KreadoAI',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://kreadoai.com/logo.png'
+          url: 'https://websitelm.com/logo.png'
         }
       },
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': `https://kreadoai.com/${lang}/${slug}`
       }
     };
 
@@ -96,14 +65,14 @@ export default async function ArticlePage({ params }) {
         </Script>
         <ClientWrapper>
           <main className="flex-grow">
-            <KreadoaiLayout article={article} />
+            <CommonLayout article={article} />
           </main>
         </ClientWrapper>
       </>
     );
   } catch (error) {
     console.error('Error in ArticlePage:', error);
-    throw error; // 让错误边界处理它
+    throw error;
   }
 }
 
@@ -113,7 +82,9 @@ function joinArrayWithComma(arr) {
 
 export async function generateMetadata({ params }) {
   try {
-    const { lang = 'en', slug } = params;
+    const resolvedParams = await Promise.resolve(params);
+    const { lang = 'en', slug } = resolvedParams;
+    
     const articleData = await getArticleBySlug(slug, lang, process.env.TOKEN);
     
     if (!articleData?.data) {
@@ -152,13 +123,13 @@ export async function generateMetadata({ params }) {
         creator: ''
       },
       alternates: {
-        canonical: `https://kreadoai.com/${lang}/${slug}`,
+        canonical: `https://websitelm.com/${lang}/${slug}`,
         languages: {
-          'en': `https://kreadoai.com/en/${slug}`,
-          'zh': `https://kreadoai.com/zh/${slug}`,
+          'en': `https://websitelm.com/en/${slug}`,
+          'zh': `https://websitelm.com/zh/${slug}`,
         }
       },
-      metadataBase: new URL('https://kreadoai.com'),
+      metadataBase: new URL('https://websitelm.com'),
       authors: [{ name: article.author }],
       category: article.category
     };

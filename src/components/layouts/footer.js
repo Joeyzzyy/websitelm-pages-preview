@@ -1,3 +1,4 @@
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebook, FaDiscord, FaXTwitter, FaYoutube } from 'react-icons/fa6';
@@ -5,7 +6,7 @@ import { footerText } from '@/locales/footerText';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export const KreadoFooter = () => {
+const Footer = () => {
   const [currentLang, setCurrentLang] = useState('en');
   const pathname = usePathname();
 
@@ -111,3 +112,5 @@ export const KreadoFooter = () => {
     </footer>
   );
 };
+
+export default Footer;

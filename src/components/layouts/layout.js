@@ -1,24 +1,24 @@
+'use client';
 import React from 'react';
-import HeroSectionWithVideo from '../../common/sections/hero-section-with-video';
-import CallToAction from '../../common/sections/call-to-action';
-import HowItWorksWithThreeBlocks from '../../common/sections/how-it-works-with-three-blocks';
-import WhyChooseUsWithTwoHugeBlocks from '../../common/sections/why-choose-us-with-blocks';
-import WhyChooseUsWithSixSmallBlocks from '../../common/sections/why-choose-us-with-small-blocks';
-import HowItWorksWithWorkflow from '../../common/sections/how-it-works-with-workflow';
-import ProductBenefitsWithFourBlocks from '../../common/sections/product-benefits-with-four-blocks';
-import Faqs from '../../common/sections/faqs';
-import FAQTwoColumnsWithBigTitle from '../../common/sections/faq-two-columns-with-big-title';
-import FAQTwoColumnsWithSmallTitle from '../../common/sections/faq-two-columns-with-small-title';
-import ProductComparisonTable from '../../common/sections/product-comparison-table';
-import MoreInsightsWithFourCards from '../../common/sections/more-insights-with-four-cards';
-import TitleSection from '../../common/sections/title-section';
-import TitleSectionWithImage from '../../common/sections/title-section-with-image';
-import KeyResultsWithImage from '../../common/sections/key-results-with-image';
-import KeyResultsWithTextBlock from '../../common/sections/key-results-with-text-block';
+import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
+import CallToAction from '../common/sections/call-to-action';
+import HowItWorksWithThreeBlocks from '../common/sections/how-it-works-with-three-blocks';
+import WhyChooseUsWithTwoHugeBlocks from '../common/sections/why-choose-us-with-blocks';
+import WhyChooseUsWithSixSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
+import HowItWorksWithWorkflow from '../common/sections/how-it-works-with-workflow';
+import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-four-blocks';
+import Faqs from '../common/sections/faqs';
+import FAQTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-big-title';
+import FAQTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
+import ProductComparisonTable from '../common/sections/product-comparison-table';
+import MoreInsightsWithFourCards from '../common/sections/more-insights-with-four-cards';
+import TitleSection from '../common/sections/title-section';
+import TitleSectionWithImage from '../common/sections/title-section-with-image';
+import KeyResultsWithImage from '../common/sections/key-results-with-image';
+import KeyResultsWithTextBlock from '../common/sections/key-results-with-text-block';
 import KeyResultsWithThreeCards from '@/components/common/sections/key-results-with-three-cards';
 import ProductBenefitsWithTable from '@/components/common/sections/product-benefits-with-a-table';
 
-// 更新组件映射表
 const FAQ_COMPONENTS = {
   Faqs: Faqs,
   FAQTwoColumnsWithSmallTitle: FAQTwoColumnsWithSmallTitle,
@@ -73,7 +73,12 @@ const generateSchemaMarkup = (article) => {
   };
 };
 
-const KreadoaiLayout = ({ article, keywords }) => {
+const CommonLayout = ({ article, keywords }) => {
+  if (!article) {
+    console.warn('Article data is missing');
+    return null;
+  }
+
   const title = article?.title || 'Default Title';
   const description = article?.description || 'Default description';
 
@@ -111,4 +116,4 @@ const KreadoaiLayout = ({ article, keywords }) => {
   );
 };
 
-export default KreadoaiLayout;
+export default CommonLayout;

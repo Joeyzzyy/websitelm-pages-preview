@@ -84,7 +84,7 @@ export const Navigation = ({ theme = 'light' }) => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow">
       <div className="max-w-[1450px] mx-auto px-6">
-        {/* 主导航�� */}
+        {/* 主导航 */}
         <div className="flex justify-between h-[4.2rem]">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
@@ -513,6 +513,8 @@ export const Navigation = ({ theme = 'light' }) => {
   );
 };
 
-export const KreadoHeader = ({ theme = 'light' }) => {
+const Header = ({ theme }) => {
   return <Navigation theme={theme} />;
 };
+
+export default Header;
