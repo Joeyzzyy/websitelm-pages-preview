@@ -1,25 +1,26 @@
 'use client';
 import React from 'react';
-import fontStyles from '../../../styles/textStyles';
+import themeConfig from '../../../styles/themeConfig';
 
-const FAQs = ({ data }) => {
+const FAQs = ({ data, theme = 'normal' }) => {
+  const styles = themeConfig[theme];
+
   return (
-    <div className="bg-white py-12 md:py-16">
+    <div className={`${styles.section.background.secondary} ${styles.section.padding.base}`}>
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className={`${fontStyles.h2.fontSize} ${fontStyles.h2.fontWeight} ${fontStyles.h2.color} text-center mb-12`}>
+        <h2 className={`${styles.typography.h2.fontSize} ${styles.typography.h2.fontWeight} ${styles.typography.h2.color} text-center mb-12`}>
           {data.title}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {data.bottomContent.map((faq, index) => (
-            <div key={index} className="pb-6">
-              <h3 className={`${fontStyles.h3.fontSize} ${fontStyles.h3.fontWeight} ${fontStyles.h3.color} mb-3`}>
+            <div key={index} className={`${styles.card.variants.primary} ${styles.card.padding.md}`}>
+              <h3 className={`${styles.typography.h3.fontSize} ${styles.typography.h3.fontWeight} ${styles.typography.h3.color} mb-4`}>
                 {faq.question}
               </h3>
-              <p className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color}`}>
+              <p className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
                 {faq.answer}
               </p>
-              <div className="mt-6 border-t border-gray-100" />
             </div>
           ))}
         </div>

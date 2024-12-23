@@ -10,42 +10,14 @@ export const dynamic = 'force-static'
 // 如果需要的话，也可以添加这个配置来处理不同的域名
 export const dynamicParams = true
 
-// 保持原有的 KREADO_METADATA 配置
-const KREADO_METADATA = {
-  title: 'KreadoAI',
-  defaultDescription: 'AI Creation Generates Multilingual Videos',
-  icons: {
-    icon: [
-      { 
-        url: '/icons/kreado-logo.ico',
-        sizes: 'any',
-        type: 'image/x-icon'
-      }
-    ],
-    shortcut: [
-      {
-        url: '/icons/kreado-logo.ico',
-        type: 'image/x-icon'
-      }
-    ],
-    apple: [
-      {
-        url: '/icons/kreado-logo.ico',
-        type: 'image/x-icon'
-      }
-    ]
-  }
-};
-
 // 添加缓存控制
 export const revalidate = 86400; // 24小时重新验证一次
 
 // Layout 组件可以正常导入，因为它是服务器组件
 
 // 主页面组件
-export default async function ArticlePage({ params: paramsPromise }) {
+export default async function ArticlePage({ params }) {
   try {
-    const params = await paramsPromise;
     const { lang, slug } = params;
     
     if (!['en', 'zh'].includes(lang)) {
@@ -54,48 +26,49 @@ export default async function ArticlePage({ params: paramsPromise }) {
 
     // 使用 try-catch 但不再抛错误
     const articleData = await getArticleBySlug(slug, lang, process.env.TOKEN);
-    
-    if (!articleData?.data?.[0]) {
+    console.log('articleData', articleData);
+
+    if (!articleData?.data) {
       console.error(`Article not found for slug: ${slug}`);
       return notFound();
     }
     
-    const article = articleData.data[0];
+    const article = articleData.data;
     
-    try {
-      // 获取推荐文章
-      const recommendations = await getCustomRecommendations({
-        pageId: article.pageId,
-        customerId: article.customerId,
-        title: article.title,
-        category: article.category,
-        lang
-      });
+    // try {
+    //   // 获取推荐文章
+    //   const recommendations = await getCustomRecommendations({
+    //     pageId: article.pageId,
+    //     customerId: article.customerId,
+    //     title: article.title,
+    //     category: article.category,
+    //     lang: article.lang
+    //   });
 
-      if (recommendations && recommendations.recommended_articles.length >= 4) {
-        const recommendationSection = {
-          componentName: "MoreInsightsWithFourCards",
-          bottomContent: recommendations.recommended_articles.map(rec => ({
-            imageUrl: rec.imageUrl,
-            subTitle: rec.category?.toUpperCase() || 'ARTICLE',
-            title: rec.title
-          })).slice(0, 4) // 确保只取前4篇文章
-        };
+    //   if (recommendations && recommendations.recommended_articles.length >= 4) {
+    //     const recommendationSection = {
+    //       componentName: "MoreInsightsWithFourCards",
+    //       bottomContent: recommendations.recommended_articles.map(rec => ({
+    //         imageUrl: rec.imageUrl,
+    //         subTitle: rec.category?.toUpperCase() || 'ARTICLE',
+    //         title: rec.title
+    //       })).slice(0, 4) // 确保只取前4篇文章
+    //     };
 
-        // 将推荐部分添加到文章的 sections 中
-        article.sections.push(recommendationSection);
-      }
-    } catch (error) {
-      // 推荐文章获取失败时静默处理，不影响主文章显示
-      console.warn('Failed to fetch recommendations:', error);
-    }
+    //     // 将推荐部��添加到文章的 sections 中
+    //     article.sections.push(recommendationSection);
+    //   }
+    // } catch (error) {
+    //   // 推荐文章获取失败时静默处理，不影响主文章显示
+    //   console.warn('Failed to fetch recommendations:', error);
+    // }
 
     const articleSchema = {
       '@context': 'https://schema.org',
       '@type': 'Article',
       headline: article.title,
       description: article.description,
-      image: article.sections[0]?.rightContent?.imageUrl,
+      image: '',
       datePublished: article.updatedAt,
       dateModified: article.updatedAt,
       author: {
@@ -138,56 +111,51 @@ function joinArrayWithComma(arr) {
   return Array.isArray(arr) ? arr.filter(Boolean).join(',') : '';
 }
 
-export async function generateMetadata({ params: paramsPromise }) {
+export async function generateMetadata({ params }) {
   try {
-    // 先 await params
-    const params = await paramsPromise;
     const { lang = 'en', slug } = params;
     const articleData = await getArticleBySlug(slug, lang, process.env.TOKEN);
     
-    if (!articleData?.data?.[0]) {
+    if (!articleData?.data) {
       return {
         title: 'Not Found',
         description: 'The page you are looking for does not exist.'
       };
     }
 
-    const article = articleData.data[0];
-    const authorConfig = KREADO_METADATA;
-    
+    const article = articleData.data;
     return {
-      title: `${article.title} | ${authorConfig.title}`,  // Optimized title format
-      description: article.description || authorConfig.defaultDescription,
-      keywords: joinArrayWithComma(article.pageStats?.genKeywords) || 'default keywords',
+      title: article.title, 
+      description: article.description,
+      keywords: joinArrayWithComma(article.pageStats?.genKeywords) ,
       robots: 'index, follow',
-      openGraph: {  // Add Open Graph protocol support
+      openGraph: { 
         title: article.title,
         description: article.description,
         type: 'article',
         publishedTime: article.updatedAt,
         modifiedTime: article.updatedAt,  
         locale: lang,
-        siteName: 'KreadoAI',
+        siteName: '',
         images: [{
-          url: article.sections[0]?.rightContent?.imageUrl,
+          url: '',
           width: 1200,
           height: 630,
           alt: article.title
         }]
       },
-      twitter: {  // Add Twitter Card support
+      twitter: { 
         card: 'summary_large_image',
         title: article.title,
         description: article.description,
         images: article.coverImage,
-        creator: '@KreadoAI'
+        creator: ''
       },
-      alternates: {  // Add language version associations
+      alternates: {
         canonical: `https://kreadoai.com/${lang}/${slug}`,
         languages: {
           'en': `https://kreadoai.com/en/${slug}`,
           'zh': `https://kreadoai.com/zh/${slug}`,
-          // Add other supported languages
         }
       },
       metadataBase: new URL('https://kreadoai.com'),
@@ -207,21 +175,16 @@ export async function generateStaticParams() {
   try {
     const response = await getArticles(process.env.CUSTOMER_ID, process.env.TOKEN);
     
-    // 检查 response 和 response.data 是否存在
     if (!response?.data) {
       console.warn('No articles data received');
       return [];
     }
 
-    // 过滤掉无效的文章数据
     const validArticles = response.data.filter(article => 
       article && 
       typeof article.lang === 'string' && 
       typeof article.pageLangId === 'string'
     );
-
-    console.log('Articles', response.data);
-    console.log('validArticles', validArticles);
 
     return validArticles.map((article) => ({
       lang: article.lang,
@@ -229,6 +192,6 @@ export async function generateStaticParams() {
     }));
   } catch (error) {
     console.error('Error generating static params:', error);
-    return []; // 发生错误时返回空数组
+    return []; 
   }
 }

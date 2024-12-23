@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { FaCheck, FaTimes, FaRocket, FaShieldAlt, FaRobot, FaTools, 
+import { FaRocket, FaShieldAlt, FaRobot, FaTools, 
   FaChartBar, FaLanguage, FaCloud, FaLock, FaUsers, FaFileAlt,
   FaPlug, FaWifi, FaCodeBranch, FaDatabase, FaSearch, FaChartLine,
   FaUsersCog, FaVial, FaMobile, FaHeadset, FaEdit, FaPencilAlt, FaDesktop, FaUserInterface, FaWindowMaximize, FaDollarSign, FaMoneyBill, FaPriceTag
@@ -9,7 +9,7 @@ import {
   IoCheckmarkCircle,  // 带圆圈的绿色对勾
   IoCloseCircle       // 带圆圈的红色叉号
 } from "react-icons/io5";
-import fontStyles from '../../../styles/textStyles';
+import themeConfig from '../../../styles/themeConfig';
 import PropTypes from 'prop-types';
 
 // 创建一个图标映射对象
@@ -102,7 +102,7 @@ const iconMap = {
   FaSpeed: FaRocket,
   FaPerformance: FaRocket,
   
-  // 设备���关
+  // 设备相关
   FaDesktop: FaTools,
   FaUserInterface: FaTools,
   FaWindowMaximize: FaTools,
@@ -177,7 +177,7 @@ const getIconByFeatureName = (featureName) => {
       if (keywords.includes(word)) {
         score += 3;
       } else {
-        // 部分匹配得1分（如果关键词包含当前词或当前词包含关键词）
+        // 部分匹配得1分（如果关键词包含当前词或当前词包含关键词
         keywords.forEach(keyword => {
           if (keyword.includes(word) || word.includes(keyword)) {
             score += 1;
@@ -197,43 +197,31 @@ const getIconByFeatureName = (featureName) => {
   return bestMatch.score > 0 ? bestMatch.icon : FaTools;
 };
 
-const ProductComparisonTable = ({ data, author }) => {
-  const tableData = data;
-
+const ProductComparisonTable = ({ data, theme = 'normal' }) => {
   return (
-    <div className="bg-white py-12 md:py-16">
+    <div className={`${themeConfig[theme].table.background} py-12 md:py-16`}>
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className={`${fontStyles.h2.fontSize} ${fontStyles.h2.fontWeight} ${fontStyles.h2.color} mb-4`}>
-            {tableData.topContent.title}
-          </h2>
-          <p className={`${fontStyles.subtitle.fontSize} ${fontStyles.subtitle.color} max-w-3xl mx-auto`}>
-            {tableData.topContent.subtitle}
-          </p>
-        </div>
+        <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} text-center mb-12`}>
+          {data.topContent?.title || data.title}
+        </h2>
         
         <div className="overflow-x-auto">
-          <div className="inline-block min-w-full border border-gray-100 rounded-lg bg-white shadow-sm">
-            <table className="w-full border-collapse">
-              <thead>
+          <div className="inline-block min-w-full align-middle">
+            <table className={`min-w-full divide-y ${themeConfig[theme].table.border}`}>
+              <thead className={`${themeConfig[theme].table.header.background} ${themeConfig[theme].table.header.text}`}>
                 <tr>
-                  <th className="py-4 px-6 text-left bg-gray-50 font-medium text-sm md:text-base text-black/70 w-[320px] first:rounded-tl-lg">
-                    Features
+                  <th className="py-4 px-6 text-left">Features</th>
+                  <th className="py-4 px-4 text-center">
+                    {data.topContent?.companies?.competitor || 'Competitor'}
                   </th>
-                  <th className="py-4 px-4 text-center border-x border-gray-100 bg-gray-50 w-[140px] text-sm md:text-base text-black/70">
-                    {tableData.topContent.companies.competitor}
-                  </th>
-                  <th className="py-4 px-4 text-center border-gray-100 bg-gray-50 w-[140px] text-sm md:text-base text-black/70">
-                    <div className="flex items-center justify-center gap-2">
-                      {tableData.topContent.companies.us}
-                    </div>
+                  <th className="py-4 px-4 text-center">
+                    {data.topContent?.companies?.us || 'Us'}
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                {tableData.bottomContent.features.map((feature, index) => (
-                  <tr key={index} 
-                      className="hover:bg-gray-50/50 transition-colors duration-200">
+              <tbody className={`divide-y ${themeConfig[theme].table.border}`}>
+                {data.bottomContent.map((feature, index) => (
+                  <tr key={index} className={`${themeConfig[theme].table.hover} ${themeConfig[theme].table.border}`}>
                     <td className="py-4 px-6 border-t border-gray-100">
                       <div className="flex items-center gap-3">
                         {(() => {

@@ -1,4 +1,20 @@
 export const exampleData = {
+    HeroSectionWithMultipleTexts: {
+      order: 1,
+      title: 'Hero Section With Multiple Texts',
+      description: 'Display main heading with gradient text effects and dual CTAs',
+      recommendedPosition: 'Must be first component if Demo Showcase is not used',
+      filePath: 'src/components/common/sections/hero-section-with-mutiple-texts.js',
+      props: {
+        topContent: {
+          buttonText: 'Book a Demo',
+          ctaButtonText: 'Get Started',
+          title: 'AI-crafted Content That Delivers Results.',
+          description: 'Dominate search results and drive more traffic with AI-generated landing pages and blog posts that are optimized for your audience and search engines.',
+        }
+      }
+    },
+  
     HeroSectionWithVideo: {
       order: 1,
       title: 'Hero Section With Video',
@@ -125,82 +141,117 @@ export const exampleData = {
       }
     },
   
-    WhyChooseUsWithSixBlocks: {
+    WhyChooseUsWithSmallBlocks: {
       order: 6,
-      title: 'Why Choose Us With Six Blocks',
+      title: 'Why Choose Us With Small Blocks',
       description: 'Display product features or service advantages in six-grid layout',
       recommendedPosition: 'Upper-mid section, after benefits introduction',
-      filePath: 'src/components/common_components/why-choose-us-with-six-small-blocks.js',
+      filePath: 'src/components/common_components/why-choose-us-with-small-blocks.js',
       props: {
-        author: 'websitelm',
         topContent: {
-          emoji: '🚀',
-          title: 'Why Choose websitelm AI',
-          subTitle: 'Professional AI Video Creation Platform'
+          emoji: '🏆',
+          title: 'Trusted by Thousands of Businesses Worldwide',
+          subTitle: 'Join a growing community of entrepreneurs, marketers, and businesses who use WebsiteLM to supercharge their online presence.'
         },
         bottomContent: [
           {
-            icon: '🎯',
-            title: 'Precise Targeting',
-            content: 'Customize content for different market segments'
+            icon: '📈',
+            title: '10,000+ websites built with WebsiteLM.',
+            content: ''
           },
           {
-            icon: '🌍',
-            title: 'Global Reach',
-            content: 'Support for 40+ languages and cultural adaptations'
+            icon: '🌟',
+            title: 'Featured in over 10 well-known websites.',
+            content: ''
           },
           {
-            icon: '⚡',
-            title: 'Lightning Fast',
-            content: 'Generate videos in minutes, not days'
+            icon: '⭐',
+            title: 'Rated 4.8/5 on leading review platforms.',
+            content: ''
           },
-          {
-            icon: '💡',
-            title: 'Smart AI',
-            content: 'Advanced AI algorithms for optimal results'
-          },
-          {
-            icon: '📊',
-            title: 'Data Driven',
-            content: 'Analytics and insights for better performance'
-          },
-          {
-            icon: '🔒',
-            title: 'Secure & Reliable',
-            content: 'Enterprise-grade security and stability'
-          }
         ]
       }
     },
   
-    WhyChooseUsWithTwoBlocks: {
+    WhyChooseUsWithBlocks: {
       order: 7,
-      title: 'Why Choose Us With Two Blocks',
+      title: 'Why Choose Us With Blocks',
       description: 'Display two main product features or service advantages with images',
       recommendedPosition: 'Mid section, after feature blocks',
-      filePath: 'src/components/common_components/why-choose-us-with-two-huge-blocks.js',
+      filePath: 'src/components/common_components/why-choose-us-with-blocks.js',
       props: {
-        author: 'websitelm',
         topContent: {
-          title: 'Transform Your Video Marketing',
-          subTitle: 'Create engaging videos in minutes with AI'
-        },
-        bottomContent: [
-          {
-            title: 'AI-Powered Creation',
-            content: 'Our advanced AI technology transforms your text into professional marketing videos automatically, saving you time and resources.',
+            title: 'Why Choose WebsiteLM?',
+            description: 'Among the many AI-powered website content creation tools available, WebsiteLM stands out for its comprehensive approach to website optimization. Our platform combines advanced AI algorithms with a deep understanding of your website\'s unique data to deliver results that are both efficient and effective.',
             buttonText: 'Try Now',
-            imageUrl: '/images/abstract.png',
-            imageAlt: 'Abstract image',
+            
           },
-          {
-            title: 'Global Marketing Ready',
-            content: 'Instantly localize your videos into multiple languages, reaching global audiences with culturally adapted content.',
-            buttonText: 'Learn More',
-            imageUrl: '/images/abstract.png',
-            imageAlt: 'Abstract image',
-          }
-        ]
+          bottomContent: [
+            {
+              icon: '⏱️',
+              title: 'Save Time and Effort',
+              subTitle: 'Efficient Content Automation',
+              content: 'WebsiteLM automates the content creation process, allowing you to focus on growing your business rather than spending hours generating content. With AI-driven technology, you can quickly produce high-quality SEO-optimized pages and blog posts.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            },
+            {
+              icon: '🎯',
+              title: 'Improve SEO Performance',
+              subTitle: 'SEO-Optimized Content',
+              content: 'WebsiteLM ensures that all generated content follows the best SEO practices, enhancing your website\'s search engine rankings. From keyword analysis to content structuring, every piece is designed to drive organic traffic.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            },
+            {
+              icon: '💡',
+              title: 'Boost Conversion Rates',
+              subTitle: 'Engaging and Persuasive Copy',
+              content: 'With AI-crafted content that speaks directly to your audience\'s needs and pain points, WebsiteLM helps you build trust and drive more actions. Whether it\'s a landing page or a blog post, the content is optimized to convert visitors into loyal customers.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            },
+            {
+              icon: '📊',
+              title: 'Data-Driven Insights',
+              subTitle: 'Real-Time Performance Monitoring',
+              content: 'WebsiteLM provides detailed analytics, helping you track the performance of your SEO efforts. From traffic data to keyword rankings, you get actionable insights to continuously optimize your content and improve results.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            },
+            {
+              icon: '📈',
+              title: 'Scalable and Flexible',
+              subTitle: 'Adaptable to Your Needs',
+              content: 'WebsiteLM scales as your business grows. Whether you\'re managing a small blog or a large corporate website, our platform adapts to your needs, offering features like multi-language support and intelligent internal linking to enhance content discoverability and help you reach a broader audience.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            },
+            {
+              icon: '💰',
+              title: 'Seamless Content Integration',
+              subTitle: 'Easy Publishing and Updates',
+              content: 'Create, publish, and update content effortlessly. WebsiteLM automates the publishing process, ensuring that your website stays up-to-date with fresh, relevant content that ranks higher and attracts more traffic.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            },
+            {
+              icon: '💰️',
+              title: 'Comprehensive Content Strategy',
+              subTitle: 'All-in-One Content Management',
+              content: 'From keyword analysis to content creation, optimization, and performance tracking, WebsiteLM is a comprehensive tool that helps you manage your entire content strategy in one place. Save time and streamline your content marketing efforts.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            },
+            {
+              icon: '💰',
+              title: 'Future-Proof AI Technology',
+              subTitle: 'Constantly Evolving AI Models',
+              content: 'WebsiteLM\'s AI technology is continuously improved to deliver better content quality, enhanced SEO performance, and smarter content strategies. Stay ahead of the curve with our constantly evolving platform that adapts to the latest trends and search engine algorithms.',
+              imageUrl: '/images/abstract.png',
+              imageAlt: 'Abstract image'
+            }
+          ]
       }
     },
   
@@ -214,24 +265,30 @@ export const exampleData = {
         topContent: {
           icon: '🚀',
           title: 'How It Works',
-          subTitle: 'Transform your content into engaging videos with three simple steps',
-          buttonText: 'Start Creating'
+          subTitle: 'WebsiteLM is a comprehensive AI-powered platform that streamlines website content creation and optimization.',
+          buttonText: 'Get Started'
         },
         bottomContent: [
           {
-            number: '01',
-            content: 'Input your marketing text or script'
+            number: 'Step 1',
+            title: 'Analyze and Plan Your Website',
+            subTitle: 'Input Your Website & Competitor Links',
+            content: 'Start by entering your website URL along with those of your competitors. Our AI will analyze content, structure, SEO performance, and user experience to uncover gaps and opportunities. By comparing your site with competitors, we’ll highlight your unique advantages, helping your customers better understand what sets you apart.'
           },
           {
-            number: '02',
-            content: 'AI generates video with matching visuals'
+            number: 'Step 2',
+            title: 'Build & Optimize Content',
+            subTitle: 'Generate SEO-Optimized Content',
+            content: 'Using advanced AI algorithms and your site’s unique data, WebsiteLM will generate high-quality, SEO-friendly content for landing pages, blog posts, and knowledge base articles. The AI personalizes content based on your audience and industry, ensuring relevance and engagement. You can refine the content manually to ensure accuracy, validate critical data, and align with key performance metrics.'
           },
           {
-            number: '03',
-            content: 'Export in multiple languages and formats'
+            number: 'Step 3',
+            title: 'Publish & Monitor',
+            subTitle: 'Launch & Optimize for Results',
+            content: 'Once your content is ready, you can easily publish it to your website with WebsiteLM, as we provide seamless hosting to simplify the process. Our platform continuously monitors the content\'s SEO performance, enabling data-driven optimizations over time. Analyze page performance metrics and use these insights to refine future publishing strategies, enhancing your website\'s effectiveness.'
           }
         ]
-      }
+      },
     },
   
     HowItWorksWithThreeBlocks: {
@@ -284,35 +341,33 @@ export const exampleData = {
             us: 'WebsiteLM'
           }
         },
-        bottomContent: {
-          features: [
-            {
-              name: 'AI Video Generation',
-              competitor: false,
-              us: true
-            },
-            {
-              name: 'Multilingual Support',
-              competitor: false,
-              us: true
-            },
-            {
-              name: 'Auto Voice Generation',
-              competitor: false,
-              us: true
-            },
-            {
-              name: 'Quick Turnaround',
-              competitor: false,
-              us: true
-            },
-            {
-              name: 'Cost Effective',
-              competitor: false,
-              us: true
-            }
-          ]
-        }
+        bottomContent: [
+          {
+            name: 'AI Video Generation',
+            competitor: false,
+            us: true
+          },
+          {
+            name: 'Multilingual Support',
+            competitor: false,
+            us: true
+          },
+          {
+            name: 'Auto Voice Generation',
+            competitor: false,
+            us: true
+          },
+          {
+            name: 'Quick Turnaround',
+            competitor: false,
+            us: true
+          },
+          {
+            name: 'Cost Effective',
+            competitor: false,
+            us: true
+          }
+        ]
       }
     },
   
@@ -323,6 +378,7 @@ export const exampleData = {
       recommendedPosition: 'Mid-lower section, after product comparison',
       filePath: 'src/components/common_components/user-reviews.js',
       props: {
+        title: 'Testimonials',
         bottomContent: [
           {
             name: "Sarah Chen",
@@ -364,6 +420,7 @@ export const exampleData = {
       recommendedPosition: 'Mid-lower section, after product features',
       filePath: 'src/components/common_components/user-reviews-moving-cards.js',
       props: {
+        title: 'Testimonials',
         bottomContent: [
           {
             name: "David Miller",
@@ -416,6 +473,7 @@ export const exampleData = {
       recommendedPosition: 'Mid-lower section, alternative to standard reviews',
       filePath: 'src/components/common_components/user-reviews-square-cards.js',
       props: {
+        title: 'Testimonials',
         bottomContent: [
           {
             name: "Jennifer Lee",
@@ -797,6 +855,47 @@ export const exampleData = {
           imageUrl: '/images/abstract.png',
           imageAlt: 'Abstract image',
         }
+      }
+    },
+  
+    CallToActionComplex: {
+      order: 24,
+      title: 'Call To Action Complex',
+      description: 'Advanced CTA component with detailed feature descriptions and multiple action points',
+      recommendedPosition: 'Must be the last component',
+      filePath: 'src/components/common_components/call-to-action-complex.js',
+      props: {
+        title: "Unlock Explosive Traffic with AI-Generated Landing Pages & Blog Posts.",
+        subTitle: "Elevate your website's SEO performance and drive meaningful traffic with AI-powered content creation. WebsiteLM is designed to streamline content generation, making it easier than ever to produce high-quality, SEO-optimized pages that engage your audience and rank higher in search results.",
+        topContent: {
+          title: 'Unlock Explosive Traffic with AI-Generated Landing Pages & Blog Posts.',
+          description: "Elevate your website's SEO performance and drive meaningful traffic with AI-powered content creation. WebsiteLM is designed to streamline content generation, making it easier than ever to produce high-quality, SEO-optimized pages that engage your audience and rank higher in search results.",
+        },
+        bottomContent: {
+          title: 'Key Benefits',
+          content: [
+            {
+              title: 'Automate Content Creation',
+              description: 'Save time and resources with AI-driven content generation for landing pages, blog posts, and more.'
+            },
+            {
+              title: 'Boost SEO Performance',
+              description: 'Leverage cutting-edge AI to craft content that not only resonates with your audience but also ranks well on search engines.'
+            },
+            {
+              title: 'Tailored for Your Audience',
+              description: 'Personalize your website\'s content using advanced AI to better connect with your target market and improve user engagement.'
+            },
+            {
+              title: 'Continuous Optimization',
+              description: 'Track, update, and optimize your content for sustained traffic growth and higher conversions.'
+            }
+          ],
+          callToActionEngagementTop: 'Start transforming your website today—effortlessly build, optimize, and maintain content that drives results.',
+          callToActionEngagementBottom: 'Join thousands of users already maximizing their website\'s potential with WebsiteLM.',
+        },
+        buttonText: "Get Started Now",
+        ctaButtonText: "Book a Demo"
       }
     },
   

@@ -46,9 +46,18 @@ const nextConfig = {
   },
   images: {
     domains: [
-      'strapi.sheet2email.com'  // 添加允许的图片域名
+      'strapi.sheet2email.com',
+      'websitelm.com'  // 添加客户域名
     ],
   },
+  // 添加域名配置
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // 可以添加额外的重写规则
+      ]
+    }
+  }
 };
 
 module.exports = nextConfig;

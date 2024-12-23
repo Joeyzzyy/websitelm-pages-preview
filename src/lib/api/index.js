@@ -27,12 +27,12 @@ export async function getArticles(customerId, token) {
 export async function getArticleBySlug(slug, lang, token) {
   try {
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
+    console.log('url', `${API_URL}/pages/${lang}/${slug}`);
     const response = await axios.get(`${API_URL}/pages/${lang}/${slug}`, { 
       headers,
     });
     return response.data;
   } catch (error) {
-    // 如果是404错误，返回null或特定状态而不是抛出错误
     if (error.response?.status === 404) {
       return { notFound: true };
     }
@@ -54,7 +54,7 @@ export async function getCustomRecommendations({ pageId, customerId, title, cate
     });
     return response.data;
   } catch (error) {
-    console.error('获取客户定制推荐失败:', error);
+    console.error('Failed to get custom recommendations:', error);
     return null;
   }
 }

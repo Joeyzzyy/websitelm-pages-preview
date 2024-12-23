@@ -9,13 +9,13 @@ import TitleSection from '../common/sections/title-section';
 import TitleSectionWithImage from '../common/sections/title-section-with-image';
 import PricingWithThreeCards from '../common/sections/pricing-with-three-cards';
 import HowItWorksWithWorkflow from '../common/sections/how-it-works-with-workflow';
-import WhyChooseUsWithSixBlocks from '../common/sections/why-choose-us-with-six-small-blocks';
+import WhyChooseUsWithSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
 import CallToAction from '../common/sections/call-to-action';
 import CallToActionWithImage from '../common/sections/call-to-action-with-image';
 import HowItWorksWithThreeBlocks from '../common/sections/how-it-works-with-three-blocks';
 import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-four-blocks';
 import ProductBenefitsWithATable from '../common/sections/product-benefits-with-a-table';
-import WhyChooseUsWithTwoBlocks from '../common/sections/why-choose-us-with-two-huge-blocks';
+import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
 import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
 import Faqs from '../common/sections/faqs';
 import FaqTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
@@ -29,10 +29,13 @@ import UserReviewsMovingCards from '../common/sections/user-reviews-with-moving-
 import UserReviewsSquareCards from '../common/sections/user-reviews-with-square-cards';
 import KeyResultsWithThreeCards from '../common/sections/key-results-with-three-cards';
 import KeyResultsWithImage from '../common/sections/key-results-with-image';
+import CallToActionComplex from '../common/sections/call-to-action-complex';
+import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-mutiple-texts';
 
 const ComponentShowcase = () => {
   const [expandedCodes, setExpandedCodes] = useState({});
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [theme, setTheme] = useState('normal');
   const componentRefs = {};
 
   const toggleCode = (key) => {
@@ -53,7 +56,10 @@ const ComponentShowcase = () => {
         {/* Header */}
         <div className="bg-slate-800 border-b border-slate-700 w-full">
           <div className="w-[90%] mx-auto py-12">
-            <h1 className="text-4xl font-bold text-white tracking-tight">Component Library</h1>
+            <div className="flex justify-between items-center mb-6">
+              <h1 className="text-4xl font-bold text-white tracking-tight">Component Library</h1>
+            </div>
+            
             <p className="mt-4 text-lg text-slate-300 max-w-3xl">
               Explore our comprehensive collection of pre-built components designed for creating modern, responsive web applications.
             </p>
@@ -111,30 +117,32 @@ const ComponentShowcase = () => {
                   <div className={`${
                     key === 'heroSectionWithVideo' ? 'max-w-full md:max-w-[900px] lg:max-w-[1200px] mx-auto' : ''
                   } w-full`}>
-                    {key === 'TitleSection' && <TitleSection data={data.props} author="WebsiteLM" />}
-                    {key === 'TitleSectionWithImage' && <TitleSectionWithImage data={data.props} author="WebsiteLM" />}
-                    {key === 'HowItWorksWithWorkflow' && <HowItWorksWithWorkflow data={data.props} author="WebsiteLM" />}
-                    {key === 'HowItWorksWithThreeBlocks' && <HowItWorksWithThreeBlocks data={data.props} author="WebsiteLM" />}
-                    {key === 'WhyChooseUsWithTwoBlocks' && <WhyChooseUsWithTwoBlocks data={data.props} author="WebsiteLM" />}
-                    {key === 'WhyChooseUsWithSixBlocks' && <WhyChooseUsWithSixBlocks data={data.props} author="WebsiteLM" />}
-                    {key === 'CallToActionWithImage' && <CallToActionWithImage data={data.props} author="WebsiteLM" />}
-                    {key === 'CallToAction' && <CallToAction data={data.props} author="WebsiteLM" />}
-                    {key === 'ProductBenefitsWithFourBlocks' && <ProductBenefitsWithFourBlocks data={data.props} author="WebsiteLM" />}
-                    {key === 'ProductBenefitsWithATable' && <ProductBenefitsWithATable data={data.props} author="WebsiteLM" />}
-                    {key === 'HeroSectionWithVideo' && <HeroSectionWithVideo data={data.props} author="WebsiteLM" />}
-                    {key === 'Faqs' && <Faqs data={data.props} author="WebsiteLM" />}
-                    {key === 'FaqTwoColumnsWithSmallTitle' && <FaqTwoColumnsWithSmallTitle data={data.props} author="WebsiteLM" />}
-                    {key === 'FaqTwoColumnsWithBigTitle' && <FaqTwoColumnsWithBigTitle data={data.props} author="WebsiteLM" />}
-                    {key === 'KeyResultsWithTextBlock' && <KeyResultsWithTextBlock data={data.props} author="WebsiteLM" />}
-                    {key === 'MoreInsightsWithFourCards' && <MoreInsightsWithFourCards data={data.props} author="WebsiteLM" />}
-                    {key === 'TrustedByLogos' && <TrustedByLogos data={data.props} author="WebsiteLM" />}
-                    {key === 'ProductComparisonTable' && <ProductComparisonTable data={data.props} author="WebsiteLM" />}
-                    {key === 'PricingWithThreeCards' && <PricingWithThreeCards data={data.props} author="WebsiteLM" />}
-                    {key === 'UserReviews' && <UserReviews data={data.props} author="WebsiteLM" />}
-                    {key === 'UserReviewsMovingCards' && <UserReviewsMovingCards data={data.props} author="WebsiteLM" />}
-                    {key === 'UserReviewsSquareCards' && <UserReviewsSquareCards data={data.props} author="WebsiteLM" />}
-                    {key === 'KeyResultsWithThreeCards' && <KeyResultsWithThreeCards data={data.props} author="WebsiteLM" />}
-                    {key === 'KeyResultsWithImage' && <KeyResultsWithImage data={data.props} author="WebsiteLM" />}
+                    {key === 'TitleSection' && <TitleSection data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'TitleSectionWithImage' && <TitleSectionWithImage data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'HeroSectionWithMultipleTexts' && <HeroSectionWithMultipleTexts data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'HowItWorksWithWorkflow' && <HowItWorksWithWorkflow data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'HowItWorksWithThreeBlocks' && <HowItWorksWithThreeBlocks data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'WhyChooseUsWithBlocks' && <WhyChooseUsWithBlocks data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'WhyChooseUsWithSmallBlocks' && <WhyChooseUsWithSmallBlocks data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'CallToActionWithImage' && <CallToActionWithImage data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'CallToAction' && <CallToAction data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'ProductBenefitsWithFourBlocks' && <ProductBenefitsWithFourBlocks data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'ProductBenefitsWithATable' && <ProductBenefitsWithATable data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'HeroSectionWithVideo' && <HeroSectionWithVideo data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'Faqs' && <Faqs data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'FaqTwoColumnsWithSmallTitle' && <FaqTwoColumnsWithSmallTitle data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'FaqTwoColumnsWithBigTitle' && <FaqTwoColumnsWithBigTitle data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'UserReviews' && <UserReviews data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'UserReviewsMovingCards' && <UserReviewsMovingCards data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'UserReviewsSquareCards' && <UserReviewsSquareCards data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'KeyResultsWithThreeCards' && <KeyResultsWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'KeyResultsWithImage' && <KeyResultsWithImage data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'KeyResultsWithTextBlock' && <KeyResultsWithTextBlock data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'MoreInsightsWithFourCards' && <MoreInsightsWithFourCards data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'TrustedByLogos' && <TrustedByLogos data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'ProductComparisonTable' && <ProductComparisonTable data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'PricingWithThreeCards' && <PricingWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'CallToActionComplex' && <CallToActionComplex data={data.props} author="WebsiteLM" theme={theme} />}
                   </div>
                 </div>
               </div>
@@ -143,7 +151,39 @@ const ComponentShowcase = () => {
         </div>
 
         {/* Navigation Menu - Update floating navigation menu style */}
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+          {/* Theme Switcher */}
+          <div className="bg-slate-800 rounded-lg shadow-lg p-3 border border-slate-700">
+            <div className="flex flex-col gap-2">
+              <span className="text-slate-300 text-sm">Theme:</span>
+              <div className="flex flex-col gap-2">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="theme"
+                    value="normal"
+                    checked={theme === 'normal'}
+                    onChange={(e) => setTheme(e.target.value)}
+                    className="text-blue-500 focus:ring-blue-500 h-4 w-4"
+                  />
+                  <span className="text-slate-300 text-sm">Default</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="theme"
+                    value="tech"
+                    checked={theme === 'tech'}
+                    onChange={(e) => setTheme(e.target.value)}
+                    className="text-blue-500 focus:ring-blue-500 h-4 w-4"
+                  />
+                  <span className="text-slate-300 text-sm">Tech</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Menu */}
           {isNavOpen ? (
             <div className="bg-slate-800 rounded-lg shadow-lg p-3 w-[280px] border border-slate-700">
               <div className="flex justify-between items-center mb-2 pb-2 border-b border-slate-700">

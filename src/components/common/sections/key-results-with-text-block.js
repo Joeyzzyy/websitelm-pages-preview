@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
+import themeConfig from '../../../styles/themeConfig';
 
 // 添加解析HTML字符串的辅助函数
 const parseHtmlContent = (htmlString) => {
@@ -47,7 +48,7 @@ const parseHtmlContent = (htmlString) => {
   return result;
 };
 
-const KeyResultsWithTextBlock = ({ data }) => {
+const KeyResultsWithTextBlock = ({ data, theme = 'normal' }) => {
   const { leftContent, rightContent } = data;
   const containerRef = useRef(null);
   const stickyRef = useRef(null);
@@ -120,9 +121,70 @@ const KeyResultsWithTextBlock = ({ data }) => {
     return leftContent.some(result => result.display === true);
   };
 
+  const getBgColor = () => {
+    return themeConfig[theme].section.background.primary;
+  };
+
+  const getBlockStyle = () => {
+    return theme === 'tech'
+      ? `${themeConfig[theme].card.variants.primary}`
+      : `${themeConfig[theme].card.variants.primary}`;
+  };
+
+  const getHighlightStyle = () => {
+    return themeConfig[theme].text.color.accent;
+  };
+
+  const getListItemStyle = () => {
+    return themeConfig[theme].text.color.primary;
+  };
+
+  const renderContent = (content) => {
+    if (typeof content === 'string') {
+      return (
+        <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color}`}>
+          {content}
+        </p>
+      );
+    }
+
+    const parsedContent = parseHtmlContent(content);
+    return parsedContent.map((item, index) => {
+      switch (item.type) {
+        case 'text':
+          return (
+            <p key={index} className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} mb-4`}>
+              {item.content}
+            </p>
+          );
+        case 'list':
+          return (
+            <ul key={index} className="space-y-2 mb-4">
+              {item.items.map((listItem, i) => (
+                <li key={i} className={getListItemStyle()}>
+                  <svg className="w-5 h-5 mt-0.5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span>{listItem}</span>
+                </li>
+              ))}
+            </ul>
+          );
+        case 'highlight':
+          return (
+            <span key={index} className={getHighlightStyle()}>
+              {item.content}
+            </span>
+          );
+        default:
+          return null;
+      }
+    });
+  };
+
   return (
-    <div className="max-w-[1440px] mx-auto px-4 pt-20 pb-12">
-      <div className="w-[90%] mx-auto">
+    <div className={`${getBgColor()} ${themeConfig[theme].section.padding.base}`}>
+      <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-[350px_1fr] gap-20" ref={containerRef}>
           <div className="relative w-[350px]">
             <div ref={stickyRef} className="sticky top-128 inline-block" style={{ width: '350px' }}>
@@ -144,7 +206,6 @@ const KeyResultsWithTextBlock = ({ data }) => {
                 </ul>
               </div>
 
-              {/* 只在有显示的指标时渲染 Key Results 模块 */}
               {shouldShowKeyResults() && (
                 <div className="bg-gray-50 p-8 rounded-lg">
                   <h3 className="text-xl font-bold mb-6">
@@ -161,7 +222,7 @@ const KeyResultsWithTextBlock = ({ data }) => {
                           {result.description}
                         </p>
                       </div>
-                  ))}
+                    ))}
                 </div>
               )}
             </div>

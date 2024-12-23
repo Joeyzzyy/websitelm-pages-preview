@@ -2,73 +2,68 @@
 
 import React from 'react';
 import buttonLinks from '../../ui/button/links';
-import CustomButton from './widget-custom_button';
-import fontStyles from '../../../styles/textStyles';
+import themeConfig from '../../../styles/themeConfig';
 
-const HowItWorksWithThreeBlocks = ({ data, author }) => {
+const HowItWorksWithThreeBlocks = ({ data, author, theme = 'normal' }) => {
   const { leftContent, rightContent } = data;
   
   const getButtonLink = () => {
     return buttonLinks.workbench || '#';
   };
 
-  const getModuleStyle = (index) => {
-    const styles = [
-      'bg-white border-[#3374FF]',
-      'bg-white border-[#3374FF]',
-      'bg-white border-[#3374FF]'
-    ];
-    return styles[index] || styles[0];
+  const getBgColor = () => {
+    return theme === 'tech' 
+      ? themeConfig[theme].section.background.secondary
+      : themeConfig[theme].section.background.primary;
+  };
+
+  const getButtonStyle = () => {
+    return `${themeConfig[theme].button.base} ${themeConfig[theme].button.variants.secondary} ${themeConfig[theme].button.sizes.md}`;
+  };
+
+  const getBlockStyle = () => {
+    return `${themeConfig[theme].card.base} ${themeConfig[theme].card.variants.primary} ${themeConfig[theme].card.padding.md}`;
+  };
+
+  const getNumberStyle = () => {
+    return `${themeConfig[theme].text.color.accent} text-lg font-semibold mb-2`;
   };
 
   return (
-    <div className="bg-white py-12 md:py-16">
+    <div className={`${getBgColor()} ${themeConfig[theme].section.padding.base}`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-          {/* 左侧内容 */}
-          <div className="w-full md:w-2/5 flex flex-col justify-center">
-            <div className="text-3xl md:text-4xl mb-6">{leftContent.icon}</div>
-            <h2 className={`${fontStyles.h2.fontSize} ${fontStyles.h2.fontWeight} ${fontStyles.h2.color} mb-4`}>
+          <div className="w-full md:w-1/3">
+            <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} mb-4`}>
               {leftContent.title}
             </h2>
-            <p className={`${fontStyles.subtitle.fontSize} ${fontStyles.subtitle.color} mb-6`}>
-              {leftContent.subtitle}
+            <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} mb-6`}>
+              {leftContent.content}
             </p>
-            <div>
-              <CustomButton 
-                variant={author} 
-                href={getButtonLink()}
-                className="inline-flex items-center px-6 h-10 border-2 border-[#3374FF] text-[#3374FF] hover:bg-[#3374FF] hover:text-white text-sm font-medium rounded-md transition-colors duration-200 whitespace-nowrap"
-              >
-                {leftContent.buttonText}
-              </CustomButton>
-            </div>
+            <a 
+              href={getButtonLink()}
+              className={getButtonStyle()}
+            >
+              {leftContent.buttonText}
+            </a>
           </div>
 
-          {/* 右侧模块 */}
-          <div className="w-full md:w-3/5 flex flex-col gap-4">
-            {rightContent.map((module, index) => (
-              <div 
-                key={index} 
-                className={`
-                  p-6
-                  rounded-lg
-                  border
-                  transition-all
-                  duration-200
-                  hover:shadow-sm
-                  ${getModuleStyle(index)}
-                `}
-              >
-                <div className="text-2xl mb-4 text-[#3374FF]">{module.icon}</div>
-                <h3 className={`${fontStyles.h3.fontSize} ${fontStyles.h3.fontWeight} ${fontStyles.h3.color} mb-2`}>
-                  {module.title}
-                </h3>
-                <p className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color}`}>
-                  {module.content}
-                </p>
-              </div>
-            ))}
+          <div className="w-full md:w-2/3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {rightContent.map((block, index) => (
+                <div key={index} className={getBlockStyle()}>
+                  <div className={getNumberStyle()}>
+                    {`0${index + 1}`}
+                  </div>
+                  <h3 className={`${themeConfig[theme].typography.h3.fontSize} ${themeConfig[theme].typography.h3.fontWeight} ${themeConfig[theme].typography.h3.color} mb-2`}>
+                    {block.title}
+                  </h3>
+                  <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color}`}>
+                    {block.content}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

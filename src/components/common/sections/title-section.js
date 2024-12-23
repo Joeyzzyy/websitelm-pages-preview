@@ -1,29 +1,53 @@
 'use client';
 import React from 'react';
-import fontStyles from '../../../styles/textStyles';
+import themeConfig from '../../../styles/themeConfig';
 
-const TitleSection = ({ data, author }) => {
+const TitleSection = ({ data, author, theme = 'normal' }) => {
+  const containsChinese = (text) => {
+    return /[\u4e00-\u9fa5]/.test(text);
+  };
+
+  const styles = themeConfig[theme];
+  const isChineseTitle = containsChinese(data?.title || '');
+  const authorLabel = isChineseTitle ? '作者' : 'WRITTEN BY';
+  const dateLabel = isChineseTitle ? '发布日期' : 'PUBLISHED ON';
+
   return (
-    <div className="relative z-10 py-12 md:py-16 flex items-center justify-center">
-      <header className="header w-full">
+    <div className={`relative z-10 ${styles.section.padding.base} flex items-center ${styles.section.background.primary}`}>
+      <header className="w-full">
         <div className="w-full max-w-4xl mx-auto px-4 text-center">
           {data?.title && (
-            <h1 className={`${fontStyles.h1.fontSize} ${fontStyles.h1.fontWeight} ${fontStyles.h1.color} mb-4`}>
+            <h1 className={`${styles.typography.h1.fontSize} ${styles.typography.h1.fontWeight} ${styles.typography.h1.color} mb-4`}>
               {data.title}
             </h1>
           )}
-          {data?.subtitle && (
-            <h2 className={`${fontStyles.subtitle.fontSize} ${fontStyles.subtitle.fontWeight} ${fontStyles.subtitle.color} mb-6`}>
-              {data.subtitle}
+          {data?.subTitle && (
+            <h2 className={`${styles.typography.h3.fontSize} ${styles.typography.h3.fontWeight} ${styles.text.color.secondary} mb-6`}>
+              {data.subTitle}
             </h2>
           )}
-          {author && (
-            <div className="mt-3">
-              <span className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color}`}>
-                Author：{author}
-              </span>
-            </div>
-          )}
+          <div className="flex justify-center gap-8">
+            {author && (
+              <div>
+                <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
+                  {authorLabel}
+                </span>
+                <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
+                  {author}
+                </span>
+              </div>
+            )}
+            {data?.date && (
+              <div>
+                <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
+                  {dateLabel}
+                </span>
+                <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
+                  {data.date}
+                </span>
+              </div>
+            )}
+          </div>
         </div>
       </header>
     </div>

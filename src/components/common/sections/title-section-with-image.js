@@ -1,16 +1,18 @@
 'use client';
 import React from 'react';
-import fontStyles from '../../../styles/textStyles';
+import themeConfig from '../../../styles/themeConfig';
 
-const TitleSectionWithImage = ({ data, author }) => {
+const TitleSectionWithImage = ({ data, author, theme = 'normal' }) => {
   const containsChinese = (text) => {
     return /[\u4e00-\u9fa5]/.test(text);
   };
 
-  const formatDate = (dateString) => {
-    if (!dateString) return '';
-    const date = new Date(dateString);
-    return date.toISOString().split('T')[0];
+  const styles = themeConfig[theme];
+
+  const getImageContainerStyle = () => {
+    return theme === 'tech'
+      ? `relative w-full pt-[75%] rounded-lg overflow-hidden ${styles.card.variants.primary}`
+      : `relative w-full pt-[75%] rounded-lg overflow-hidden ${styles.card.variants.primary}`;
   };
 
   const isChineseTitle = containsChinese(data?.title || '');
@@ -18,51 +20,55 @@ const TitleSectionWithImage = ({ data, author }) => {
   const dateLabel = isChineseTitle ? '发布日期' : 'PUBLISHED ON';
 
   return (
-    <div className="relative z-10 py-16 md:py-20 flex items-center bg-white">
+    <div className={`relative z-10 ${styles.section.padding.base} flex items-center ${styles.section.background.primary}`}>
       <header className="w-full">
-        <div className="w-full max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-            {/* 左侧内容区域 */}
             <div className="w-full md:w-1/2">
-              {data?.title && (
-                <h1 className={`${fontStyles.h1.fontSize} ${fontStyles.h1.fontWeight} ${fontStyles.h1.color} mb-4`}>
-                  {data.title}
-                </h1>
-              )}
-              {data?.subTitle && (
-                <p className={`${fontStyles.subtitle.fontSize} ${fontStyles.subtitle.fontWeight} ${fontStyles.subtitle.color} mb-6`}>
-                  {data.subTitle}
-                </p>
-              )}
-              
-              <div className="flex gap-8">
-                <div>
-                  <span className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color} block mb-1 font-medium`}>
-                    {authorLabel}
-                  </span>
-                  <span className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color}`}>
-                    {author}
-                  </span>
-                </div>
+              <div className="max-w-xl">
+                {data?.title && (
+                  <h1 className={`${styles.typography.h1.fontSize} ${styles.typography.h1.fontWeight} ${styles.typography.h1.color} mb-4`}>
+                    {data.title}
+                  </h1>
+                )}
                 
-                <div>
-                  <span className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color} block mb-1 font-medium`}>
-                    {dateLabel}
-                  </span>
-                  <span className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color}`}>
-                    {formatDate(data.leftContent.publishDate)}
-                  </span>
+                {data?.subTitle && (
+                  <h2 className={`${styles.typography.h3.fontSize} ${styles.typography.h3.fontWeight} ${styles.typography.h3.color} mb-6`}>
+                    {data.subTitle}
+                  </h2>
+                )}
+                
+                <div className="flex gap-8">
+                  {author && (
+                    <div>
+                      <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
+                        {authorLabel}
+                      </span>
+                      <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
+                        {author}
+                      </span>
+                    </div>
+                  )}
+                  {data?.date && (
+                    <div>
+                      <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
+                        {dateLabel}
+                      </span>
+                      <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
+                        {formatDate(data.date)}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
             
-            {/* 右侧图片区域 */}
             <div className="w-full md:w-1/2">
-              <div className="relative w-full pt-[75%]">
+              <div className={getImageContainerStyle()}>
                 <img 
                   src={data?.rightContent?.imageUrl}
                   alt={data?.rightContent?.imageAlt}
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-sm"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>  
             </div>

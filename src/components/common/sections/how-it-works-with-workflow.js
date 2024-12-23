@@ -1,39 +1,49 @@
 'use client';
 import React from 'react';
+import themeConfig from '../../../styles/themeConfig';
 import CustomButton from './widget-custom_button';
-import fontStyles from '../../../styles/textStyles';
 import buttonLinks from '../../ui/button/links';
 
-const HowItWorksWithWorkflow = ({ data, author }) => {
+const HowItWorksWithWorkflow = ({ data, author, theme = 'normal' }) => {
   const { bottomContent, topContent } = data;
+  
+  const getBgColor = () => {
+    return theme === 'tech' 
+      ? themeConfig[theme].section.background.secondary
+      : themeConfig[theme].section.background.primary;
+  };
   
   const getButtonLink = () => {
     return buttonLinks.workbench || '#';
   };
   
   return (
-    <div className="bg-white py-12 md:py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className={`${fontStyles.h2.fontSize} ${fontStyles.h2.fontWeight} ${fontStyles.h2.color}`}>
+    <div className={`${getBgColor()} ${themeConfig[theme].section.padding.base}`}>
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16 md:mb-24">
+          {topContent.icon && <div className="text-6xl mb-6">{topContent.icon}</div>}
+          <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} mb-4`}>
             {topContent.title}
           </h2>
+          {topContent.subTitle && <h3 className="text-xl text-gray-600 max-w-3xl mx-auto">{topContent.subTitle}</h3>}
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12 md:gap-6">
           {bottomContent.map((block, index) => (
             <React.Fragment key={block.number}>
-              <div className="flex flex-col items-center text-center w-full md:w-[28%] mb-8 md:mb-0">
-                <div className="text-4xl md:text-5xl font-bold mb-4 text-[#3374FF]">
+              <div className="flex flex-col items-center text-center w-full md:w-[30%] p-6 rounded-lg hover:bg-gray-50 transition-colors">
+                <div className={`text-5xl md:text-6xl font-bold mb-6 ${themeConfig[theme].text.color.accent}`}>
                   {block.number}
                 </div>
-                <p className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color} px-4`}>
+                {block.title && <h4 className="text-xl font-semibold mb-3">{block.title}</h4>}
+                {block.subTitle && <h5 className="text-base text-gray-600 mb-4">{block.subTitle}</h5>}
+                <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} leading-relaxed`}>
                   {block.content}
                 </p>
               </div>
               
               {index < bottomContent.length - 1 && (
-                <div className="hidden md:block text-[#3374FF] text-3xl font-bold">
+                <div className={`hidden md:block text-4xl ${themeConfig[theme].text.color.accent}`}>
                   →
                 </div>
               )}
@@ -43,9 +53,12 @@ const HowItWorksWithWorkflow = ({ data, author }) => {
 
         <div className="text-center">
           <CustomButton 
-            variant={author} 
             href={getButtonLink()}
-            className="inline-flex items-center px-6 h-10 border-2 border-[#3374FF] text-[#3374FF] hover:bg-[#3374FF] hover:text-white text-sm font-medium rounded-md transition-colors duration-200 whitespace-nowrap"
+            className={`
+              ${themeConfig[theme].button.base}
+              ${themeConfig[theme].button.variants.secondary}
+              ${themeConfig[theme].button.sizes.md}
+            `}
           >
             {topContent.buttonText}
           </CustomButton>

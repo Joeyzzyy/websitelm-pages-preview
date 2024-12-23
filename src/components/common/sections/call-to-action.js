@@ -1,29 +1,40 @@
 'use client';
 import React from 'react';
-import CustomButton from './widget-custom_button';
-import fontStyles from '../../../styles/textStyles';
 import buttonLinks from '../../ui/button/links';
+import themeConfig from '../../../styles/themeConfig';
 
-const CallToAction = ({ data }) => {
+const CallToAction = ({ data, theme = 'normal' }) => {
   const getButtonLink = () => {
     return buttonLinks.workbench || '#';
   };
 
+  const getBgColor = () => {
+    return theme === 'tech' 
+      ? themeConfig[theme].section.background.secondary
+      : themeConfig[theme].section.background.primary;
+  };
+
+  const getButtonStyle = () => {
+    const baseStyles = themeConfig[theme].button.base;
+    const variantStyles = themeConfig[theme].button.variants.secondary;
+    return `${baseStyles} ${variantStyles}`;
+  };
+
   return (
-    <div className="bg-gray-50 py-12 md:py-16">
+    <div className={`${getBgColor()} ${themeConfig[theme].section.padding.base}`}>
       <div className="max-w-3xl mx-auto px-4 text-center">
-        <h2 className={`${fontStyles.h2.fontSize} ${fontStyles.h2.fontWeight} ${fontStyles.h2.color} mb-4`}>
+        <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} mb-4`}>
           {data.title}
         </h2>
-        <p className={`${fontStyles.subtitle.fontSize} ${fontStyles.subtitle.color} mb-6`}>
+        <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} mb-6`}>
           {data.subTitle}
         </p>
-        <CustomButton 
+        <a 
           href={getButtonLink()}
-          className="inline-flex items-center px-6 h-10 border-2 border-[#3374FF] text-[#3374FF] hover:bg-[#3374FF] hover:text-white text-sm font-medium rounded-md transition-colors duration-200 whitespace-nowrap"
+          className={getButtonStyle()}
         >
           {data.buttonText}
-        </CustomButton>
+        </a>
       </div>
     </div>
   );

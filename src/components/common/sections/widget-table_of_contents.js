@@ -2,9 +2,39 @@
 
 import React, { useState, useEffect } from 'react';
 
-const TableOfContents = () => {
+const TableOfContents = ({ theme = 'normal' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [headings, setHeadings] = useState([]);
+
+  const getBgColor = () => {
+    return theme === 'tech' 
+      ? 'bg-indigo-50 bg-opacity-95'
+      : 'bg-white bg-opacity-95';
+  };
+
+  const getBorderStyle = () => {
+    return theme === 'tech'
+      ? 'border border-indigo-100'
+      : 'border border-gray-200';
+  };
+
+  const getButtonStyle = () => {
+    return theme === 'tech'
+      ? 'bg-indigo-600 hover:bg-indigo-700'
+      : 'bg-blue-600 hover:bg-blue-700';
+  };
+
+  const getHeadingStyle = () => {
+    return theme === 'tech'
+      ? 'hover:bg-indigo-50 text-indigo-900'
+      : 'hover:bg-gray-50 text-gray-900';
+  };
+
+  const getBadgeStyle = () => {
+    return theme === 'tech'
+      ? 'bg-indigo-100 text-indigo-600'
+      : 'bg-gray-100 text-gray-500';
+  };
 
   useEffect(() => {
     // 获取所有标题元素
@@ -17,70 +47,34 @@ const TableOfContents = () => {
     setHeadings(headingsData);
   }, []);
 
-  // 根据标题级别返回样式
-  const getHeadingStyles = (level) => {
-    const styles = {
-      1: 'text-lg font-bold text-gray-900 hover:bg-blue-50',
-      2: 'text-base font-semibold text-gray-800 hover:bg-blue-50',
-      3: 'text-sm font-medium text-gray-700 hover:bg-blue-50',
-      4: 'text-sm text-gray-600 hover:bg-blue-50',
-      5: 'text-sm text-gray-500 hover:bg-blue-50'
-    };
-    return styles[level] || '';
-  };
-
   return (
     <div className="fixed right-4 bottom-4 z-50">
-      {/* 优化后的浮动按钮 */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 
-        text-white rounded-full p-3 shadow-lg transition-all duration-300 transform hover:scale-105"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      {isOpen && (
-        <div 
-          className="fixed inset-0 z-40" 
-          onClick={(e) => {
-            // 检查点击事件是否发生在遮罩层上
-            if (e.target === e.currentTarget) {
-              setIsOpen(false);
-            }
-          }}
+      <div className={`${getBgColor()} ${getBorderStyle()} rounded-lg shadow-lg max-w-xs`}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`${getButtonStyle()} text-white rounded-full p-3 shadow-lg transition-all duration-200`}
         >
-          <div 
-            className="fixed right-4 bottom-16 bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl p-4 
-            w-96 max-h-[80vh] overflow-y-auto border border-gray-200 transition-all duration-300 animate-slideIn
-            z-50"
-          >
-            <h3 className="text-lg font-bold mb-3 text-gray-800 border-b pb-2">Heading List</h3>
-            <div className="space-y-1">
-              {headings.map((heading, index) => (
-                <div
-                  key={index}
-                  className={`block ${getHeadingStyles(heading.level)} 
-                  transition-colors duration-200 rounded-md cursor-default`}
-                  style={{ 
-                    paddingLeft: `${(heading.level - 1) * 1.5}rem`,
-                    paddingTop: '0.375rem',
-                    paddingBottom: '0.375rem',
-                    paddingRight: '0.5rem',
-                  }}
-                >
-                  <span className="inline-block px-1.5 py-0.5 text-xs rounded-full bg-gray-100 text-gray-500 mr-2">
-                    H{heading.level}
-                  </span>
-                  {heading.title}
-                </div>
-              ))}
-            </div>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        
+        {isOpen && (
+          <div className="p-4">
+            {headings.map((heading, index) => (
+              <div
+                key={index}
+                className={`${getHeadingStyle()} cursor-pointer p-2 rounded-md`}
+              >
+                <span className={`${getBadgeStyle()} inline-block px-1.5 py-0.5 text-xs rounded-full mr-2`}>
+                  H{heading.level}
+                </span>
+                {heading.title}
+              </div>
+            ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

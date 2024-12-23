@@ -1,39 +1,37 @@
 'use client';
 import React, { useState } from 'react';
-import fontStyles from '../../../styles/textStyles';
+import themeConfig from '../../../styles/themeConfig';
 
-const FAQTwoColumnsWithSmallTitle = ({ data }) => {
+const FAQTwoColumnsWithSmallTitle = ({ data, theme = 'normal' }) => {
   const [openIndex, setOpenIndex] = useState(null);
-  const toggleFAQ = (index) => setOpenIndex(openIndex === index ? null : index);
+  const styles = themeConfig[theme];
   const isChineseContent = (content) => /[\u4e00-\u9fa5]/.test(content[0]?.question);
 
   return (
-    <div className="bg-white py-12 md:py-16">
+    <div className={`${styles.section.background.primary} ${styles.section.padding.base}`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-          {/* 左侧标题区域 */}
           <div className="w-full md:w-1/3">
-            <div className="inline-flex items-center px-3 h-6 bg-[#3374FF]/10 text-[#3374FF] text-sm font-medium rounded-md mb-4">
+            <div className={`inline-flex items-center px-3 h-6 rounded-md text-sm font-medium ${styles.button.variants.primary}`}>
               FAQ
             </div>
-            <h2 className={`${fontStyles.h2.fontSize} ${fontStyles.h2.fontWeight} ${fontStyles.h2.color}`}>
+            <h2 className={`${styles.typography.h2.fontSize} ${styles.typography.h2.fontWeight} ${styles.typography.h2.color}`}>
               {isChineseContent(data.bottomContent) ? '常见问题解答' : 'Frequently asked questions'}
             </h2>
           </div>
 
-          {/* 右侧FAQ列表 */}
           <div className="w-full md:w-2/3">
             {data.bottomContent.map((faq, index) => (
-              <div key={index} className="border-b border-gray-100">
+              <div key={index} className={`border-b ${styles.card.variants.primary} ${styles.card.padding.md}`}>
                 <button
                   className="w-full py-4 flex justify-between items-center text-left"
-                  onClick={() => toggleFAQ(index)}
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 >
-                  <h3 className={`${fontStyles.h3.fontSize} ${fontStyles.h3.fontWeight} ${fontStyles.h3.color}`}>
+                  <h3 className={`${styles.typography.h3.fontSize} ${styles.typography.h3.fontWeight} ${styles.typography.h3.color}`}>
                     {faq.question}
                   </h3>
                   <svg
-                    className={`w-5 h-5 text-[#3374FF] transition-transform duration-200 ${
+                    className={`w-5 h-5 ${styles.text.color.accent} transition-transform duration-200 ${
                       openIndex === index ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -46,7 +44,7 @@ const FAQTwoColumnsWithSmallTitle = ({ data }) => {
                 <div className={`overflow-hidden transition-all duration-200 ${
                   openIndex === index ? 'max-h-96 pb-4' : 'max-h-0'
                 }`}>
-                  <p className={`${fontStyles.paragraph.fontSize} ${fontStyles.paragraph.color}`}>
+                  <p className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
                     {faq.answer}
                   </p>
                 </div>

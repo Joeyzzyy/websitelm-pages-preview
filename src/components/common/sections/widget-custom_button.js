@@ -1,34 +1,35 @@
 'use client'
 import React from 'react';
+import themeConfig from '@/styles/themeConfig';
 
 const CustomButton = ({ 
   children,
   className = '',
   href,
+  theme = 'normal',
+  variant = 'secondary',
+  size = 'md',
   ...props 
 }) => {
-  const getButtonStyles = () => {
-    return 'border-2 border-[#3374FF] text-[#3374FF] hover:bg-[#3374FF] hover:text-white';
-  };
+  const styles = themeConfig[theme].button;
+  
+  const buttonClasses = `
+    ${styles.base}
+    ${styles.variants[variant]}
+    ${styles.sizes[size]}
+    ${className}
+  `.trim();
 
   const handleClick = () => {
     if (href) {
-      window.location.href = href; // 或者使用 router.push(href)
+      window.location.href = href;
     }
   };
 
   return (
     <button
       onClick={handleClick}
-      className={`
-        px-8 py-3 
-        rounded-3xl 
-        text-lg 
-        font-semibold 
-        transition-all duration-200
-        ${getButtonStyles()}
-        ${className}
-      `}
+      className={buttonClasses}
       {...props}
     >
       {children}

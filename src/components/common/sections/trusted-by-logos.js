@@ -1,12 +1,14 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import themeConfig from '../../../styles/themeConfig';
 
-const TrustedByLogos = ({ data }) => {
+const TrustedByLogos = ({ data, themeName = 'normal' }) => {
+  const theme = themeConfig[themeName];
   const logos = data?.bottomContent || [];
   const [position, setPosition] = useState(0);
   
   useEffect(() => {
-    const itemWidth = 128; // logo宽度(96px) + 间距(32px)
+    const itemWidth = 128;
     const totalWidth = itemWidth * logos.length;
     
     const interval = setInterval(() => {
@@ -25,13 +27,11 @@ const TrustedByLogos = ({ data }) => {
   const tripleLogos = [...logos, ...logos, ...logos];
 
   return (
-    <div className="relative z-10 py-12 md:py-16 overflow-hidden">
-      <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10" />
-      
-      <div className="relative mx-auto" style={{ width: '512px' }}>
-        <div className="flex items-center justify-center overflow-hidden">
-          <div 
-            className="flex items-center gap-8"
+    <div className={`${theme.section.background.primary} ${theme.section.padding.base} relative overflow-hidden`}>
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="overflow-hidden relative">
+          <div
+            className="flex gap-8"
             style={{
               transform: `translateX(${position}px)`,
               transition: 'none',
@@ -40,7 +40,7 @@ const TrustedByLogos = ({ data }) => {
             {tripleLogos.map((logo, index) => (
               <div
                 key={`${logo.imageUrl}-${index}`}
-                className="flex-shrink-0 w-24 h-24 flex items-center justify-center bg-white rounded-xl shadow-sm border border-gray-100"
+                className={`${theme.card.variants.primary} flex-shrink-0 w-24 h-24 flex items-center justify-center`}
               >
                 <img
                   src={logo.imageUrl}
@@ -53,7 +53,7 @@ const TrustedByLogos = ({ data }) => {
         </div>
       </div>
       
-      <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10" />
+      <div className={`absolute right-0 top-0 w-32 h-full bg-gradient-to-l ${theme.section.background.primary === 'bg-white' ? 'from-white' : 'from-blue-50'} to-transparent z-10`} />
     </div>
   );
 };
