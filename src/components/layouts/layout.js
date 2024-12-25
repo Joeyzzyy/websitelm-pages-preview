@@ -6,7 +6,7 @@ import HowItWorksWithThreeBlocks from '../common/sections/how-it-works-with-thre
 import WhyChooseUsWithTwoHugeBlocks from '../common/sections/why-choose-us-with-blocks';
 import WhyChooseUsWithSixSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
 import HowItWorksWithWorkflow from '../common/sections/how-it-works-with-workflow';
-import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-four-blocks';
+import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-blocks';
 import Faqs from '../common/sections/faqs';
 import FAQTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-big-title';
 import FAQTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
@@ -17,7 +17,7 @@ import TitleSectionWithImage from '../common/sections/title-section-with-image';
 import KeyResultsWithImage from '../common/sections/key-results-with-image';
 import KeyResultsWithTextBlock from '../common/sections/key-results-with-text-block';
 import KeyResultsWithThreeCards from '@/components/common/sections/key-results-with-three-cards';
-import ProductBenefitsWithTable from '@/components/common/sections/product-benefits-with-a-table';
+import ProductBenefitsWithTable from '@/components/common/sections/product-benefits-with-table';
 
 const FAQ_COMPONENTS = {
   Faqs: Faqs,

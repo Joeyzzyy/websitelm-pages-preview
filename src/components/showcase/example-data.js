@@ -16,7 +16,7 @@ export const exampleData = {
     },
   
     HeroSectionWithVideo: {
-      order: 1,
+      order: 2,
       title: 'Hero Section With Video',
       description: 'Display main tools and feature introduction with video background',
       recommendedPosition: 'Must be first component if Demo Showcase is not used',
@@ -32,8 +32,44 @@ export const exampleData = {
       }
     },
   
+    TrustedByLogos: {
+      order: 3,
+      title: 'Trusted By Logos',
+      description: 'Component to showcase partner/client logos in a carousel',
+      recommendedPosition: 'Upper section, usually after Hero Section',
+      filePath: 'src/components/common_components/trusted-by-logos.js',
+      props: {
+        bottomContent: [
+          {
+            imageUrl: '/images/enterprise-logo.png',
+            imageAlt: 'Partner Company 1'
+          },
+          {
+            imageUrl: '/images/enterprise-logo.png',
+            imageAlt: 'Partner Company 2'
+          },
+          {
+            imageUrl: '/images/enterprise-logo.png',
+            imageAlt: 'Partner Company 3'
+          },
+          {
+            imageUrl: '/images/enterprise-logo.png',
+            imageAlt: 'Partner Company 4'
+          },
+          {
+            imageUrl: '/images/enterprise-logo.png',
+            imageAlt: 'Partner Company 5'
+          },
+          {
+            imageUrl: '/images/enterprise-logo.png',
+            imageAlt: 'Partner Company 6'
+          }
+        ]
+      }
+    },
+  
     TitleSection: {
-      order: 2,
+      order: 4,
       title: 'Title Section',
       description: 'Display article or page main title and subTitle',
       recommendedPosition: 'Upper section, after Hero Section',
@@ -41,12 +77,15 @@ export const exampleData = {
       props: {
         title: 'How to Improve Work Efficiency with AI',
         subTitle: 'Explore AI Applications in Daily Work',
-        author: 'websitelm'
+        bottomContent: {
+          author: 'Author Name',
+          publishDate: new Date().toISOString().split('T')[0]
+        }
       }
     },
   
     TitleSectionWithImage: {
-      order: 3,
+      order: 5,
       title: 'Title Section With Image',
       description: 'Title section with image, supports adaptive layout for multiple languages',
       recommendedPosition: 'Upper section, after Hero Section',
@@ -66,7 +105,7 @@ export const exampleData = {
     },
   
     ProductBenefitsWithFourBlocks: {
-      order: 4,
+      order: 6,
       title: 'Product Benefits With Four Blocks',
       description: 'Display core product features or service highlights in four modules',
       recommendedPosition: 'Upper section, after title',
@@ -104,7 +143,7 @@ export const exampleData = {
     },
   
     ProductBenefitsWithATable: {
-      order: 5,
+      order: 7,
       title: 'Product Benefits With A Table',
       description: 'Display benefits list with right-side call to action',
       recommendedPosition: 'Upper section, after other benefits sections',
@@ -142,7 +181,7 @@ export const exampleData = {
     },
   
     WhyChooseUsWithSmallBlocks: {
-      order: 6,
+      order: 8,
       title: 'Why Choose Us With Small Blocks',
       description: 'Display product features or service advantages in six-grid layout',
       recommendedPosition: 'Upper-mid section, after benefits introduction',
@@ -174,7 +213,7 @@ export const exampleData = {
     },
   
     WhyChooseUsWithBlocks: {
-      order: 7,
+      order: 9,
       title: 'Why Choose Us With Blocks',
       description: 'Display two main product features or service advantages with images',
       recommendedPosition: 'Mid section, after feature blocks',
@@ -256,7 +295,7 @@ export const exampleData = {
     },
   
     HowItWorksWithWorkflow: {
-      order: 8,
+      order: 10,
       title: 'How It Works With Workflow',
       description: 'Display product usage process or service steps with arrow indicators',
       recommendedPosition: 'Mid section, after features',
@@ -292,7 +331,7 @@ export const exampleData = {
     },
   
     HowItWorksWithThreeBlocks: {
-      order: 9,
+      order: 11,
       title: 'How It Works With Three Blocks',
       description: 'Display product workflow with three detailed feature blocks',
       recommendedPosition: 'Mid section, after workflow',
@@ -326,7 +365,7 @@ export const exampleData = {
     },
   
     ProductComparisonTable: {
-      order: 10,
+      order: 12,
       title: 'Product Comparison Table',
       description: 'Compare features between your product and competitors',
       recommendedPosition: 'Mid-lower section, before pricing',
@@ -372,7 +411,7 @@ export const exampleData = {
     },
   
     UserReviews: {
-      order: 11,
+      order: 13,
       title: 'User Reviews',
       description: 'Display user testimonials and feedback',
       recommendedPosition: 'Mid-lower section, after product comparison',
@@ -414,7 +453,7 @@ export const exampleData = {
     },
   
     UserReviewsMovingCards: {
-      order: 12,
+      order: 14,
       title: 'User Reviews Moving Cards',
       description: 'Animated user testimonials carousel display with enhanced visual effects',
       recommendedPosition: 'Mid-lower section, after product features',
@@ -467,7 +506,7 @@ export const exampleData = {
     },
   
     UserReviewsSquareCards: {
-      order: 13,
+      order: 15,
       title: 'User Reviews Square Cards',
       description: 'Three-column layout square user review cards with gradient star ratings',
       recommendedPosition: 'Mid-lower section, alternative to standard reviews',
@@ -528,7 +567,7 @@ export const exampleData = {
     },
   
     KeyResultsWithTextBlock: {
-      order: 14,
+      order: 16,
       title: 'Key Results With Text Block',
       description: 'Display article content with title and paragraphs',
       recommendedPosition: 'Content area, flexible positioning',
@@ -581,7 +620,7 @@ export const exampleData = {
     },
   
     KeyResultsWithThreeCards: {
-      order: 15,
+      order: 17,
       title: 'Key Results With Three Cards',
       description: 'Display competitor comparison data in three cards',
       recommendedPosition: 'Mid section, after features or case studies',
@@ -617,7 +656,7 @@ export const exampleData = {
     },
   
     KeyResultsWithImage: {
-      order: 16,
+      order: 18,
       title: 'Key Results With Image',
       description: 'Display key metrics with right-side image',
       recommendedPosition: 'Content area, flexible positioning',
@@ -645,7 +684,7 @@ export const exampleData = {
     },
   
     MoreInsightsWithFourCards: {
-      order: 17,
+      order: 19,
       title: 'More Insights With Four Cards',
       description: 'Display related articles or insights in card format',
       recommendedPosition: 'Lower section, after main content',
@@ -681,7 +720,7 @@ export const exampleData = {
     },
   
     Faqs: {
-      order: 18,
+      order: 20,
       title: 'FAQ Section',
       description: 'Display frequently asked questions in two columns',
       recommendedPosition: 'Lower section, before CTA',
@@ -711,7 +750,7 @@ export const exampleData = {
     },
   
     FaqTwoColumnsWithSmallTitle: {
-      order: 19,
+      order: 21,
       title: 'FAQ Two Columns With Small Title',
       description: 'Two-column FAQ section with left title and right expandable Q&A',
       recommendedPosition: 'Lower section, before pricing',
@@ -740,7 +779,7 @@ export const exampleData = {
     },
   
     FaqTwoColumnsWithBigTitle: {
-      order: 20,
+      order: 22,
       title: 'FAQ Two Columns With Big Title',
       description: 'Two-column FAQ section with left large title and right expandable Q&A',
       recommendedPosition: 'Lower section, before pricing',
@@ -769,7 +808,7 @@ export const exampleData = {
     },
   
     PricingWithThreeCards: {
-      order: 21,
+      order: 23,
       title: 'Pricing With Three Cards',
       description: 'Display pricing plans with feature comparison',
       recommendedPosition: 'Lower section, after FAQ and before final CTA',
@@ -825,7 +864,7 @@ export const exampleData = {
     },
   
     CallToAction: {
-      order: 22,
+      order: 24,
       title: 'Call To Action',
       description: 'Final call to action section with strong message',
       recommendedPosition: 'Must be the last component',
@@ -839,7 +878,7 @@ export const exampleData = {
     },
   
     CallToActionWithImage: {
-      order: 23,
+      order: 25,
       title: 'Call To Action With Image',
       description: 'Final call to action section with background image',
       recommendedPosition: 'Must be the last component',
@@ -859,7 +898,7 @@ export const exampleData = {
     },
   
     CallToActionComplex: {
-      order: 24,
+      order: 26,
       title: 'Call To Action Complex',
       description: 'Advanced CTA component with detailed feature descriptions and multiple action points',
       recommendedPosition: 'Must be the last component',
@@ -899,37 +938,209 @@ export const exampleData = {
       }
     },
   
-    TrustedByLogos: {
-      order: 25,
-      title: 'Trusted By Logos',
-      description: 'Component to showcase partner/client logos in a carousel',
-      recommendedPosition: 'Upper section, usually after Hero Section',
-      filePath: 'src/components/common_components/trusted-by-logos.js',
+    CallToActionWithInput: {
+      order: 27,
+      title: 'Call To Action With Input',
+      description: 'CTA section with input field, perfect for email subscriptions and lead capture',
+      recommendedPosition: 'Can be used as final component or within content sections',
+      filePath: 'src/components/common/sections/call-to-action-with-input.js',
       props: {
+        title: 'Stay Updated with Our Latest News',
+        inputPlaceholder: 'Enter your email address',
+        buttonText: 'Subscribe Now'
+      }
+    },
+  
+    JobListNormal: {
+      order: 28,
+      title: 'Job List Normal',
+      description: 'A standard component for displaying job listings',
+      recommendedPosition: 'Career pages or company introduction sections',
+      filePath: 'src/components/common/sections/job-list-normal.js',
+      props: {
+        topContent: {
+          title: 'Join Our Team',
+          subTitle: 'Start Your Next Career Chapter With Us'
+        },
         bottomContent: [
           {
-            imageUrl: '/images/enterprise-logo.png',
-            imageAlt: 'Partner Company 1'
+            position: 'Senior Frontend Engineer',
+            type: 'Full-time',
+            location: 'San Francisco',
+            salary: '$120k-160k',
+            tags: ['React', 'Vue', 'TypeScript'],
+            responsibilities: [
+              'Lead frontend development of core products',
+              'Optimize frontend architecture and performance',
+              'Participate in technical design and review'
+            ],
+            requirements: [
+              '5+ years of frontend development experience',
+              'Expert in React or Vue framework',
+              'Strong teamwork and communication skills'
+            ]
           },
           {
-            imageUrl: '/images/enterprise-logo.png',
-            imageAlt: 'Partner Company 2'
+            position: 'Product Manager',
+            type: 'Full-time',
+            location: 'New York',
+            salary: '$100k-140k',
+            tags: ['Product Design', 'User Research', 'Data Analysis'],
+            responsibilities: [
+              'Drive product strategy and feature design',
+              'Conduct user research and requirement analysis',
+              'Coordinate with development team to drive project progress'
+            ],
+            requirements: [
+              '3+ years of product management experience',
+              'Excellent communication and coordination skills',
+              'Strong analytical and problem-solving abilities'
+            ]
           },
           {
-            imageUrl: '/images/enterprise-logo.png',
-            imageAlt: 'Partner Company 3'
+            position: 'AI Research Engineer',
+            type: 'Full-time',
+            location: 'Boston',
+            salary: '$130k-180k',
+            tags: ['Machine Learning', 'Python', 'Deep Learning'],
+            responsibilities: [
+              'Develop and implement AI algorithms',
+              'Research and apply latest AI technologies',
+              'Collaborate with cross-functional teams'
+            ],
+            requirements: [
+              'MS/PhD in Computer Science or related field',
+              'Strong background in machine learning',
+              'Experience with deep learning frameworks'
+            ]
+          }
+        ]
+      }
+    },
+    MeetOurTeam: {
+      order: 29,
+      title: 'Meet Our Team',
+      description: 'Display team member information with photos, descriptions, and social media links',
+      recommendedPosition: 'Company introduction or About Us page',
+      filePath: 'src/components/common/sections/meet-our-team.js',
+      props: {
+        topContent: {
+          subtitle: 'Our Team',
+          title: 'Creating the Future with Industry Experts',
+          description: 'Our team consists of professionals from diverse backgrounds, dedicated to providing the highest quality services and solutions for our clients.'
+        },
+        bottomContent: [
+          {
+            name: 'Michael Zhang',
+            title: 'Chief Executive Officer',
+            description: '15 years of experience in the tech industry, having held leadership positions at several renowned technology companies. Focused on AI innovation and business applications.',
+            image: '/images/profile.png',
+            socials: {
+              linkedin: 'https://linkedin.com/in/username',
+              twitter: 'https://twitter.com/username',
+              website: 'https://personal-website.com'
+            }
           },
           {
-            imageUrl: '/images/enterprise-logo.png',
-            imageAlt: 'Partner Company 4'
+            name: 'Sarah Li',
+            title: 'Product Director',
+            description: '10 years of product management experience, specializing in user experience design and product strategy. Led teams in developing multiple successful enterprise products.',
+            image: '/images/profile.png',
+            socials: {
+              linkedin: 'https://linkedin.com/in/username',
+              twitter: 'https://twitter.com/username',
+              website: 'https://personal-website.com'
+            }
           },
           {
-            imageUrl: '/images/enterprise-logo.png',
-            imageAlt: 'Partner Company 5'
+            name: 'David Wang',
+            title: 'Technical Director',
+            description: 'Focused on AI and machine learning, with extensive experience in technical architecture design. Dedicated to transforming cutting-edge technology into practical solutions.',
+            image: '/images/profile.png',
+            socials: {
+              linkedin: 'https://linkedin.com/in/username',
+              twitter: 'https://twitter.com/username',
+              website: 'https://personal-website.com'
+            }
+          }
+        ]
+      }
+    },
+    FeaturesTabbed: {
+      order: 30,
+      title: 'Features Tabbed',
+      description: 'Display features with tabbed navigation',
+      recommendedPosition: 'Lower section, before final CTA',
+      filePath: 'src/components/common/sections/features-tabbed.js',
+      props: {
+        title: 'Writing Features Kit',
+        description: 'Our AI-driven features include content detection, plagiarism checking, and automatic citation, helping you submit works with transparency and originality.',
+        buttonText: 'Get Started Now',
+        bottomContent: [
+          {
+            tabName: 'Authentic authorship',
+            title: 'Verify authentic authorship',
+            description: 'Ensure academic integrity with our authentication tools',
+            imageUrl: '/images/profile.png',
+            imageAlt: 'Authentic authorship'
           },
           {
-            imageUrl: '/images/enterprise-logo.png',
-            imageAlt: 'Partner Company 6'
+            tabName: 'Cite AI use',
+            title: 'Make it easy to disclose your AI use',
+            description: 'Our transparency features make it easy to acknowledge when you\'ve used AI',
+            imageUrl: '/images/profile.png',
+            imageAlt: 'Cite AI use'
+          },
+          {
+            tabName: 'AI checker',
+            title: 'AI checker',
+            description: 'Our AI checker helps you detect AI-generated content',
+            imageUrl: '/images/profile.png',
+            imageAlt: 'AI checker'
+          },
+          {
+            tabName: 'AI checker',
+            title: 'AI checker',
+            description: 'Our AI checker helps you detect AI-generated content',
+            imageUrl: '/images/profile.png',
+            imageAlt: 'AI checker'
+          }
+        ]
+      }
+    },
+    WhyChooseUsWithStory: {
+      order: 31,
+      title: 'Why Choose Us With Story',
+      description: 'Display founder story and detailed product/service introduction',
+      recommendedPosition: 'Company introduction or product detail pages',
+      filePath: 'src/components/common/sections/why-choose-us-with-story.js',
+      props: {
+        leftContent: {
+          avatar: '/images/profile.png',
+          name: 'Michael Zhang',
+          title: 'Founder & CEO',
+          introduction: 'As a serial entrepreneur and AI technology expert, Michael has over 15 years of experience in the tech industry. Before founding our company, he held technical leadership positions at several renowned tech companies. He firmly believes that AI technology will revolutionize content creation and is dedicated to building the best AI creation tools to help more creators realize their ideas.'
+        },
+        rightContent: [
+          {
+            contentTitle: 'From Engineer to Entrepreneur',
+            contentText: 'After graduating from MIT with a Computer Science degree in 2008, I immediately immersed myself in Natural Language Processing research. During my 8 years in Silicon Valley, I witnessed the rapid development of AI technology firsthand and participated in several groundbreaking projects. This experience gave me a deep understanding of AI\'s transformative potential.\n\nIn 2016, I made the decision to start my own venture. I saw tremendous opportunities in the emerging AI applications market. In our early days, we focused on providing AI solutions for enterprises, building a solid foundation of industry experience and technical expertise.'
+          },
+          {
+            contentTitle: 'Discovering Real Market Needs',
+            contentText: 'While serving our enterprise clients, we identified content creation as a universal pain point. Whether it was e-commerce platforms or media organizations, they all struggled with low content production efficiency and inconsistent quality. This realization led us to develop our first AI content generation tool.\n\nThe market response exceeded our expectations. Our early users reported significant improvements in their content creation workflow, with some achieving up to 300% increase in productivity. This validation encouraged us to further invest in AI content creation technology.'
+          },
+          {
+            contentTitle: 'Building the Future of Content Creation',
+            contentText: 'Today, our AI platform serves over 100,000 users worldwide, from individual creators to Fortune 500 companies. We\'ve expanded our capabilities beyond basic content generation to include advanced features like multilingual support, style customization, and SEO optimization.\n\nWhat sets us apart is our deep understanding of both AI technology and content creation needs. Our team includes not just AI researchers and engineers, but also experienced content creators and marketing professionals. This diverse expertise allows us to build tools that are not only technologically advanced but also practical and user-friendly.'
+          },
+          {
+            contentTitle: 'Our Vision and Commitment',
+            contentText: 'Looking ahead, we remain committed to pushing the boundaries of AI content creation. We\'re investing heavily in R&D to develop next-generation features like real-time collaboration tools and advanced personalization capabilities.\n\nWe believe that AI should augment human creativity, not replace it. Our goal is to empower creators with tools that handle the routine aspects of content creation, allowing them to focus on strategy and creativity. We\'re excited about the future and invite you to join us in shaping the future of content creation.'
+          },
+          {
+            contentTitle: 'Join Our Growing Community',
+            contentText: 'Our platform is more than just a tool - it\'s a community of forward-thinking creators and businesses. We regularly host webinars, workshops, and user meetups to share best practices and gather feedback.\n\nWe\'re proud of the impact we\'ve had so far, but we\'re even more excited about what\'s ahead. Whether you\'re a solo creator or part of a large organization, we\'re here to help you achieve your content creation goals more efficiently and effectively.'
           }
         ]
       }

@@ -1,9 +1,8 @@
 'use client';
 import React, { useState, useRef } from 'react';
-import buttonLinks from '../../ui/button/links';
 import themeConfig from '../../../styles/themeConfig';
 
-const HeroSectionWithVideo = ({ data, theme = 'normal' }) => {
+const HeroSectionWithVideo = ({ data, theme = 'normal', buttonLink = '#' }) => {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
   const topContent = data.topContent;
@@ -31,10 +30,6 @@ const HeroSectionWithVideo = ({ data, theme = 'normal' }) => {
     }
   };
 
-  const getButtonLink = () => {
-    return buttonLinks.workbench || '#';
-  };
-
   return (
     <div className={`relative ${getBgColor()} ${currentTheme.section.padding.base}`}>
       <div className="max-w-6xl mx-auto px-4">
@@ -46,7 +41,9 @@ const HeroSectionWithVideo = ({ data, theme = 'normal' }) => {
             {topContent.subtitle}
           </p>
           <a 
-            href={getButtonLink()}
+            href={topContent.buttonLink?.startsWith('http') 
+              ? topContent.buttonLink 
+              : `https://${topContent.buttonLink}` || buttonLink}
             className={getButtonStyle()}
           >
             {topContent.buttonText}

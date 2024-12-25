@@ -1,14 +1,9 @@
 'use client';
 
 import React from 'react';
-import buttonLinks from '../../ui/button/links';
 import themeConfig from '../../../styles/themeConfig';
 
-const ProductBenefitsWithFourBlocks = ({ data, author, theme = 'normal' }) => {
-  const getButtonLink = () => {
-    return buttonLinks.workbench || '#';
-  };
-
+const ProductBenefitsWithFourBlocks = ({ data, theme = 'normal' }) => {
   const getBgColor = () => {
     return theme === 'tech' 
       ? themeConfig[theme].section.background.secondary
@@ -35,7 +30,9 @@ const ProductBenefitsWithFourBlocks = ({ data, author, theme = 'normal' }) => {
               {data.leftContent.description}
             </p>
             <a 
-              href={getButtonLink()}
+              href={data.leftContent.buttonLink?.startsWith('http') 
+              ? data.leftContent.buttonLink 
+              : `https://${data.leftContent.buttonLink}` || '#'}
               className={getButtonStyle()}
             >
               {data.leftContent.buttonText}

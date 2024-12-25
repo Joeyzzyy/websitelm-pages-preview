@@ -1,14 +1,9 @@
 'use client';
 
 import React from 'react';
-import buttonLinks from '../../ui/button/links';
 import themeConfig from '../../../styles/themeConfig';
 
 const ProductBenefitsWithATable = ({ data, theme = 'normal' }) => {
-  const getButtonLink = () => {
-    return buttonLinks.workbench || '#';
-  };
-
   const getBgColor = () => {
     return themeConfig[theme].section.background.primary;
   };
@@ -55,7 +50,9 @@ const ProductBenefitsWithATable = ({ data, theme = 'normal' }) => {
               {data.rightContent.subTitle}
             </p>
             <a 
-              href={getButtonLink()}
+              href={data.rightContent.buttonLink?.startsWith('http') 
+                ? data.rightContent.buttonLink 
+                : `https://${data.rightContent.buttonLink}` || '#'}
               className={getButtonStyle()}
             >
               {data.rightContent.buttonText}

@@ -39,23 +39,23 @@ const TitleSectionWithImage = ({ data, author, theme = 'normal' }) => {
                 )}
                 
                 <div className="flex gap-8">
-                  {author && (
+                  {data?.leftContent.author && (
                     <div>
                       <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
                         {authorLabel}
                       </span>
                       <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
-                        {author}
+                        {data.leftContent.author}
                       </span>
                     </div>
                   )}
-                  {data?.date && (
+                  {data?.leftContent.publishDate && (
                     <div>
                       <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
                         {dateLabel}
                       </span>
                       <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
-                        {formatDate(data.date)}
+                        {data.leftContent.publishDate}
                       </span>
                     </div>
                   )}

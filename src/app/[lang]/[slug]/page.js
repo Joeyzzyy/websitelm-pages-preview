@@ -25,6 +25,8 @@ export default async function ArticlePage({ params }) {
 
     // 确保等待数据加载完成
     const articleData = await getArticleBySlug(slug, lang, process.env.TOKEN);
+
+    console.log('articleData', articleData.data.sections);
     
     // 立即处理错误情况
     if (!articleData?.data) {

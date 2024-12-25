@@ -22,12 +22,12 @@ const TitleSection = ({ data, author, theme = 'normal' }) => {
             </h1>
           )}
           {data?.subTitle && (
-            <h2 className={`${styles.typography.h3.fontSize} ${styles.typography.h3.fontWeight} ${styles.text.color.secondary} mb-6`}>
+            <h2 className={`${styles.typography.h2.fontSize} ${styles.typography.h2.fontWeight} ${styles.typography.h2.color} mb-6`}>
               {data.subTitle}
             </h2>
           )}
           <div className="flex justify-center gap-8">
-            {author && (
+            {data?.bottomContent.author && (
               <div>
                 <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
                   {authorLabel}
@@ -37,13 +37,13 @@ const TitleSection = ({ data, author, theme = 'normal' }) => {
                 </span>
               </div>
             )}
-            {data?.date && (
+            {data?.bottomContent.publishDate && (
               <div>
                 <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} block mb-1 font-medium`}>
                   {dateLabel}
                 </span>
                 <span className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
-                  {data.date}
+                  {data.bottomContent.publishDate}
                 </span>
               </div>
             )}

@@ -77,6 +77,15 @@ const themeConfig = {
       paragraph: {
         fontSize: 'text-base',
         color: 'text-gray-600'
+      },
+      caption: {
+        fontSize: 'text-sm',
+        color: 'text-gray-500',
+        fontWeight: 'font-medium'
+      },
+      link: {
+        color: 'text-gray-500',
+        hoverColor: 'text-gray-900'
       }
     },
     table: {
@@ -168,6 +177,15 @@ const themeConfig = {
       paragraph: {
         fontSize: 'text-base',
         color: 'text-gray-600'
+      },
+      caption: {
+        fontSize: 'text-sm',
+        color: 'text-indigo-500',
+        fontWeight: 'font-medium'
+      },
+      link: {
+        color: 'text-indigo-500',
+        hoverColor: 'text-indigo-700'
       }
     },
     table: {

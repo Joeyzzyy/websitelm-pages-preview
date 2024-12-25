@@ -13,8 +13,8 @@ import WhyChooseUsWithSmallBlocks from '../common/sections/why-choose-us-with-sm
 import CallToAction from '../common/sections/call-to-action';
 import CallToActionWithImage from '../common/sections/call-to-action-with-image';
 import HowItWorksWithThreeBlocks from '../common/sections/how-it-works-with-three-blocks';
-import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-four-blocks';
-import ProductBenefitsWithATable from '../common/sections/product-benefits-with-a-table';
+import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-blocks';
+import ProductBenefitsWithATable from '../common/sections/product-benefits-with-table';
 import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
 import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
 import Faqs from '../common/sections/faqs';
@@ -31,6 +31,11 @@ import KeyResultsWithThreeCards from '../common/sections/key-results-with-three-
 import KeyResultsWithImage from '../common/sections/key-results-with-image';
 import CallToActionComplex from '../common/sections/call-to-action-complex';
 import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-mutiple-texts';
+import CallToActionWithInput from '../common/sections/call-to-action-with-input';
+import JobListNormal from '../common/sections/job-list-normal';
+import MeetOurTeam from '../common/sections/meet-our-team';
+import FeaturesTabbed from '../common/sections/features-tabbed';
+import WhyChooseUsWithStory from '../common/sections/why-choose-us-with-story';
 
 const ComponentShowcase = () => {
   const [expandedCodes, setExpandedCodes] = useState({});
@@ -141,8 +146,13 @@ const ComponentShowcase = () => {
                     {key === 'MoreInsightsWithFourCards' && <MoreInsightsWithFourCards data={data.props} author="WebsiteLM" theme={theme} />}
                     {key === 'TrustedByLogos' && <TrustedByLogos data={data.props} author="WebsiteLM" theme={theme} />}
                     {key === 'ProductComparisonTable' && <ProductComparisonTable data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'PricingWithThreeCards' && <PricingWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />}
+                    {/* {key === 'PricingWithThreeCards' && <PricingWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />} */}
                     {key === 'CallToActionComplex' && <CallToActionComplex data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'CallToActionWithInput' && <CallToActionWithInput data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'JobListNormal' && <JobListNormal data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'MeetOurTeam' && <MeetOurTeam data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'FeaturesTabbed' && <FeaturesTabbed data={data.props} author="WebsiteLM" theme={theme} />}
+                    {key === 'WhyChooseUsWithStory' && <WhyChooseUsWithStory data={data.props} author="WebsiteLM" theme={theme} />}
                   </div>
                 </div>
               </div>
