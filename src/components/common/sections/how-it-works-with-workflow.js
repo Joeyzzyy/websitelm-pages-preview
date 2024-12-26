@@ -51,18 +51,6 @@ const HowItWorksWithWorkflow = ({ data, author, theme = 'normal' }) => {
           ))}
         </div>
 
-        <div className="text-center">
-          <CustomButton 
-            href={getButtonLink()}
-            className={`
-              ${themeConfig[theme].button.base}
-              ${themeConfig[theme].button.variants.secondary}
-              ${themeConfig[theme].button.sizes.md}
-            `}
-          >
-            {topContent.buttonText}
-          </CustomButton>
-        </div>
       </div>
     </div>
   );

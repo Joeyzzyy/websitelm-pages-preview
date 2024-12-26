@@ -1075,7 +1075,6 @@ export const exampleData = {
       props: {
         title: 'Writing Features Kit',
         description: 'Our AI-driven features include content detection, plagiarism checking, and automatic citation, helping you submit works with transparency and originality.',
-        buttonText: 'Get Started Now',
         bottomContent: [
           {
             tabName: 'Authentic authorship',
@@ -1097,13 +1096,6 @@ export const exampleData = {
             description: 'Our AI checker helps you detect AI-generated content',
             imageUrl: '/images/profile.png',
             imageAlt: 'AI checker'
-          },
-          {
-            tabName: 'AI checker',
-            title: 'AI checker',
-            description: 'Our AI checker helps you detect AI-generated content',
-            imageUrl: '/images/profile.png',
-            imageAlt: 'AI checker'
           }
         ]
       }
@@ -1115,6 +1107,8 @@ export const exampleData = {
       recommendedPosition: 'Company introduction or product detail pages',
       filePath: 'src/components/common/sections/why-choose-us-with-story.js',
       props: {
+        title: 'Why Choose Us With Story',
+        description: 'Display founder story and detailed product/service introduction',
         leftContent: {
           avatar: '/images/profile.png',
           name: 'Michael Zhang',

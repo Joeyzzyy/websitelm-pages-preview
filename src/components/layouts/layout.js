@@ -1,56 +1,41 @@
 'use client';
 import React from 'react';
-import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
-import CallToAction from '../common/sections/call-to-action';
-import HowItWorksWithThreeBlocks from '../common/sections/how-it-works-with-three-blocks';
-import WhyChooseUsWithTwoHugeBlocks from '../common/sections/why-choose-us-with-blocks';
-import WhyChooseUsWithSixSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
-import HowItWorksWithWorkflow from '../common/sections/how-it-works-with-workflow';
-import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-blocks';
-import Faqs from '../common/sections/faqs';
-import FAQTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-big-title';
-import FAQTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
-import ProductComparisonTable from '../common/sections/product-comparison-table';
-import MoreInsightsWithFourCards from '../common/sections/more-insights-with-four-cards';
 import TitleSection from '../common/sections/title-section';
 import TitleSectionWithImage from '../common/sections/title-section-with-image';
-import KeyResultsWithImage from '../common/sections/key-results-with-image';
-import KeyResultsWithTextBlock from '../common/sections/key-results-with-text-block';
-import KeyResultsWithThreeCards from '@/components/common/sections/key-results-with-three-cards';
-import ProductBenefitsWithTable from '@/components/common/sections/product-benefits-with-table';
-
-const FAQ_COMPONENTS = {
-  Faqs: Faqs,
-  FAQTwoColumnsWithSmallTitle: FAQTwoColumnsWithSmallTitle,
-  FAQTwoColumnsWithBigTitle: FAQTwoColumnsWithBigTitle
-};
-
-const getRandomFaqComponent = () => {
-  const components = Object.values(FAQ_COMPONENTS);
-  const randomIndex = Math.floor(Math.random() * components.length);
-  return components[randomIndex];
-};
+import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
+import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-mutiple-texts';
+import WhyChooseUsWithSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
+import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
+import WhyChooseUsWithStory from '../common/sections/why-choose-us-with-story';
+import HowItWorksWithWorkflow from '../common/sections/how-it-works-with-workflow';
+import FeaturesTabbed from '../common/sections/features-tabbed';
+import ProductBenefitsWithBlocks from '../common/sections/product-benefits-with-blocks';
+import UserReviewsWithMovingCards from '../common/sections/user-reviews-with-moving-cards';
+import MeetOurTeam from '../common/sections/meet-our-team';
+import JobListNormal from '../common/sections/job-list-normal';
+import FAQTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
+import FAQTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-big-title';
+import Faqs from '../common/sections/faqs';
+import CallToActionComplex from '../common/sections/call-to-action-complex';
+import CallToActionWithInput from '../common/sections/call-to-action-with-input';
 
 const COMPONENT_MAP = {
-  CallToAction: CallToAction,
-  Faqs: (props) => {
-    const RandomFaqComponent = getRandomFaqComponent();
-    return <RandomFaqComponent {...props} />;
-  },
-  HowItWorksWithThreeBlocks: HowItWorksWithThreeBlocks,
-  ProductBenefitsWithFourBlocks: ProductBenefitsWithFourBlocks,
-  HowItWorksWithWorkflow: HowItWorksWithWorkflow,
-  WhyChooseUsWithSixSmallBlocks: WhyChooseUsWithSixSmallBlocks,
-  WhyChooseUsWithTwoHugeBlocks: WhyChooseUsWithTwoHugeBlocks,
-  MoreInsightsWithFourCards: MoreInsightsWithFourCards,
-  ProductComparisonTable: ProductComparisonTable,
-  HeroSectionWithVideo: HeroSectionWithVideo,
   TitleSection: TitleSection,
   TitleSectionWithImage: TitleSectionWithImage,
-  KeyResultsWithImage: KeyResultsWithImage,
-  KeyResultsWithTextBlock: KeyResultsWithTextBlock,
-  KeyResultsWithThreeCards: KeyResultsWithThreeCards,
-  ProductBenefitsWithTable: ProductBenefitsWithTable
+  HeroSectionWithVideo: HeroSectionWithVideo,
+  HeroSectionWithMultipleTexts: HeroSectionWithMultipleTexts,
+  WhyChooseUsWithSmallBlocks: WhyChooseUsWithSmallBlocks,
+  WhyChooseUsWithBlocks: WhyChooseUsWithBlocks,
+  WhyChooseUsWithStory: WhyChooseUsWithStory,
+  HowItWorksWithWorkflow: HowItWorksWithWorkflow,
+  FeaturesTabbed: FeaturesTabbed,
+  ProductBenefitsWithBlocks: ProductBenefitsWithBlocks,
+  UserReviewsWithMovingCards: UserReviewsWithMovingCards,
+  MeetOurTeam: MeetOurTeam,
+  JobList: JobListNormal,
+  Faqs: FAQTwoColumnsWithSmallTitle,
+  CallToActionComplex: CallToActionComplex,
+  CallToActionWithEmailInput: CallToActionWithInput
 };
 
 const generateSchemaMarkup = (article) => {
@@ -68,7 +53,7 @@ const generateSchemaMarkup = (article) => {
     dateModified: article.updateDate,
     publisher: {
       '@type': 'Organization',
-      name: 'Kreado'
+      name: 'WebsiteLM'
     }
   };
 };
@@ -78,27 +63,13 @@ const CommonLayout = ({ article, keywords }) => {
     console.warn('Article data is missing');
     return null;
   }
-
-  const title = article?.title || 'Default Title';
-  const description = article?.description || 'Default description';
-
-  // 将 sections 分成两部分：CallToAction 和其他组件
   const sections = article?.sections || [];
-  const callToActionSection = sections.find(s => s.componentName === 'CallToAction' || s.componentName === 'CallToActionWithImage');
-  const otherSections = sections.filter(s => s.componentName !== 'CallToAction' && s.componentName !== 'CallToActionWithImage');
-  
-  // 先对其他组件按位置排序，然后在末尾添加 CallToAction
-  const sortedSections = [
-    ...otherSections.sort((a, b) => a.position - b.position),
-    ...(callToActionSection ? [callToActionSection] : [])
-  ];
-  
   const author = article?.author || 'default';
 
   return (
     <div suppressHydrationWarning>
       <div className="flex-1 w-full max-w-[100vw] overflow-x-hidden">
-        {sortedSections.map(section => {
+        {sections.map(section => {
           const Component = COMPONENT_MAP[section.componentName];
           if (!Component) return null;
           

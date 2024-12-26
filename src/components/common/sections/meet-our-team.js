@@ -29,8 +29,8 @@ const MeetOurTeam = ({ data, theme = 'normal' }) => {
             >
               <div className="aspect-w-1 aspect-h-1 relative">
                 <img
-                  src={member.image}
-                  alt={member.name}
+                  src={member.avatarUrl}
+                  alt={member.avatarAlt}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -45,30 +45,36 @@ const MeetOurTeam = ({ data, theme = 'normal' }) => {
                   {member.description}
                 </p>
                 <div className="flex justify-center space-x-6">
-                  <a
-                    href={member.socials.linkedin}
-                    className={`${typography.link.color} hover:${typography.link.hoverColor} transition-colors`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkedinOutlined className="text-xl" />
-                  </a>
-                  <a
-                    href={member.socials.twitter}
-                    className={`${typography.link.color} hover:${typography.link.hoverColor} transition-colors`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <TwitterOutlined className="text-xl" />
-                  </a>
-                  <a
-                    href={member.socials.website}
-                    className={`${typography.link.color} hover:${typography.link.hoverColor} transition-colors`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <GlobalOutlined className="text-xl" />
-                  </a>
+                  {member.socials.linkedin && (
+                    <a
+                      href={member.socials.linkedin}
+                      className={`${typography.link.color} hover:${typography.link.hoverColor} transition-colors`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <LinkedinOutlined className="text-xl" />
+                    </a>
+                  )}
+                  {member.socials.twitter && (
+                    <a
+                      href={member.socials.twitter}
+                      className={`${typography.link.color} hover:${typography.link.hoverColor} transition-colors`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <TwitterOutlined className="text-xl" />
+                    </a>
+                  )}
+                  {member.socials.website && (
+                    <a
+                      href={member.socials.website}
+                      className={`${typography.link.color} hover:${typography.link.hoverColor} transition-colors`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <GlobalOutlined className="text-xl" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

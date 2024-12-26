@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import themeConfig from '../../../styles/themeConfig';
 
 function FeaturesTabbedSection({ data, theme = 'normal' }) {
-  console.log('FeaturesTabbedSection data:', data);
-  
   const { title, description, bottomContent, buttonText } = data || {};
   const styles = themeConfig[theme];
   
@@ -16,42 +14,48 @@ function FeaturesTabbedSection({ data, theme = 'normal' }) {
     <section className="container mx-auto px-4 py-12">
       {/* Header Section */}
       <header className="text-center mb-6">
-        <h2 className="text-2xl font-bold mb-3">
+        <h2 className={`${styles.typography.h2.fontSize} ${styles.typography.h2.fontWeight} ${styles.typography.h2.color} mb-3`}>
           {title}
         </h2>
-        <p className="text-gray-600 max-w-xl mx-auto text-sm">
+        <p className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color} max-w-xl mx-auto`}>
           {description}
         </p>
       </header>
 
       {/* Navigation Tabs */}
-      <div className="flex flex-wrap justify-center gap-3 mb-4">
-        {bottomContent?.map((tab, index) => (
-          <button
-            key={`${tab.tabName}-${index}`}
-            onClick={() => setActiveTab(tab.tabName)}
-            className={`${styles.button.base} text-sm px-4 py-1.5 ${
-              activeTab === tab.tabName
-                ? styles.button.variants.primary
-                : styles.button.variants.outline
-            }`}
-          >
-            {tab.tabName}
-          </button>
-        ))}
+      <div className="border-gray-200 border-b mb-6">
+        <div className="flex -mb-px justify-center">
+          {bottomContent?.map((tab, index) => (
+            <button
+              key={`${tab.tabName}-${index}`}
+              onClick={() => setActiveTab(tab.tabName)}
+              className={`
+                ${styles.typography.caption.fontSize} px-6 py-3 
+                border-b-2 
+                transition-colors duration-200
+                ${activeTab === tab.tabName
+                  ? `border-[${styles.colors?.accent}] ${styles.text.color.accent} ${styles.typography.caption.fontWeight}`
+                  : `border-transparent ${styles.text.color.secondary} hover:${styles.text.color.primary} hover:border-gray-300`
+                }
+              `}
+            >
+              {tab.tabName}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Content Area */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-1">
         <div className="w-full md:w-1/3 space-y-3">
-          <h3 className={`text-xl font-semibold ${styles.typography.h3.color}`}>
+          <h3 className={`${styles.typography.h3.fontSize} ${styles.typography.h3.fontWeight} ${styles.typography.h3.color}`}>
             {activeContent?.title}
           </h3>
-          <p className={`text-sm ${styles.typography.paragraph.color}`}>
+          <p className={`${styles.typography.paragraph.fontSize} ${styles.typography.paragraph.color}`}>
             {activeContent?.description}
           </p>
           <button 
-            className={`${styles.button.base} ${styles.button.variants.primary} hover:scale-105 text-sm px-4 py-1.5`}
+            className={`${styles.button.base} ${styles.button.variants.primary} hover:scale-105 ${styles.button.sizes.sm}`}
           >
             {buttonText}
           </button>

@@ -5,21 +5,21 @@ import themeConfig from '../../../styles/themeConfig';
 
 const WhyChooseUsWithSmallBlocks = ({ data, theme = 'normal' }) => {
   const { topContent, bottomContent } = data;
-  const { emoji, title, subtitle } = topContent;
+  const { icon, title, description } = topContent;
   const currentTheme = themeConfig[theme];
 
   return (
     <div className={`${currentTheme.section.background.primary} ${currentTheme.section.padding.wide}`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          {emoji && (
-            <div className="text-4xl mb-4">{emoji}</div>
+          {icon && (
+            <div className="text-4xl mb-4">{icon}</div>
           )}
           <h2 className={`${currentTheme.typography.h2.fontSize} ${currentTheme.typography.h2.fontWeight} ${currentTheme.typography.h2.color} mb-4`}>
             {title}
           </h2>
           <p className={`${currentTheme.typography.paragraph.fontSize} ${currentTheme.typography.paragraph.color} max-w-2xl mx-auto`}>
-            {subtitle}
+            {description}
           </p>
         </div>
 

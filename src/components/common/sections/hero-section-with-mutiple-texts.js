@@ -43,9 +43,9 @@ const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
             </h1>
           </div>
           
-          <p className={`text-center ${currentTheme.typography.paragraph.fontSize} ${currentTheme.typography.paragraph.color} pt-3 max-w-3xl mx-auto`}>
-            {data.topContent.description}
-          </p>
+          <h2 className={`text-center ${currentTheme.typography.h2.fontSize} ${currentTheme.typography.h2.fontWeight} ${currentTheme.typography.h2.color} pt-3 max-w-3xl mx-auto`}>
+            {data.topContent.subTitle}
+          </h2>
           
           <div className="pt-8 flex justify-center gap-4">
             <button 

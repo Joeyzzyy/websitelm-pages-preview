@@ -142,6 +142,19 @@ const WhyChooseUsWithStory = ({ data, theme = 'normal' }) => {
   return (
     <div className={`${getBgColor()} ${themeConfig[theme].section.padding.base}`}>
       <div className="max-w-6xl mx-auto px-4">
+        {data.title && (
+          <div className="text-center mb-16">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${themeConfig[theme].typography.h2.color}`}>
+              {data.title}
+            </h2>
+            {data.description && (
+              <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} max-w-3xl mx-auto`}>
+                {data.description}
+              </p>
+            )}
+          </div>
+        )}
+        
         <div className="grid grid-cols-[350px_1fr] gap-20" ref={containerRef}>
           <div className="relative w-[350px]">
             <div ref={stickyRef} className="sticky top-128 inline-block" style={{ width: '350px' }}>
@@ -166,7 +179,7 @@ const WhyChooseUsWithStory = ({ data, theme = 'normal' }) => {
               <div className="bg-gray-50 p-8 rounded-lg">
                 <div className="text-center mb-6">
                   <img 
-                    src={leftContent.avatar} 
+                    src={leftContent.avatarUrl} 
                     alt={leftContent.name}
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />

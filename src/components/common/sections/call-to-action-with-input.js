@@ -16,7 +16,7 @@ const CallToActionWithInput = ({ data, theme = 'normal' }) => {
             </h2>
             <div className="flex items-center space-x-2">
               <Input 
-                placeholder={data.inputPlaceholder}
+                placeholder={data.bottomContent.inputPlaceholder}
                 className="flex-1 bg-white border-none text-sm h-[52px] px-6"
               />
               <button className={`${themeConfig[theme].button.base} ${themeConfig[theme].button.variants.primary}`}>

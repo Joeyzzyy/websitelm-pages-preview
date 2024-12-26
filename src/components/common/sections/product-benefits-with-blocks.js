@@ -46,6 +46,11 @@ const ProductBenefitsWithFourBlocks = ({ data, theme = 'normal' }) => {
                   key={index} 
                   className={`${getModuleStyle(index)} ${themeConfig[theme].card.padding.md}`}
                 >
+                  {module.icon && (
+                    <div className="text-2xl mb-2">
+                      {module.icon}
+                    </div>
+                  )}
                   <h3 className={`${themeConfig[theme].typography.h3.fontSize} ${themeConfig[theme].typography.h3.fontWeight} ${themeConfig[theme].typography.h3.color} mb-2`}>
                     {module.title}
                   </h3>

@@ -14,11 +14,11 @@ const CallToAction = ({ data, theme = 'normal' }) => {
     <div className={`${section.background.primary} ${section.padding.base}`}>
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className={`${typography.h2.fontSize} ${typography.h2.fontWeight} ${typography.h2.color} mb-6 leading-tight`}>
-          {data.title}
+          {data.topContent.title}
         </h2>
         <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-          {data.subTitle}
-        </p>
+          {data.topContent.description}
+        </p>  
         
         <div className="mb-12">
           <h3 className={`${typography.h3.fontSize} ${typography.h3.fontWeight} ${typography.h3.color} mb-8`}>
@@ -41,13 +41,13 @@ const CallToAction = ({ data, theme = 'normal' }) => {
             href={getButtonLink()}
             className={`${button.base} ${button.variants.secondary}`}
           >
-            {data.buttonText}
+            {data.bottomContent.buttonText}
           </a>
           <a 
             href={getButtonLink()}
             className={`${button.base} ${button.variants.primary}`}
           >
-            {data.ctaButtonText}
+            {data.bottomContent.buttonText}
           </a>
         </div>
       </div>

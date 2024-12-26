@@ -12,7 +12,7 @@ const WhyChooseUsWithBlocks = ({ data, author, theme = 'normal' }) => {
   };
 
   const getBgColor = () => {
-    return themeConfig[theme].section.background.secondary;
+    return themeConfig[theme].section.background.primary;
   };
 
   const getButtonStyle = () => {
@@ -37,6 +37,11 @@ const WhyChooseUsWithBlocks = ({ data, author, theme = 'normal' }) => {
     <div className={`${getBgColor()} py-12 md:py-16`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
+          {topContent.icon && (
+            <div className="text-5xl mb-2">
+              {topContent.icon}
+            </div>
+          )}
           <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} mb-4`}>
             {topContent.title}
           </h2>
@@ -60,7 +65,7 @@ const WhyChooseUsWithBlocks = ({ data, author, theme = 'normal' }) => {
                     onClick={handleRedirect}
                     className={getButtonStyle()}
                   >
-                    {topContent.buttonText}
+                    {content.buttonText}
                   </button>
                 </div>
                 <div className="w-full md:w-1/2">
@@ -91,7 +96,7 @@ const WhyChooseUsWithBlocks = ({ data, author, theme = 'normal' }) => {
                     onClick={handleRedirect}
                     className={getButtonStyle()}
                   >
-                    {topContent.buttonText}
+                    {content.buttonText}
                   </button>
                 </div>
               </>
