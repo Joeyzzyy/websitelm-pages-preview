@@ -254,8 +254,6 @@ const ProductComparisonTable = ({ data, theme = 'normal' }) => {
   );
 };
 
-ProductComparisonTable.propTypes = {
-  author: PropTypes.oneOf(['HIXAI', 'JOGGAI', 'JohnsmithAI', 'KREADO'])
-};
+ProductComparisonTable.propTypes = {author: 'WebsiteLM'};
 
 export default ProductComparisonTable;

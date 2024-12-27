@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebook, FaDiscord, FaXTwitter, FaYoutube } from 'react-icons/fa6';
-import { footerText } from '@/locales/footerText';
+import { footerText } from '@/locales/kreado-footer-text';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 

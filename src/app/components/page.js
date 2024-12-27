@@ -1,7 +1,7 @@
 import ComponentShowcase from '../../components/showcase/ComponentShowcase';
 
 export const metadata = {
-  title: 'Components Showcase - KreadoAI',
+  title: 'Components Showcase - WebsiteLM',
   description: 'Preview all available components with example data'
 };
 

@@ -18,15 +18,9 @@ export default async function ArticlePage({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
     const { lang, slug } = resolvedParams;
-    
-    if (!['en', 'zh'].includes(lang)) {
-      return notFound();
-    }
-
-    // 确保等待数据加载完成
     const articleData = await getArticleBySlug(slug, lang, process.env.TOKEN);
 
-    console.log('articleData', articleData);
+    console.log('articleData', articleData)
     
     // 立即处理错误情况
     if (!articleData?.data) {
@@ -40,7 +34,6 @@ export default async function ArticlePage({ params }) {
       '@type': 'Article',
       headline: article.title,
       description: article.description,
-      image: '',
       datePublished: article.updatedAt,
       dateModified: article.updatedAt,
       author: {
@@ -49,7 +42,7 @@ export default async function ArticlePage({ params }) {
       },
       publisher: {
         '@type': 'Organization',
-        name: 'KreadoAI',
+        name: 'WebsiteLM',
         logo: {
           '@type': 'ImageObject',
           url: 'https://websitelm.com/logo.png'
@@ -87,7 +80,7 @@ export async function generateMetadata({ params }) {
     const resolvedParams = await Promise.resolve(params);
     const { lang = 'en', slug } = resolvedParams;
     
-    const articleData = await getArticleBySlug(slug, lang, process.env.TOKEN);
+    const articleData = await getArticleBySlug(slug, lang);
     
     if (!articleData?.data) {
       return {

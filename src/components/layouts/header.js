@@ -2,9 +2,9 @@
 import { useState, useEffect, Fragment } from "react";
 import Link from "next/link";
 import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
-import { menuItems } from '@/locales/menuItems';
-// 右侧链接文本也需要支持多语言
+import { usePathname } from 'next/navigation';
+import { menuItems } from '@/locales/kreado-header-text';
+
 const rightLinkText = {
   en: "Home",
   zh: "首页"
@@ -19,7 +19,6 @@ export const Navigation = ({ theme = 'light' }) => {
   const pathname = usePathname();
   const [currentLang, setCurrentLang] = useState('en');
 
-  // 添加主题相关的样式配置
   const themeStyles = {
     light: {
       text: 'text-gray-900',
