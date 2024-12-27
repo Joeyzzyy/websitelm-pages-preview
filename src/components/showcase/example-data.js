@@ -152,22 +152,22 @@ export const exampleData = {
         leftContent: [
           {
             icon: '🎥',
-            title: 'AI Video Creation',
+            contentTitle: 'AI Video Creation',
             content: 'Generate professional videos automatically'
           },
           {
             icon: '🌍',
-            title: 'Global Reach',
+            contentTitle: 'Global Reach',
             content: 'Support for 40+ languages'
           },
           {
             icon: '⚡',
-            title: 'Fast Processing',
+            contentTitle: 'Fast Processing',
             content: 'Complete videos in minutes'
           },
           {
             icon: '💰',
-            title: 'Cost Effective',
+            contentTitle: 'Cost Effective',
             content: 'Save up to 90% on video production'
           }
         ],

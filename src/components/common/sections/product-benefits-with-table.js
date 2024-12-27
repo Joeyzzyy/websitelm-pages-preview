@@ -30,7 +30,7 @@ const ProductBenefitsWithATable = ({ data, theme = 'normal' }) => {
                   <div className={`text-2xl ${themeConfig[theme].text.icon}`}>{item.icon}</div>
                   <div>
                     <h3 className={`${themeConfig[theme].typography.h3.fontSize} ${themeConfig[theme].typography.h3.fontWeight} ${themeConfig[theme].typography.h3.color}`}>
-                      {item.title}
+                      {item.contentTitle}
                     </h3>
                     <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color}`}>
                       {item.content}

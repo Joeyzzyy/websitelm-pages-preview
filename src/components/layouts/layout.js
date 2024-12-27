@@ -18,7 +18,7 @@ import FAQTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-b
 import Faqs from '../common/sections/faqs';
 import CallToActionComplex from '../common/sections/call-to-action-complex';
 import CallToActionWithInput from '../common/sections/call-to-action-with-input';
-
+import ProductBenefitsWithTable from '../common/sections/product-benefits-with-table';
 const COMPONENT_MAP = {
   TitleSection: TitleSection,
   TitleSectionWithImage: TitleSectionWithImage,
@@ -35,7 +35,8 @@ const COMPONENT_MAP = {
   JobList: JobListNormal,
   Faqs: FAQTwoColumnsWithSmallTitle,
   CallToActionComplex: CallToActionComplex,
-  CallToActionWithEmailInput: CallToActionWithInput
+  CallToActionWithEmailInput: CallToActionWithInput,
+  ProductBenefitsWithTable: ProductBenefitsWithTable
 };
 
 const generateSchemaMarkup = (article) => {
