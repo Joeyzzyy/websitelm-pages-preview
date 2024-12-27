@@ -54,6 +54,9 @@ const ProductBenefitsWithFourBlocks = ({ data, theme = 'normal' }) => {
                   <h3 className={`${themeConfig[theme].typography.h3.fontSize} ${themeConfig[theme].typography.h3.fontWeight} ${themeConfig[theme].typography.h3.color} mb-2`}>
                     {module.title}
                   </h3>
+                  <h4 className={`${themeConfig[theme].typography.h4.fontSize} ${themeConfig[theme].typography.h4.fontWeight} ${themeConfig[theme].typography.h4.color} mb-2`}>
+                    {module.subTitle}
+                  </h4>
                   <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color}`}>
                     {module.content}
                   </p>
