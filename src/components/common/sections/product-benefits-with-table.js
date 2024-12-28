@@ -17,18 +17,20 @@ const ProductBenefitsWithATable = ({ data, theme = 'normal' }) => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12">
           <div className="w-full md:w-1/2">
-            <div className="grid gap-4">
+            <div className="grid border border-gray-200 rounded-lg">
               {data.leftContent.map((item, index) => (
                 <div 
                   key={index}
-                  className={`flex items-start gap-4 p-4 rounded-lg ${
+                  className={`flex items-center gap-4 p-4 border-b last:border-b-0 ${
                     theme === 'tech' 
-                      ? `${themeConfig.tech.card.background} ${themeConfig.tech.card.border}` 
-                      : `${themeConfig.normal.card.background} ${themeConfig.normal.card.border}`
+                      ? `${themeConfig.tech.card.background} hover:bg-gray-50/80 transition-colors` 
+                      : `${themeConfig.normal.card.background} hover:bg-gray-50/80 transition-colors`
                   }`}
                 >
-                  <div className={`text-2xl ${themeConfig[theme].text.icon}`}>{item.icon}</div>
-                  <div>
+                  <div className={`w-16 py-2 flex-shrink-0 text-center border-r ${themeConfig[theme].text.icon}`}>
+                    {item.icon}
+                  </div>
+                  <div className="flex-1 pl-4">
                     <h3 className={`${themeConfig[theme].typography.h3.fontSize} ${themeConfig[theme].typography.h3.fontWeight} ${themeConfig[theme].typography.h3.color}`}>
                       {item.contentTitle}
                     </h3>

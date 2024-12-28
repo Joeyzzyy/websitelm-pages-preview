@@ -223,7 +223,6 @@ export const exampleData = {
             title: 'Why Choose WebsiteLM?',
             description: 'Among the many AI-powered website content creation tools available, WebsiteLM stands out for its comprehensive approach to website optimization. Our platform combines advanced AI algorithms with a deep understanding of your website\'s unique data to deliver results that are both efficient and effective.',
             buttonText: 'Try Now',
-            
           },
           bottomContent: [
             {
@@ -232,7 +231,8 @@ export const exampleData = {
               subTitle: 'Efficient Content Automation',
               content: 'WebsiteLM automates the content creation process, allowing you to focus on growing your business rather than spending hours generating content. With AI-driven technology, you can quickly produce high-quality SEO-optimized pages and blog posts.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             },
             {
               icon: '🎯',
@@ -240,7 +240,8 @@ export const exampleData = {
               subTitle: 'SEO-Optimized Content',
               content: 'WebsiteLM ensures that all generated content follows the best SEO practices, enhancing your website\'s search engine rankings. From keyword analysis to content structuring, every piece is designed to drive organic traffic.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             },
             {
               icon: '💡',
@@ -248,7 +249,8 @@ export const exampleData = {
               subTitle: 'Engaging and Persuasive Copy',
               content: 'With AI-crafted content that speaks directly to your audience\'s needs and pain points, WebsiteLM helps you build trust and drive more actions. Whether it\'s a landing page or a blog post, the content is optimized to convert visitors into loyal customers.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             },
             {
               icon: '📊',
@@ -256,7 +258,8 @@ export const exampleData = {
               subTitle: 'Real-Time Performance Monitoring',
               content: 'WebsiteLM provides detailed analytics, helping you track the performance of your SEO efforts. From traffic data to keyword rankings, you get actionable insights to continuously optimize your content and improve results.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             },
             {
               icon: '📈',
@@ -264,7 +267,8 @@ export const exampleData = {
               subTitle: 'Adaptable to Your Needs',
               content: 'WebsiteLM scales as your business grows. Whether you\'re managing a small blog or a large corporate website, our platform adapts to your needs, offering features like multi-language support and intelligent internal linking to enhance content discoverability and help you reach a broader audience.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             },
             {
               icon: '💰',
@@ -272,7 +276,8 @@ export const exampleData = {
               subTitle: 'Easy Publishing and Updates',
               content: 'Create, publish, and update content effortlessly. WebsiteLM automates the publishing process, ensuring that your website stays up-to-date with fresh, relevant content that ranks higher and attracts more traffic.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             },
             {
               icon: '💰️',
@@ -280,7 +285,8 @@ export const exampleData = {
               subTitle: 'All-in-One Content Management',
               content: 'From keyword analysis to content creation, optimization, and performance tracking, WebsiteLM is a comprehensive tool that helps you manage your entire content strategy in one place. Save time and streamline your content marketing efforts.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             },
             {
               icon: '💰',
@@ -288,7 +294,8 @@ export const exampleData = {
               subTitle: 'Constantly Evolving AI Models',
               content: 'WebsiteLM\'s AI technology is continuously improved to deliver better content quality, enhanced SEO performance, and smarter content strategies. Stay ahead of the curve with our constantly evolving platform that adapts to the latest trends and search engine algorithms.',
               imageUrl: '/images/abstract.png',
-              imageAlt: 'Abstract image'
+              imageAlt: 'Abstract image',
+              buttonText: 'Learn More'
             }
           ]
       }
@@ -932,9 +939,9 @@ export const exampleData = {
           ],
           callToActionEngagementTop: 'Start transforming your website today—effortlessly build, optimize, and maintain content that drives results.',
           callToActionEngagementBottom: 'Join thousands of users already maximizing their website\'s potential with WebsiteLM.',
+          buttonText: "Get Started Now",
+          ctaButtonText: "Book a Demo"
         },
-        buttonText: "Get Started Now",
-        ctaButtonText: "Book a Demo"
       }
     },
   
@@ -1081,21 +1088,24 @@ export const exampleData = {
             title: 'Verify authentic authorship',
             description: 'Ensure academic integrity with our authentication tools',
             imageUrl: '/images/profile.png',
-            imageAlt: 'Authentic authorship'
+            imageAlt: 'Authentic authorship',
+            buttonText: 'Learn More'
           },
           {
             tabName: 'Cite AI use',
             title: 'Make it easy to disclose your AI use',
             description: 'Our transparency features make it easy to acknowledge when you\'ve used AI',
             imageUrl: '/images/profile.png',
-            imageAlt: 'Cite AI use'
+            imageAlt: 'Cite AI use',
+            buttonText: 'Learn More'
           },
           {
             tabName: 'AI checker',
             title: 'AI checker',
             description: 'Our AI checker helps you detect AI-generated content',
             imageUrl: '/images/profile.png',
-            imageAlt: 'AI checker'
+            imageAlt: 'AI checker',
+            buttonText: 'Learn More'
           }
         ]
       }
@@ -1110,7 +1120,8 @@ export const exampleData = {
         title: 'Why Choose Us With Story',
         description: 'Display founder story and detailed product/service introduction',
         leftContent: {
-          avatar: '/images/profile.png',
+          avatarUrl: '/images/profile.png',
+          avatarAlt: 'Michael Zhang',
           name: 'Michael Zhang',
           title: 'Founder & CEO',
           introduction: 'As a serial entrepreneur and AI technology expert, Michael has over 15 years of experience in the tech industry. Before founding our company, he held technical leadership positions at several renowned tech companies. He firmly believes that AI technology will revolutionize content creation and is dedicated to building the best AI creation tools to help more creators realize their ideas.'

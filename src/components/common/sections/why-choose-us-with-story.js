@@ -180,7 +180,7 @@ const WhyChooseUsWithStory = ({ data, theme = 'normal' }) => {
                 <div className="text-center mb-6">
                   <img 
                     src={leftContent.avatarUrl} 
-                    alt={leftContent.name}
+                    alt={leftContent.avatarAlt}
                     className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                   />
                   <h3 className="text-xl font-bold mb-2">{leftContent.name}</h3>

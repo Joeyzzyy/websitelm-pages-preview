@@ -57,7 +57,7 @@ function FeaturesTabbedSection({ data, theme = 'normal' }) {
           <button 
             className={`${styles.button.base} ${styles.button.variants.primary} hover:scale-105 ${styles.button.sizes.sm}`}
           >
-            {buttonText}
+            {activeContent?.buttonText}
           </button>
         </div>
         <div className="w-full md:w-1/3">
