@@ -79,36 +79,36 @@ export default function Footer({ data }) {
               ))}
             </ul>
           </div>
+
+          <div className="col-span-2 md:col-start-5">
+            <h4 className="text-white font-semibold mb-4">Stay Updated</h4>
+            <p className="text-gray-400 text-sm mb-4">
+              {data.newsletter?.text}
+            </p>
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-0">
+              <input
+                type="email"
+                value={subscribeEmail}
+                onChange={(e) => setSubscribeEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-lg sm:rounded-r-none bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-200"
+              />
+              <button 
+                type="submit"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg sm:rounded-l-none hover:bg-blue-700 transition-colors duration-200 font-medium"
+              >
+                {data.newsletter?.buttonText || 'Subscribe'}
+              </button>
+            </form>
+          </div>
         </div>
 
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="flex justify-center md:justify-start">
             <div className="flex space-x-6">
               {Object.entries(data.socialMedia || {}).map(([platform, url]) => 
                 renderSocialIcon(platform, url)
               )}
-            </div>
-            
-            <div className="flex-1 max-w-md mx-4">
-              <h4 className="text-white text-center md:text-left mb-3 font-semibold">Stay Updated</h4>
-              <p className="text-gray-400 text-sm mb-4 text-center md:text-left">
-                {data.newsletter?.text}
-              </p>
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-0">
-                <input
-                  type="email"
-                  value={subscribeEmail}
-                  onChange={(e) => setSubscribeEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg sm:rounded-r-none bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all duration-200"
-                />
-                <button 
-                  type="submit"
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg sm:rounded-l-none hover:bg-blue-700 transition-colors duration-200 font-medium"
-                >
-                  {data.newsletter?.buttonText || 'Subscribe'}
-                </button>
-              </form>
             </div>
           </div>
         </div>
