@@ -20,8 +20,6 @@ export default async function ArticlePage({ params }) {
     const { lang, slug } = resolvedParams;
     const articleData = await getArticleBySlug(slug, lang);
 
-    console.log('articleData', articleData)
-    
     // 立即处理错误情况
     if (!articleData?.data) {
       console.error(`Article not found for slug: ${slug}`);
