@@ -1,13 +1,8 @@
 'use client';
 import React from 'react';
-import buttonLinks from '../../ui/button/links';
 import themeConfig from '../../../styles/themeConfig';
 
 const CallToActionComplex = ({ data, theme = 'normal' }) => {
-  const getButtonLink = (buttonType) => {
-    return buttonLinks[buttonType] || '#';
-  };
-
   const { button, typography, section } = themeConfig[theme];
 
   return (
@@ -38,13 +33,13 @@ const CallToActionComplex = ({ data, theme = 'normal' }) => {
 
         <div className="flex justify-center items-center space-x-6">
           <a 
-            href={getButtonLink()}
+            href={data.bottomContent.buttonLink}
             className={`${button.base} ${button.variants.secondary}`}
           >
             {data.bottomContent.buttonText}
           </a>
           <a 
-            href={getButtonLink()}
+            href={data.bottomContent.buttonLink}
             className={`${button.base} ${button.variants.primary}`}
           >
             {data.bottomContent.buttonText}

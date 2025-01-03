@@ -34,6 +34,8 @@ const ProductBenefitsWithFourBlocks = ({ data, theme = 'normal' }) => {
               ? data.leftContent.buttonLink 
               : `https://${data.leftContent.buttonLink}` || '#'}
               className={getButtonStyle()}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {data.leftContent.buttonText}
             </a>

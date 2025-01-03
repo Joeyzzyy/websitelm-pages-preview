@@ -7,12 +7,11 @@ import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import TitleSection from '../common/sections/title-section';
 import TitleSectionWithImage from '../common/sections/title-section-with-image';
-import PricingWithThreeCards from '../common/sections/pricing-with-three-cards';
 import HowItWorksWithWorkflow from '../common/sections/how-it-works-with-workflow';
 import WhyChooseUsWithSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
 import CallToAction from '../common/sections/call-to-action';
 import CallToActionWithImage from '../common/sections/call-to-action-with-image';
-import HowItWorksWithThreeBlocks from '../common/sections/how-it-works-with-three-blocks';
+import HowItWorksWithBlocks from '../common/sections/how-it-works-with-blocks';
 import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-blocks';
 import ProductBenefitsWithATable from '../common/sections/product-benefits-with-table';
 import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
@@ -27,7 +26,7 @@ import TrustedByLogos from '../common/sections/trusted-by-logos';
 import UserReviews from '../common/sections/user-reviews';
 import UserReviewsMovingCards from '../common/sections/user-reviews-with-moving-cards';
 import UserReviewsSquareCards from '../common/sections/user-reviews-with-square-cards';
-import KeyResultsWithThreeCards from '../common/sections/key-results-with-three-cards';
+import KeyResultsWithThreeCards from '../common/sections/key-results-with-cards';
 import KeyResultsWithImage from '../common/sections/key-results-with-image';
 import CallToActionComplex from '../common/sections/call-to-action-complex';
 import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-mutiple-texts';
@@ -36,6 +35,15 @@ import JobListNormal from '../common/sections/job-list-normal';
 import MeetOurTeam from '../common/sections/meet-our-team';
 import FeaturesTabbed from '../common/sections/features-tabbed';
 import WhyChooseUsWithStory from '../common/sections/why-choose-us-with-story';
+
+// 添加一个简单的数据验证函数
+const validateComponentData = (key, data) => {
+  if (!data || !data.props) {
+    console.warn(`组件 ${key} 缺少必要的props数据`);
+    return false;
+  }
+  return true;
+};
 
 const ComponentShowcase = () => {
   const [expandedCodes, setExpandedCodes] = useState({});
@@ -76,88 +84,106 @@ const ComponentShowcase = () => {
 
         {/* Main Content */}
         <div className="w-[90%] mx-auto py-12">
-          {Object.entries(exampleData).map(([key, data]) => (
-            <div key={key} className="mb-8" ref={el => componentRefs[key] = el}>
-              <div className="bg-slate-800 rounded-xl shadow-sm border border-slate-700 overflow-hidden">
-                {/* Component Header */}
-                <div className="bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-4">
-                  <h2 className="text-xl font-semibold text-white break-words">
-                    <span className="mr-2 text-slate-400">#{data.order}</span>
-                    {data.title}
-                  </h2>
-                  <div className="mt-2 flex flex-wrap items-center gap-4">
-                    <p className="text-slate-300 text-sm">
-                      <span className="font-medium">Recommended Position:</span> {data.recommendedPosition}
-                    </p>
-                    <div className="hidden sm:block h-4 w-px bg-slate-700"></div>
-                    <button
-                      onClick={() => toggleCode(key)}
-                      className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
-                    >
-                      {expandedCodes[key] ? 'Hide Data Structure' : 'View Data Structure'}
-                    </button>
-                  </div>
-                </div>
+          {Object.entries(exampleData).map(([key, data]) => {
+            // 添加数据验证
+            if (!validateComponentData(key, data)) {
+              return null;
+            }
 
-                {/* Component Description */}
-                <div className="px-6 py-4 bg-slate-850 border-b border-slate-700">
-                  <p className="text-slate-300">{data.description}</p>
-                  
-                  {/* Data Structure Preview */}
-                  {expandedCodes[key] && (
-                    <div className="mt-4 bg-slate-900 rounded-lg border border-slate-700">
-                      <SyntaxHighlighter 
-                        language="json"
-                        style={github}
-                        className="text-sm"
+            return (
+              <div key={key} className="mb-8" ref={el => componentRefs[key] = el}>
+                <div className="bg-slate-800 rounded-xl shadow-sm border border-slate-700 overflow-hidden">
+                  {/* Component Header */}
+                  <div className="bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-4">
+                    <h2 className="text-xl font-semibold text-white break-words">
+                      <span className="mr-2 text-slate-400">#{data.order}</span>
+                      {data.title}
+                    </h2>
+                    <div className="mt-2 flex flex-wrap items-center gap-4">
+                      <p className="text-slate-300 text-sm">
+                        <span className="font-medium">Recommended Position:</span> {data.recommendedPosition}
+                      </p>
+                      <div className="hidden sm:block h-4 w-px bg-slate-700"></div>
+                      <button
+                        onClick={() => toggleCode(key)}
+                        className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
                       >
-                        {JSON.stringify(data.props, null, 2)}
-                      </SyntaxHighlighter>
+                        {expandedCodes[key] ? 'Hide Data Structure' : 'View Data Structure'}
+                      </button>
                     </div>
-                  )}
-                </div>
+                  </div>
 
-                {/* Component Preview */}
-                <div className="p-0 overflow-x-auto bg-white rounded-b-xl">
-                  <div className={`${
-                    key === 'heroSectionWithVideo' ? 'max-w-full md:max-w-[900px] lg:max-w-[1200px] mx-auto' : ''
-                  } w-full`}>
-                    {key === 'TitleSection' && <TitleSection data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'TitleSectionWithImage' && <TitleSectionWithImage data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'HeroSectionWithMultipleTexts' && <HeroSectionWithMultipleTexts data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'HowItWorksWithWorkflow' && <HowItWorksWithWorkflow data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'HowItWorksWithThreeBlocks' && <HowItWorksWithThreeBlocks data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'WhyChooseUsWithBlocks' && <WhyChooseUsWithBlocks data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'WhyChooseUsWithSmallBlocks' && <WhyChooseUsWithSmallBlocks data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'CallToActionWithImage' && <CallToActionWithImage data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'CallToAction' && <CallToAction data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'ProductBenefitsWithFourBlocks' && <ProductBenefitsWithFourBlocks data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'ProductBenefitsWithATable' && <ProductBenefitsWithATable data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'HeroSectionWithVideo' && <HeroSectionWithVideo data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'Faqs' && <Faqs data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'FaqTwoColumnsWithSmallTitle' && <FaqTwoColumnsWithSmallTitle data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'FaqTwoColumnsWithBigTitle' && <FaqTwoColumnsWithBigTitle data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'UserReviews' && <UserReviews data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'UserReviewsMovingCards' && <UserReviewsMovingCards data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'UserReviewsSquareCards' && <UserReviewsSquareCards data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'KeyResultsWithThreeCards' && <KeyResultsWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'KeyResultsWithImage' && <KeyResultsWithImage data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'KeyResultsWithTextBlock' && <KeyResultsWithTextBlock data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'MoreInsightsWithFourCards' && <MoreInsightsWithFourCards data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'TrustedByLogos' && <TrustedByLogos data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'ProductComparisonTable' && <ProductComparisonTable data={data.props} author="WebsiteLM" theme={theme} />}
-                    {/* {key === 'PricingWithThreeCards' && <PricingWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />} */}
-                    {key === 'CallToActionComplex' && <CallToActionComplex data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'CallToActionWithInput' && <CallToActionWithInput data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'JobListNormal' && <JobListNormal data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'MeetOurTeam' && <MeetOurTeam data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'FeaturesTabbed' && <FeaturesTabbed data={data.props} author="WebsiteLM" theme={theme} />}
-                    {key === 'WhyChooseUsWithStory' && <WhyChooseUsWithStory data={data.props} author="WebsiteLM" theme={theme} />}
+                  {/* Component Description */}
+                  <div className="px-6 py-4 bg-slate-850 border-b border-slate-700">
+                    <p className="text-slate-300">{data.description}</p>
+                    
+                    {/* Data Structure Preview */}
+                    {expandedCodes[key] && (
+                      <div className="mt-4 bg-slate-900 rounded-lg border border-slate-700">
+                        <SyntaxHighlighter 
+                          language="json"
+                          style={github}
+                          className="text-sm"
+                        >
+                          {JSON.stringify(data.props, null, 2)}
+                        </SyntaxHighlighter>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Component Preview */}
+                  <div className="p-0 overflow-x-auto bg-white rounded-b-xl">
+                    <div className={`${
+                      key === 'heroSectionWithVideo' ? 'max-w-full md:max-w-[900px] lg:max-w-[1200px] mx-auto' : ''
+                    } w-full`}>
+                      {(() => {
+                        try {
+                          // 原有的组件渲染逻辑
+                          if (key === 'TitleSection') return <TitleSection data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'TitleSectionWithImage') return <TitleSectionWithImage data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'HeroSectionWithMultipleTexts') return <HeroSectionWithMultipleTexts data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'HowItWorksWithWorkflow') return <HowItWorksWithWorkflow data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'HowItWorksWithBlocks') return <HowItWorksWithBlocks data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'WhyChooseUsWithBlocks') return <WhyChooseUsWithBlocks data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'WhyChooseUsWithSmallBlocks') return <WhyChooseUsWithSmallBlocks data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'CallToActionWithImage') return <CallToActionWithImage data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'CallToAction') return <CallToAction data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'ProductBenefitsWithFourBlocks') return <ProductBenefitsWithFourBlocks data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'ProductBenefitsWithATable') return <ProductBenefitsWithATable data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'HeroSectionWithVideo') return <HeroSectionWithVideo data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'Faqs') return <Faqs data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'FaqTwoColumnsWithSmallTitle') return <FaqTwoColumnsWithSmallTitle data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'FaqTwoColumnsWithBigTitle') return <FaqTwoColumnsWithBigTitle data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'UserReviews') return <UserReviews data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'UserReviewsMovingCards') return <UserReviewsMovingCards data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'UserReviewsSquareCards') return <UserReviewsSquareCards data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'KeyResultsWithThreeCards') return <KeyResultsWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'KeyResultsWithImage') return <KeyResultsWithImage data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'KeyResultsWithTextBlock') return <KeyResultsWithTextBlock data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'MoreInsightsWithFourCards') return <MoreInsightsWithFourCards data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'TrustedByLogos') return <TrustedByLogos data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'ProductComparisonTable') return <ProductComparisonTable data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'CallToActionComplex') return <CallToActionComplex data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'CallToActionWithInput') return <CallToActionWithInput data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'JobListNormal') return <JobListNormal data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'MeetOurTeam') return <MeetOurTeam data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'FeaturesTabbed') return <FeaturesTabbed data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'WhyChooseUsWithStory') return <WhyChooseUsWithStory data={data.props} author="WebsiteLM" theme={theme} />;
+                        } catch (error) {
+                          console.error(`渲染组件 ${key} 时发生错误:`, error);
+                          return (
+                            <div className="p-4 text-red-500">
+                              组件加载失败: {error.message}
+                            </div>
+                          );
+                        }
+                      })()}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Navigation Menu - Update floating navigation menu style */}

@@ -1,20 +1,14 @@
 'use client';
 import React from 'react';
 import themeConfig from '../../../styles/themeConfig';
-import CustomButton from './widget-custom_button';
-import buttonLinks from '../../ui/button/links';
 
-const HowItWorksWithWorkflow = ({ data, author, theme = 'normal' }) => {
+const HowItWorksWithWorkflow = ({ data, theme = 'normal' }) => {
   const { bottomContent, topContent } = data;
   
   const getBgColor = () => {
     return theme === 'tech' 
       ? themeConfig[theme].section.background.secondary
       : themeConfig[theme].section.background.primary;
-  };
-  
-  const getButtonLink = () => {
-    return buttonLinks.workbench || '#';
   };
   
   return (

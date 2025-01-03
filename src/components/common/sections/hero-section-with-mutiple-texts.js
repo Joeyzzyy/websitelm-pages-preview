@@ -9,10 +9,10 @@ const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
 
   const handleButtonClick = (type) => (e) => {
     e.preventDefault();
-    if (type === 'demo') {
-      window.open('https://calendly.com/joey-techacc/30min', '_blank');
-    } else {
-      router.push('https://app.websitelm.com');
+    if (type === 'demo' && data.topContent.buttonLink) {
+      window.open(data.topContent.buttonLink, '_blank');
+    } else if (type === 'getStarted' && data.topContent.ctaButtonLink) {
+      window.open(data.topContent.ctaButtonLink, '_blank');
     }
   };
 

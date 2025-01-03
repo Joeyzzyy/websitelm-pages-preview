@@ -55,6 +55,7 @@ function FeaturesTabbedSection({ data, theme = 'normal' }) {
           </p>
           <button 
             className={`${styles.button.base} ${styles.button.variants.primary} hover:scale-105 ${styles.button.sizes.sm}`}
+            onClick={() => activeContent?.buttonLink && window.open(activeContent.buttonLink, '_blank')}
           >
             {activeContent?.buttonText}
           </button>

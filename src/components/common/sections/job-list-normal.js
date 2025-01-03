@@ -37,8 +37,9 @@ const JobListNormal = ({ data, theme = 'normal' }) => {
                   </div>
                   <button 
                     className={`${themeConfig[theme].button.base} ${themeConfig[theme].button.variants.primary} hover:scale-105 transition-all duration-200`}
+                    onClick={() => window.open(job.buttonLink, '_blank')}
                   >
-                    Apply Now
+                    {job.buttonText || 'Apply Now'}
                   </button>
                 </div>
                 

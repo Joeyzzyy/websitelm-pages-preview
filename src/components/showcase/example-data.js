@@ -8,7 +8,9 @@ export const exampleData = {
       props: {
         topContent: {
           buttonText: 'Book a Demo',
+          buttonLink: '/demo',
           ctaButtonText: 'Get Started',
+          ctaButtonLink: '/get-started',
           title: 'AI-crafted Content That Delivers Results.',
           description: 'Dominate search results and drive more traffic with AI-generated landing pages and blog posts that are optimized for your audience and search engines.',
         }
@@ -25,6 +27,7 @@ export const exampleData = {
         author: 'websitelm',
         topContent: {
           buttonText: 'Get Started',
+          buttonLink: '/get-started',
           title: 'AI Video Creation Tool',
           description: 'Quickly Generate Multilingual Marketing Videos',
           videoUrl: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
@@ -115,7 +118,8 @@ export const exampleData = {
         leftContent: {
           title: 'Smart Video Creation Platform',
           description: 'Make video creation easier and marketing more efficient',
-          buttonText: 'Free Trial'
+          buttonText: 'Free Trial',
+          buttonLink: '/free-trial'
         },
         rightContent: [
           {
@@ -175,7 +179,8 @@ export const exampleData = {
           icon: '🚀',
           title: 'Ready to Transform Your Video Marketing?',
           subTitle: 'Join thousands of businesses using websitelm AI',
-          buttonText: 'Start Free Trial'
+          buttonText: 'Start Free Trial',
+          buttonLink: '/free-trial'
         }
       }
     },
@@ -223,6 +228,7 @@ export const exampleData = {
             title: 'Why Choose WebsiteLM?',
             description: 'Among the many AI-powered website content creation tools available, WebsiteLM stands out for its comprehensive approach to website optimization. Our platform combines advanced AI algorithms with a deep understanding of your website\'s unique data to deliver results that are both efficient and effective.',
             buttonText: 'Try Now',
+            buttonLink: '/try'
           },
           bottomContent: [
             {
@@ -232,7 +238,8 @@ export const exampleData = {
               content: 'WebsiteLM automates the content creation process, allowing you to focus on growing your business rather than spending hours generating content. With AI-driven technology, you can quickly produce high-quality SEO-optimized pages and blog posts.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             },
             {
               icon: '🎯',
@@ -241,7 +248,8 @@ export const exampleData = {
               content: 'WebsiteLM ensures that all generated content follows the best SEO practices, enhancing your website\'s search engine rankings. From keyword analysis to content structuring, every piece is designed to drive organic traffic.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             },
             {
               icon: '💡',
@@ -250,7 +258,8 @@ export const exampleData = {
               content: 'With AI-crafted content that speaks directly to your audience\'s needs and pain points, WebsiteLM helps you build trust and drive more actions. Whether it\'s a landing page or a blog post, the content is optimized to convert visitors into loyal customers.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             },
             {
               icon: '📊',
@@ -259,7 +268,8 @@ export const exampleData = {
               content: 'WebsiteLM provides detailed analytics, helping you track the performance of your SEO efforts. From traffic data to keyword rankings, you get actionable insights to continuously optimize your content and improve results.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             },
             {
               icon: '📈',
@@ -268,7 +278,8 @@ export const exampleData = {
               content: 'WebsiteLM scales as your business grows. Whether you\'re managing a small blog or a large corporate website, our platform adapts to your needs, offering features like multi-language support and intelligent internal linking to enhance content discoverability and help you reach a broader audience.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             },
             {
               icon: '💰',
@@ -277,7 +288,8 @@ export const exampleData = {
               content: 'Create, publish, and update content effortlessly. WebsiteLM automates the publishing process, ensuring that your website stays up-to-date with fresh, relevant content that ranks higher and attracts more traffic.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             },
             {
               icon: '💰️',
@@ -286,7 +298,8 @@ export const exampleData = {
               content: 'From keyword analysis to content creation, optimization, and performance tracking, WebsiteLM is a comprehensive tool that helps you manage your entire content strategy in one place. Save time and streamline your content marketing efforts.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             },
             {
               icon: '💰',
@@ -295,7 +308,8 @@ export const exampleData = {
               content: 'WebsiteLM\'s AI technology is continuously improved to deliver better content quality, enhanced SEO performance, and smarter content strategies. Stay ahead of the curve with our constantly evolving platform that adapts to the latest trends and search engine algorithms.',
               imageUrl: '/images/abstract.png',
               imageAlt: 'Abstract image',
-              buttonText: 'Learn More'
+              buttonText: 'Learn More',
+              buttonLink: '/learn-more'
             }
           ]
       }
@@ -312,7 +326,8 @@ export const exampleData = {
           icon: '🚀',
           title: 'How It Works',
           subTitle: 'WebsiteLM is a comprehensive AI-powered platform that streamlines website content creation and optimization.',
-          buttonText: 'Get Started'
+          buttonText: 'Get Started',
+          buttonLink: '/get-started'
         },
         bottomContent: [
           {
@@ -349,22 +364,23 @@ export const exampleData = {
           icon: '🚀',
           title: 'How Our AI Works',
           subTitle: 'Transform your content into engaging videos with three simple steps',
-          buttonText: 'Start Creating'
+          buttonText: 'Start Creating',
+          buttonLink: '/start'
         },
         rightContent: [
           {
             icon: '📝',
-            title: 'Input Content',
+            contentTitle: 'Input Content',
             content: 'Simply paste your text or upload your script to begin the creation process'
           },
           {
             icon: '🎨',
-            title: 'AI Processing',
+            contentTitle: 'AI Processing',
             content: 'Our AI analyzes your content and generates matching visuals and animations'
           },
           {
             icon: '🌐',
-            title: 'Global Export',
+            contentTitle: 'Global Export',
             content: 'Export your video in multiple languages with auto-generated voiceovers'
           }
         ]
@@ -829,6 +845,7 @@ export const exampleData = {
             price: '$29',
             discount: 'SAVE 20%',
             buttonText: 'Start Basic',
+            buttonLink: '/start-basic',
             features: [
               '5 AI video generations/month',
               'Basic templates',
@@ -842,6 +859,7 @@ export const exampleData = {
             price: '$79',
             discount: 'MOST POPULAR',
             buttonText: 'Start Pro',
+            buttonLink: '/start-pro',
             features: [
               '20 AI video generations/month',
               'Premium templates',
@@ -856,6 +874,7 @@ export const exampleData = {
             price: 'Custom',
             discount: 'BEST VALUE',
             buttonText: 'Contact Sales',
+            buttonLink: '/contact-sales',
             features: [
               'Unlimited video generations',
               'Custom templates',
@@ -880,7 +899,10 @@ export const exampleData = {
         author: 'websitelm',
         title: 'Ready to Transform Your Video Marketing?',
         subTitle: 'Join thousands of businesses already using websitelm AI',
-        buttonText: 'Get Started Free'
+        bottomContent: {
+          buttonText: 'Get Started Free',
+          buttonLink: '/get-started'
+        }
       }
     },
   
@@ -898,6 +920,7 @@ export const exampleData = {
         },
         rightContent: {
           buttonText: 'Get Started Free',
+          buttonLink: '/get-started',
           imageUrl: '/images/abstract.png',
           imageAlt: 'Abstract image',
         }
@@ -940,7 +963,9 @@ export const exampleData = {
           callToActionEngagementTop: 'Start transforming your website today—effortlessly build, optimize, and maintain content that drives results.',
           callToActionEngagementBottom: 'Join thousands of users already maximizing their website\'s potential with WebsiteLM.',
           buttonText: "Get Started Now",
-          ctaButtonText: "Book a Demo"
+          buttonLink: "/get-started",
+          ctaButtonText: "Book a Demo",
+          ctaButtonLink: "/demo"
         },
       }
     },
@@ -954,7 +979,8 @@ export const exampleData = {
       props: {
         title: 'Stay Updated with Our Latest News',
         inputPlaceholder: 'Enter your email address',
-        buttonText: 'Subscribe Now'
+        buttonText: 'Subscribe Now',
+        buttonLink: '/subscribe'
       }
     },
   
@@ -1089,7 +1115,8 @@ export const exampleData = {
             description: 'Ensure academic integrity with our authentication tools',
             imageUrl: '/images/profile.png',
             imageAlt: 'Authentic authorship',
-            buttonText: 'Learn More'
+            buttonText: 'Learn More',
+            buttonLink: '/learn-more'
           },
           {
             tabName: 'Cite AI use',
@@ -1097,7 +1124,8 @@ export const exampleData = {
             description: 'Our transparency features make it easy to acknowledge when you\'ve used AI',
             imageUrl: '/images/profile.png',
             imageAlt: 'Cite AI use',
-            buttonText: 'Learn More'
+            buttonText: 'Learn More',
+            buttonLink: '/learn-more'
           },
           {
             tabName: 'AI checker',
@@ -1105,7 +1133,8 @@ export const exampleData = {
             description: 'Our AI checker helps you detect AI-generated content',
             imageUrl: '/images/profile.png',
             imageAlt: 'AI checker',
-            buttonText: 'Learn More'
+            buttonText: 'Learn More',
+            buttonLink: '/learn-more'
           }
         ]
       }
