@@ -18,7 +18,7 @@ export default async function ArticlePage({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
     const { lang, slug } = resolvedParams;
-    const articleData = await getArticleBySlug(slug, lang);
+    const articleData = await getArticleBySlug(slug, lang, 'websitelm.com');
 
     // 立即处理错误情况
     if (!articleData?.data) {
@@ -27,6 +27,7 @@ export default async function ArticlePage({ params }) {
     }
     
     const article = articleData.data;
+    console.log('article data', article)
     const articleSchema = {
       '@context': 'https://schema.org',
       '@type': 'Article',

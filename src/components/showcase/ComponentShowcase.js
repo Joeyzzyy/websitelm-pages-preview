@@ -29,7 +29,7 @@ import UserReviewsSquareCards from '../common/sections/user-reviews-with-square-
 import KeyResultsWithThreeCards from '../common/sections/key-results-with-cards';
 import KeyResultsWithImage from '../common/sections/key-results-with-image';
 import CallToActionComplex from '../common/sections/call-to-action-complex';
-import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-mutiple-texts';
+import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-multiple-texts';
 import CallToActionWithInput from '../common/sections/call-to-action-with-input';
 import JobListNormal from '../common/sections/job-list-normal';
 import MeetOurTeam from '../common/sections/meet-our-team';

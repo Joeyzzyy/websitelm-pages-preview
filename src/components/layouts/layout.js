@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, memo } from 'react';
 import TitleSection from '../common/sections/title-section';
 import TitleSectionWithImage from '../common/sections/title-section-with-image';
 import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
-import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-mutiple-texts';
+import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-multiple-texts';
 import WhyChooseUsWithSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
 import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
 import WhyChooseUsWithStory from '../common/sections/why-choose-us-with-story';
@@ -16,11 +16,16 @@ import JobListNormal from '../common/sections/job-list-normal';
 import FAQTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
 import FAQTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-big-title';
 import Faqs from '../common/sections/faqs';
+import CallToAction from '../common/sections/call-to-action';
 import CallToActionComplex from '../common/sections/call-to-action-complex';
 import CallToActionWithInput from '../common/sections/call-to-action-with-input';
 import ProductBenefitsWithTable from '../common/sections/product-benefits-with-table';
 import Header from './header-template';
 import Footer from './footer-template';
+import KeyResultsWithTextBlock from '../common/sections/key-results-with-text-block';
+import KeyResultsWithImage from '../common/sections/key-results-with-image';
+import KeyResultsWithCards from '../common/sections/key-results-with-cards';
+import HowItWorksWithBlocks from '../common/sections/how-it-works-with-blocks';
 
 const COMPONENT_MAP = {
   TitleSection: TitleSection,
@@ -39,7 +44,12 @@ const COMPONENT_MAP = {
   Faqs: FAQTwoColumnsWithSmallTitle,
   CallToActionComplex: CallToActionComplex,
   CallToActionWithEmailInput: CallToActionWithInput,
-  ProductBenefitsWithTable: ProductBenefitsWithTable
+  ProductBenefitsWithTable: ProductBenefitsWithTable,
+  KeyResultsWithTextBlock: KeyResultsWithTextBlock,
+  KeyResultsWithImage: KeyResultsWithImage,
+  KeyResultsWithCards: KeyResultsWithCards,
+  HowItWorksWithBlocks: HowItWorksWithBlocks,
+  CallToAction: CallToAction
 };
 
 const generateSchemaMarkup = (article) => {
@@ -90,7 +100,7 @@ const CommonLayout = ({ article, keywords }) => {
         />
       )}
 
-      <div className="flex-1 w-full max-w-[100vw] overflow-x-hidden">
+      <div className="flex-1 w-full max-w-[100vw] overflow-x-hidden pt-[80px]">
         {sections.map(section => {
           const Component = COMPONENT_MAP[section.componentName];
           if (!Component) return null;

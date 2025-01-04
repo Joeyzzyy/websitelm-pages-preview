@@ -23,8 +23,9 @@ const themeConfig = {
       },
       padding: {
         base: 'py-12 md:py-16',
-        narrow: 'py-8 md:py-12',
-        wide: 'py-16 md:py-24'
+        large: 'py-16 md:py-24',
+        wide: 'py-12 md:py-20',
+        narrow: 'py-8 md:py-12'
       }
     },
     card: {
@@ -123,8 +124,9 @@ const themeConfig = {
       },
       padding: {
         base: 'py-12 md:py-16',
-        narrow: 'py-8 md:py-12',
-        wide: 'py-16 md:py-24'
+        large: 'py-16 md:py-24',
+        wide: 'py-12 md:py-20',
+        narrow: 'py-8 md:py-12'
       }
     },
     card: {

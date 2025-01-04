@@ -12,7 +12,10 @@ const HowItWorksWithWorkflow = ({ data, theme = 'normal' }) => {
   };
   
   return (
-    <div className={`${getBgColor()} ${themeConfig[theme].section.padding.base}`}>
+    <div className={`
+      ${themeConfig[theme].section.background.primary}
+      ${themeConfig[theme].section.padding.base}
+    `}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16 md:mb-24">
           {topContent.icon && <div className="text-6xl mb-6">{topContent.icon}</div>}

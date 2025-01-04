@@ -17,8 +17,8 @@ const customDomains = {
       '/': 'home',
       '/features': 'features',
     }
-  }
-  // 可以添加更多客户域名
+  },
+  
 };
 
 export function middleware(request) {

@@ -16,7 +16,10 @@ const KeyResultsWithImage = ({ data, theme = 'normal' }) => {
   };
 
   return (
-    <div className={`${getBgColor()} ${themeConfig[theme].section.padding.base}`}>
+    <div className={`
+      ${getBgColor()} 
+      ${themeConfig[theme].section.padding.base}
+    `}>
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {title && (
           <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} text-center mb-16`}>

@@ -34,7 +34,10 @@ const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
   };
 
   return (
-    <section className={`${currentTheme.section.base} ${currentTheme.section.background.primary} pt-20 pb-20 md:pt-36 md:pb-36`}>
+    <section className={`
+      ${currentTheme.section.background.primary} 
+      ${currentTheme.section.padding.large}
+    `}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="relative z-10 pt-8 md:pt-12">
           <div className="flex flex-col items-center gap-4">

@@ -6,7 +6,10 @@ const CallToActionComplex = ({ data, theme = 'normal' }) => {
   const { button, typography, section } = themeConfig[theme];
 
   return (
-    <div className={`${section.background.primary} ${section.padding.base}`}>
+    <div className={`
+      ${section.background.primary} 
+      ${section.padding.wide}
+    `}>
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className={`${typography.h2.fontSize} ${typography.h2.fontWeight} ${typography.h2.color} mb-6 leading-tight`}>
           {data.topContent.title}
