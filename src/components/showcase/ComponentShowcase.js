@@ -49,6 +49,7 @@ const ComponentShowcase = () => {
   const [expandedCodes, setExpandedCodes] = useState({});
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [theme, setTheme] = useState('normal');
+  const [showAIOnly, setShowAIOnly] = useState(false);
   const componentRefs = {};
 
   const toggleCode = (key) => {
@@ -63,6 +64,10 @@ const ComponentShowcase = () => {
     setIsNavOpen(false);
   };
 
+  const filteredComponents = Object.entries(exampleData).filter(([_, data]) => 
+    !showAIOnly || data.usedForAILandingPage
+  );
+
   return (
     <>
       <div className="relative min-h-screen bg-slate-900 w-full pt-[4.2rem]">
@@ -71,20 +76,43 @@ const ComponentShowcase = () => {
           <div className="w-[90%] mx-auto py-12">
             <div className="flex justify-between items-center mb-6">
               <h1 className="text-4xl font-bold text-white tracking-tight">Component Library</h1>
+              <div className="flex items-center gap-3 bg-slate-700/50 px-4 py-2 rounded-lg">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="filter"
+                    checked={!showAIOnly}
+                    onChange={() => setShowAIOnly(false)}
+                    className="text-blue-500 focus:ring-blue-500 h-4 w-4"
+                  />
+                  <span className="text-slate-300 text-sm">All Components</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="filter"
+                    checked={showAIOnly}
+                    onChange={() => setShowAIOnly(true)}
+                    className="text-blue-500 focus:ring-blue-500 h-4 w-4"
+                  />
+                  <span className="text-slate-300 text-sm">Components Can Be Used For AI Landing Page</span>
+                </label>
+              </div>
             </div>
             
             <p className="mt-4 text-lg text-slate-300 max-w-3xl">
               Explore our comprehensive collection of pre-built components designed for creating modern, responsive web applications.
             </p>
             <p className="mt-2 text-base text-slate-400">
-              Currently featuring {Object.keys(exampleData).length} components
+              Currently featuring {filteredComponents.length} components
+              {showAIOnly && " for AI landing pages"}
             </p>
           </div>  
         </div>
 
         {/* Main Content */}
         <div className="w-[90%] mx-auto py-12">
-          {Object.entries(exampleData).map(([key, data]) => {
+          {filteredComponents.map(([key, data]) => {
             // 添加数据验证
             if (!validateComponentData(key, data)) {
               return null;
@@ -104,6 +132,11 @@ const ComponentShowcase = () => {
                         <span className="font-medium">Recommended Position:</span> {data.recommendedPosition}
                       </p>
                       <div className="hidden sm:block h-4 w-px bg-slate-700"></div>
+                      {data.usedForAILandingPage && (
+                        <span className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-purple-500/40 to-pink-500/40 text-white rounded-full border border-purple-400/50 shadow-lg shadow-purple-500/20 animate-pulse">
+                          Can Be Used For AI Landing Page
+                        </span>
+                      )}
                       <button
                         onClick={() => toggleCode(key)}
                         className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
@@ -187,9 +220,9 @@ const ComponentShowcase = () => {
         </div>
 
         {/* Navigation Menu - Update floating navigation menu style */}
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
           {/* Theme Switcher */}
-          <div className="bg-slate-800 rounded-lg shadow-lg p-3 border border-slate-700">
+          <div className="bg-slate-800 rounded-lg shadow-lg p-3 border border-slate-700 w-[180px]">
             <div className="flex flex-col gap-2">
               <span className="text-slate-300 text-sm">Theme:</span>
               <div className="flex flex-col gap-2">
@@ -246,14 +279,16 @@ const ComponentShowcase = () => {
               </div>
             </div>
           ) : (
-            <button
-              onClick={() => setIsNavOpen(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-200"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            <div className="w-12 h-12">
+              <button
+                onClick={() => setIsNavOpen(true)}
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-200 w-full h-full flex items-center justify-center"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           )}
         </div>
       </div>

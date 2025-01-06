@@ -1,31 +1,41 @@
 'use client';
 import React, { useEffect, useMemo, memo } from 'react';
-import TitleSection from '../common/sections/title-section';
-import TitleSectionWithImage from '../common/sections/title-section-with-image';
+import Header from './header-template';
+import Footer from './footer-template';
+/* divider */
 import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
 import HeroSectionWithMultipleTexts from '../common/sections/hero-section-with-multiple-texts';
+/* divider */
+import TitleSection from '../common/sections/title-section';
+import TitleSectionWithImage from '../common/sections/title-section-with-image';
+/* divider */
 import WhyChooseUsWithSmallBlocks from '../common/sections/why-choose-us-with-small-blocks';
 import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
 import WhyChooseUsWithStory from '../common/sections/why-choose-us-with-story';
+/* divider */
 import HowItWorksWithWorkflow from '../common/sections/how-it-works-with-workflow';
+import HowItWorksWithBlocks from '../common/sections/how-it-works-with-blocks';
+/* divider */
 import FeaturesTabbed from '../common/sections/features-tabbed';
+/* divider */
 import ProductBenefitsWithBlocks from '../common/sections/product-benefits-with-blocks';
+import ProductBenefitsWithTable from '../common/sections/product-benefits-with-table';
+/* divider */
 import UserReviewsWithMovingCards from '../common/sections/user-reviews-with-moving-cards';
+/* divider */
 import MeetOurTeam from '../common/sections/meet-our-team';
+/* divider */
 import JobListNormal from '../common/sections/job-list-normal';
+/* divider */
 import FAQTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
-import FAQTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-big-title';
-import Faqs from '../common/sections/faqs';
+/* divider */
 import CallToAction from '../common/sections/call-to-action';
 import CallToActionComplex from '../common/sections/call-to-action-complex';
 import CallToActionWithInput from '../common/sections/call-to-action-with-input';
-import ProductBenefitsWithTable from '../common/sections/product-benefits-with-table';
-import Header from './header-template';
-import Footer from './footer-template';
+/* divider */
 import KeyResultsWithTextBlock from '../common/sections/key-results-with-text-block';
 import KeyResultsWithImage from '../common/sections/key-results-with-image';
 import KeyResultsWithCards from '../common/sections/key-results-with-cards';
-import HowItWorksWithBlocks from '../common/sections/how-it-works-with-blocks';
 
 const COMPONENT_MAP = {
   TitleSection: TitleSection,
