@@ -79,7 +79,7 @@ export async function generateMetadata({ params }) {
     const resolvedParams = await Promise.resolve(params);
     const { lang = 'en', slug } = resolvedParams;
     
-    const articleData = await getArticleBySlug(slug, lang);
+    const articleData = await getArticleBySlug(slug, lang, 'websitelm.com');
     
     if (!articleData?.data) {
       return {
@@ -123,7 +123,7 @@ export async function generateMetadata({ params }) {
           'zh': `https://websitelm.com/zh/${slug}`,
         }
       },
-      metadataBase: new URL('https://websitelm.com'),
+      metadataBase: new URL('https://websitelm.site'),
       authors: [{ name: article.author }],
       category: article.category
     };
