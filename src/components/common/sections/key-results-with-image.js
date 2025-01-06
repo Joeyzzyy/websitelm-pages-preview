@@ -32,7 +32,7 @@ const KeyResultsWithImage = ({ data, theme = 'normal' }) => {
               {dataSet.map((item, index) => (
                 <div key={index} className="flex flex-col">
                   <div className={`text-4xl md:text-5xl xl:text-6xl font-bold ${getNumberColor()} mb-4`}>
-                    {item.percentage}%
+                    {item.percentage}
                   </div>
                   <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} max-w-[280px]`}>
                     {item.description}
