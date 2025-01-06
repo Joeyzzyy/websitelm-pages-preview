@@ -50,6 +50,7 @@ const ComponentShowcase = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [theme, setTheme] = useState('normal');
   const [showAIOnly, setShowAIOnly] = useState(false);
+  const [showAIBlogOnly, setShowAIBlogOnly] = useState(false);
   const componentRefs = {};
 
   const toggleCode = (key) => {
@@ -64,9 +65,11 @@ const ComponentShowcase = () => {
     setIsNavOpen(false);
   };
 
-  const filteredComponents = Object.entries(exampleData).filter(([_, data]) => 
-    !showAIOnly || data.usedForAILandingPage
-  );
+  const filteredComponents = Object.entries(exampleData).filter(([_, data]) => {
+    if (showAIOnly) return data.usedForAILandingPage;
+    if (showAIBlogOnly) return data.usedForAIBlog;
+    return true;
+  });
 
   return (
     <>
@@ -81,8 +84,11 @@ const ComponentShowcase = () => {
                   <input
                     type="radio"
                     name="filter"
-                    checked={!showAIOnly}
-                    onChange={() => setShowAIOnly(false)}
+                    checked={!showAIOnly && !showAIBlogOnly}
+                    onChange={() => {
+                      setShowAIOnly(false);
+                      setShowAIBlogOnly(false);
+                    }}
                     className="text-blue-500 focus:ring-blue-500 h-4 w-4"
                   />
                   <span className="text-slate-300 text-sm">All Components</span>
@@ -92,10 +98,26 @@ const ComponentShowcase = () => {
                     type="radio"
                     name="filter"
                     checked={showAIOnly}
-                    onChange={() => setShowAIOnly(true)}
+                    onChange={() => {
+                      setShowAIOnly(true);
+                      setShowAIBlogOnly(false);
+                    }}
                     className="text-blue-500 focus:ring-blue-500 h-4 w-4"
                   />
-                  <span className="text-slate-300 text-sm">Components Can Be Used For AI Landing Page</span>
+                  <span className="text-slate-300 text-sm">AI Landing Page</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="filter"
+                    checked={showAIBlogOnly}
+                    onChange={() => {
+                      setShowAIOnly(false);
+                      setShowAIBlogOnly(true);
+                    }}
+                    className="text-blue-500 focus:ring-blue-500 h-4 w-4"
+                  />
+                  <span className="text-slate-300 text-sm">AI Blog</span>
                 </label>
               </div>
             </div>
@@ -133,8 +155,13 @@ const ComponentShowcase = () => {
                       </p>
                       <div className="hidden sm:block h-4 w-px bg-slate-700"></div>
                       {data.usedForAILandingPage && (
-                        <span className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-purple-500/40 to-pink-500/40 text-white rounded-full border border-purple-400/50 shadow-lg shadow-purple-500/20 animate-pulse">
+                        <span className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full border border-purple-200 shadow-lg shadow-purple-500/40">
                           Can Be Used For AI Landing Page
+                        </span>
+                      )}
+                      {data.usedForAIBlog && (
+                        <span className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full border border-blue-200 shadow-lg shadow-blue-500/40">
+                          Can Be Used For AI Blog
                         </span>
                       )}
                       <button

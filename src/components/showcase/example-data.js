@@ -2,6 +2,7 @@ export const exampleData = {
     HeroSectionWithMultipleTexts: {
       order: 1,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Hero Section With Multiple Texts',
       description: 'Display main heading with gradient text effects and dual CTAs',
       recommendedPosition: 'Must be first component if Demo Showcase is not used',
@@ -21,6 +22,7 @@ export const exampleData = {
     HeroSectionWithVideo: {
       order: 2,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Hero Section With Video',
       description: 'Display main tools and feature introduction with video background',
       recommendedPosition: 'Must be first component if Demo Showcase is not used',
@@ -40,6 +42,7 @@ export const exampleData = {
     TrustedByLogos: {
       order: 3,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Trusted By Logos',
       description: 'Component to showcase partner/client logos in a carousel',
       recommendedPosition: 'Upper section, usually after Hero Section',
@@ -77,6 +80,7 @@ export const exampleData = {
     TitleSection: {
       order: 4,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Title Section',
       description: 'Display article or page main title and subTitle',
       recommendedPosition: 'Upper section, after Hero Section',
@@ -94,6 +98,7 @@ export const exampleData = {
     TitleSectionWithImage: {
       order: 5,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Title Section With Image',
       description: 'Title section with image, supports adaptive layout for multiple languages',
       recommendedPosition: 'Upper section, after Hero Section',
@@ -115,6 +120,7 @@ export const exampleData = {
     ProductBenefitsWithFourBlocks: {
       order: 6,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Product Benefits With Four Blocks',
       description: 'Display core product features or service highlights in four modules',
       recommendedPosition: 'Upper section, after title',
@@ -155,6 +161,7 @@ export const exampleData = {
     ProductBenefitsWithATable: {
       order: 7,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Product Benefits With A Table',
       description: 'Display benefits list with right-side call to action',
       recommendedPosition: 'Upper section, after other benefits sections',
@@ -195,6 +202,7 @@ export const exampleData = {
     WhyChooseUsWithSmallBlocks: {
       order: 8,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Why Choose Us With Small Blocks',
       description: 'Display product features or service advantages in six-grid layout',
       recommendedPosition: 'Upper-mid section, after benefits introduction',
@@ -228,6 +236,7 @@ export const exampleData = {
     WhyChooseUsWithBlocks: {
       order: 9,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Why Choose Us With Blocks',
       description: 'Display two main product features or service advantages with images',
       recommendedPosition: 'Mid section, after feature blocks',
@@ -327,6 +336,7 @@ export const exampleData = {
     HowItWorksWithWorkflow: {
       order: 10,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'How It Works With Workflow',
       description: 'Display product usage process or service steps with arrow indicators',
       recommendedPosition: 'Mid section, after features',
@@ -344,13 +354,13 @@ export const exampleData = {
             number: 'Step 1',
             title: 'Analyze and Plan Your Website',
             subTitle: 'Input Your Website & Competitor Links',
-            content: 'Start by entering your website URL along with those of your competitors. Our AI will analyze content, structure, SEO performance, and user experience to uncover gaps and opportunities. By comparing your site with competitors, we’ll highlight your unique advantages, helping your customers better understand what sets you apart.'
+            content: 'Start by entering your website URL along with those of your competitors. Our AI will analyze content, structure, SEO performance, and user experience to uncover gaps and opportunities. By comparing your site with competitors, we\'ll highlight your unique advantages, helping your customers better understand what sets you apart.'
           },
           {
             number: 'Step 2',
             title: 'Build & Optimize Content',
             subTitle: 'Generate SEO-Optimized Content',
-            content: 'Using advanced AI algorithms and your site’s unique data, WebsiteLM will generate high-quality, SEO-friendly content for landing pages, blog posts, and knowledge base articles. The AI personalizes content based on your audience and industry, ensuring relevance and engagement. You can refine the content manually to ensure accuracy, validate critical data, and align with key performance metrics.'
+            content: 'Using advanced AI algorithms and your site\'s unique data, WebsiteLM will generate high-quality, SEO-friendly content for landing pages, blog posts, and knowledge base articles. The AI personalizes content based on your audience and industry, ensuring relevance and engagement. You can refine the content manually to ensure accuracy, validate critical data, and align with key performance metrics.'
           },
           {
             number: 'Step 3',
@@ -365,6 +375,7 @@ export const exampleData = {
     HowItWorksWithThreeBlocks: {
       order: 11,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'How It Works With Three Blocks',
       description: 'Display product workflow with three detailed feature blocks',
       recommendedPosition: 'Mid section, after workflow',
@@ -401,6 +412,7 @@ export const exampleData = {
     ProductComparisonTable: {
       order: 12,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Product Comparison Table',
       description: 'Compare features between your product and competitors',
       recommendedPosition: 'Mid-lower section, before pricing',
@@ -448,6 +460,7 @@ export const exampleData = {
     UserReviews: {
       order: 13,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'User Reviews',
       description: 'Display user testimonials and feedback',
       recommendedPosition: 'Mid-lower section, after product comparison',
@@ -491,6 +504,7 @@ export const exampleData = {
     UserReviewsMovingCards: {
       order: 14,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'User Reviews Moving Cards',
       description: 'Animated user testimonials carousel display with enhanced visual effects',
       recommendedPosition: 'Mid-lower section, after product features',
@@ -545,6 +559,7 @@ export const exampleData = {
     UserReviewsSquareCards: {
       order: 15,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'User Reviews Square Cards',
       description: 'Three-column layout square user review cards with gradient star ratings',
       recommendedPosition: 'Mid-lower section, alternative to standard reviews',
@@ -607,6 +622,7 @@ export const exampleData = {
     KeyResultsWithTextBlock: {
       order: 16,
       usedForAILandingPage: false,
+      usedForAIBlog: true,
       title: 'Key Results With Text Block',
       description: 'Display article content with title and paragraphs',
       recommendedPosition: 'Content area, flexible positioning',
@@ -661,6 +677,7 @@ export const exampleData = {
     KeyResultsWithThreeCards: {
       order: 17,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Key Results With Three Cards',
       description: 'Display competitor comparison data in three cards',
       recommendedPosition: 'Mid section, after features or case studies',
@@ -698,6 +715,7 @@ export const exampleData = {
     KeyResultsWithImage: {
       order: 18,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Key Results With Image',
       description: 'Display key metrics with right-side image',
       recommendedPosition: 'Content area, flexible positioning',
@@ -727,6 +745,7 @@ export const exampleData = {
     MoreInsightsWithFourCards: {
       order: 19,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'More Insights With Four Cards',
       description: 'Display related articles or insights in card format',
       recommendedPosition: 'Lower section, after main content',
@@ -764,6 +783,7 @@ export const exampleData = {
     Faqs: {
       order: 20,
       usedForAILandingPage: true,
+      usedForAIBlog: true,
       title: 'FAQ Section',
       description: 'Display frequently asked questions in two columns',
       recommendedPosition: 'Lower section, before CTA',
@@ -795,6 +815,7 @@ export const exampleData = {
     FaqTwoColumnsWithSmallTitle: {
       order: 21,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'FAQ Two Columns With Small Title',
       description: 'Two-column FAQ section with left title and right expandable Q&A',
       recommendedPosition: 'Lower section, before pricing',
@@ -825,6 +846,7 @@ export const exampleData = {
     FaqTwoColumnsWithBigTitle: {
       order: 22,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'FAQ Two Columns With Big Title',
       description: 'Two-column FAQ section with left large title and right expandable Q&A',
       recommendedPosition: 'Lower section, before pricing',
@@ -855,6 +877,7 @@ export const exampleData = {
     PricingWithThreeCards: {
       order: 23,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Pricing With Three Cards',
       description: 'Display pricing plans with feature comparison',
       recommendedPosition: 'Lower section, after FAQ and before final CTA',
@@ -915,6 +938,7 @@ export const exampleData = {
     CallToAction: {
       order: 24,
       usedForAILandingPage: true,
+      usedForAIBlog: true,
       title: 'Call To Action',
       description: 'Final call to action section with strong message',
       recommendedPosition: 'Must be the last component',
@@ -933,6 +957,7 @@ export const exampleData = {
     CallToActionWithImage: {
       order: 25,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Call To Action With Image',
       description: 'Final call to action section with background image',
       recommendedPosition: 'Must be the last component',
@@ -955,6 +980,7 @@ export const exampleData = {
     CallToActionComplex: {
       order: 26,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Call To Action Complex',
       description: 'Advanced CTA component with detailed feature descriptions and multiple action points',
       recommendedPosition: 'Must be the last component',
@@ -999,6 +1025,7 @@ export const exampleData = {
     CallToActionWithInput: {
       order: 27,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Call To Action With Input',
       description: 'CTA section with input field, perfect for email subscriptions and lead capture',
       recommendedPosition: 'Can be used as final component or within content sections',
@@ -1014,6 +1041,7 @@ export const exampleData = {
     JobListNormal: {
       order: 28,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Job List Normal',
       description: 'A standard component for displaying job listings',
       recommendedPosition: 'Career pages or company introduction sections',
@@ -1081,6 +1109,7 @@ export const exampleData = {
     MeetOurTeam: {
       order: 29,
       usedForAILandingPage: false,
+      usedForAIBlog: false,
       title: 'Meet Our Team',
       description: 'Display team member information with photos, descriptions, and social media links',
       recommendedPosition: 'Company introduction or About Us page',
@@ -1131,6 +1160,7 @@ export const exampleData = {
     FeaturesTabbed: {
       order: 30,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Features Tabbed',
       description: 'Display features with tabbed navigation',
       recommendedPosition: 'Lower section, before final CTA',
@@ -1172,6 +1202,7 @@ export const exampleData = {
     WhyChooseUsWithStory: {
       order: 31,
       usedForAILandingPage: true,
+      usedForAIBlog: false,
       title: 'Why Choose Us With Story',
       description: 'Display founder story and detailed product/service introduction',
       recommendedPosition: 'Company introduction or product detail pages',
