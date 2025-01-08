@@ -24,10 +24,10 @@ export async function getArticles(customerId, token) {
 };
 
 // 根据 slug 获取单篇文章
-export async function getArticleBySlug(slug, lang, domain) {
+export async function getPageBySlug(slug, lang, domain) {
   try {
-    const response = await axios.get(`${API_URL}/pages/${lang}/${slug}`, { 
-      params: { domain }
+    const response = await axios.get(`${API_URL}/pages/view/${slug}`, { 
+      params: { domain, lang }
     });
     console.log('response', response.data)
     return response.data;
