@@ -6,8 +6,6 @@ import themeConfig from '../../../styles/themeConfig';
 const parseHtmlContent = (htmlString) => {
   if (!htmlString) return [];
   
-  console.log('Parsing HTML:', htmlString);
-  
   const result = [];
   let currentIndex = 0;
   // 修改正则表达式以更准确地匹配 img 标签
@@ -15,8 +13,6 @@ const parseHtmlContent = (htmlString) => {
   
   let match;
   while ((match = imgRegex.exec(htmlString)) !== null) {
-    console.log('Match found:', match);
-    
     // 添加标签前的文本
     if (match.index > currentIndex) {
       const textContent = htmlString.slice(currentIndex, match.index).trim();
@@ -49,7 +45,6 @@ const parseHtmlContent = (htmlString) => {
     }
   }
   
-  console.log('Parsed result:', result);
   return result;
 };
 
@@ -204,8 +199,6 @@ const KeyResultsWithTextBlock = ({ data, theme = 'normal' }) => {
                 className="w-full h-auto rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
                 loading="lazy"
                 onClick={() => setSelectedImage({ src: item.src, alt: item.alt })}
-                onError={(e) => console.error('Image load error:', e)}
-                onLoad={() => console.log('Image loaded successfully:', item.src)}
               />
             </div>
           );
