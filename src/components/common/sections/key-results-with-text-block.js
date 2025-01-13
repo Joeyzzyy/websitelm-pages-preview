@@ -6,32 +6,33 @@ import themeConfig from '../../../styles/themeConfig';
 const parseHtmlContent = (htmlString) => {
   if (!htmlString) return [];
   
+  console.log('Parsing HTML:', htmlString);
+  
   const result = [];
   let currentIndex = 0;
-  const linkRegex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/g;
+  // 修改正则表达式以更准确地匹配 img 标签
+  const imgRegex = /<img\s+[^>]*?src="([^"]*)"[^>]*?alt="([^"]*)"[^>]*>/g;
   
   let match;
-  while ((match = linkRegex.exec(htmlString)) !== null) {
-    // 添加链接前的文本
+  while ((match = imgRegex.exec(htmlString)) !== null) {
+    console.log('Match found:', match);
+    
+    // 添加标签前的文本
     if (match.index > currentIndex) {
-      result.push({
-        type: 'text',
-        content: htmlString.slice(currentIndex, match.index)
-      });
+      const textContent = htmlString.slice(currentIndex, match.index).trim();
+      if (textContent) {
+        result.push({
+          type: 'text',
+          content: textContent
+        });
+      }
     }
     
-    // 处理链接URL
-    let href = match[1];
-    // 如果链接不是以 http:// 或 https:// 开头，添加 https://
-    if (!href.match(/^https?:\/\//)) {
-      href = `https://${href}`;
-    }
-    
-    // 添加链接
+    // 添加图片
     result.push({
-      type: 'link',
-      href: href,
-      content: match[2]
+      type: 'image',
+      src: match[1],    // 第一个捕获组是 src
+      alt: match[2]     // 第二个捕获组是 alt
     });
     
     currentIndex = match.index + match[0].length;
@@ -39,12 +40,16 @@ const parseHtmlContent = (htmlString) => {
   
   // 添加最后剩余的文本
   if (currentIndex < htmlString.length) {
-    result.push({
-      type: 'text',
-      content: htmlString.slice(currentIndex)
-    });
+    const textContent = htmlString.slice(currentIndex).trim();
+    if (textContent) {
+      result.push({
+        type: 'text',
+        content: textContent
+      });
+    }
   }
   
+  console.log('Parsed result:', result);
   return result;
 };
 
@@ -139,41 +144,41 @@ const KeyResultsWithTextBlock = ({ data, theme = 'normal' }) => {
   };
 
   const renderContent = (content) => {
-    if (typeof content === 'string') {
+    // 检查内容是否包含 HTML 标签
+    const hasHtmlTags = /<[^>]*>/g.test(content);
+    
+    // 如果是纯文本，直接返回
+    if (!hasHtmlTags) {
       return (
-        <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color}`}>
+        <p className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} mb-4`}>
           {content}
         </p>
       );
     }
 
+    // 处理 HTML 内容
     const parsedContent = parseHtmlContent(content);
     return parsedContent.map((item, index) => {
       switch (item.type) {
         case 'text':
-          return (
-            <p key={index} className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} mb-4`}>
+          return item.content ? (
+            <p key={`text-${index}`} className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} mb-4`}>
               {item.content}
             </p>
-          );
-        case 'list':
+          ) : null;
+        case 'image':
+          console.log('Rendering image:', item); // 添加调试日志
           return (
-            <ul key={index} className="space-y-2 mb-4">
-              {item.items.map((listItem, i) => (
-                <li key={i} className={getListItemStyle()}>
-                  <svg className="w-5 h-5 mt-0.5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>{listItem}</span>
-                </li>
-              ))}
-            </ul>
-          );
-        case 'highlight':
-          return (
-            <span key={index} className={getHighlightStyle()}>
-              {item.content}
-            </span>
+            <div key={`image-${index}`} className="my-4">
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="w-full h-auto rounded-lg"
+                loading="lazy"
+                onError={(e) => console.error('Image load error:', e)}
+                onLoad={() => console.log('Image loaded successfully:', item.src)}
+              />
+            </div>
           );
         default:
           return null;
@@ -233,38 +238,10 @@ const KeyResultsWithTextBlock = ({ data, theme = 'normal' }) => {
                 {rightContent.map((content, index) => (
                   <div key={index} className="mb-10 last:mb-0" id={`section-${index}`}>
                     <h3 className="text-xl md:text-2xl font-semibold mb-4 text-gray-800">
-                      {parseHtmlContent(content.contentTitle).map((part, i) => (
-                        part.type === 'link' ? (
-                          <a 
-                            key={i}
-                            href={part.href}
-                            className="text-blue-500 hover:text-blue-700 hover:underline font-bold"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {part.content}
-                          </a>
-                        ) : (
-                          <span key={i}>{part.content}</span>
-                        )
-                      ))}
+                      {content.contentTitle}
                     </h3>
-                    <div className="text-lg md:text-xl leading-[1.8] text-gray-700 whitespace-pre-line">
-                      {parseHtmlContent(content.contentText).map((part, i) => (
-                        part.type === 'link' ? (
-                          <a 
-                            key={i}
-                            href={part.href}
-                            className="text-blue-500 hover:text-blue-700 hover:underline font-bold"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {part.content}
-                          </a>
-                        ) : (
-                          <span key={i}>{part.content}</span>
-                        )
-                      ))}
+                    <div className="text-lg md:text-xl leading-[1.8] text-gray-700">
+                      {renderContent(content.contentText)}
                     </div>
                   </div>
                 ))}
