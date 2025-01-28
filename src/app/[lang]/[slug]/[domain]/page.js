@@ -1,7 +1,7 @@
-import { getPageBySlug, getArticles, getCustomRecommendations } from '../../../lib/api/index';
+import { getPageBySlug, getArticles, getCustomRecommendations } from '../../../../lib/api/index';
 import { notFound } from 'next/navigation';
-import { ClientWrapper } from '../../../components/layouts/client-wrapper';
-import CommonLayout from '../../../components/layouts/layout';
+import { ClientWrapper } from '../../../../components/layouts/client-wrapper';
+import CommonLayout from '../../../../components/layouts/layout';
 import Script from 'next/script'
 
 // 添加这个配置来启用动态路由
@@ -17,17 +17,15 @@ export const revalidate = 86400; // 24小时重新验证一次
 export default async function ArticlePage({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
-    const { lang, slug } = resolvedParams;
-    const articleData = await getPageBySlug(slug, lang, 'websitelm.com');
+    const { lang, slug, domain } = resolvedParams;
+    
+    const articleData = await getPageBySlug(slug, lang, domain);
 
-    // 立即处理错误情况
     if (!articleData?.data) {
-      console.error(`Article not found for slug: ${slug}`);
       return notFound();
     }
     
     const article = articleData.data;
-    console.log('article data', article)
     const articleSchema = {
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -41,10 +39,10 @@ export default async function ArticlePage({ params }) {
       },
       publisher: {
         '@type': 'Organization',
-        name: 'WebsiteLM',
+        name: article.publisher,
         logo: {
           '@type': 'ImageObject',
-          url: 'https://websitelm.com/logo.png'
+          url: article.publisherLogo
         }
       },
       mainEntityOfPage: {
@@ -65,7 +63,6 @@ export default async function ArticlePage({ params }) {
       </>
     );
   } catch (error) {
-    console.error('Error in ArticlePage:', error);
     throw error;
   }
 }
@@ -77,9 +74,9 @@ function joinArrayWithComma(arr) {
 export async function generateMetadata({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
-    const { lang = 'en', slug } = resolvedParams;
+    const { lang = 'en', slug, domain } = resolvedParams;
     
-    const articleData = await getPageBySlug(slug, lang, 'websitelm.com');
+    const articleData = await getPageBySlug(slug, lang, domain);
     
     if (!articleData?.data) {
       return {
@@ -92,7 +89,7 @@ export async function generateMetadata({ params }) {
     return {
       title: article.title, 
       description: article.description,
-      keywords: joinArrayWithComma(article.pageStats?.genKeywords) ,
+      keywords: joinArrayWithComma(article.pageStats?.genKeywords),
       robots: 'index, follow',
       openGraph: { 
         title: article.title,
@@ -117,18 +114,17 @@ export async function generateMetadata({ params }) {
         creator: ''
       },
       alternates: {
-        canonical: `https://websitelm.com/${lang}/${slug}`,
+        canonical: `https://${domain}/${lang}/${slug}`,
         languages: {
-          'en': `https://websitelm.com/en/${slug}`,
-          'zh': `https://websitelm.com/zh/${slug}`,
+          'en': `https://${domain}/en/${slug}`,
+          'zh': `https://${domain}/zh/${slug}`,
         }
       },
-      metadataBase: new URL('https://websitelm.site'),
+      metadataBase: new URL(`https://${domain}`),
       authors: [{ name: article.author }],
       category: article.category
     };
   } catch (error) {
-    console.error('Error generating metadata:', error);
     return {
       title: 'Error',
       description: 'An error occurred while generating metadata.'
@@ -136,12 +132,12 @@ export async function generateMetadata({ params }) {
   }
 }
 
+// generateStaticParams 只预生成语言和 slug 的组合
 export async function generateStaticParams() {
   try {
     const response = await getArticles(process.env.CUSTOMER_ID, process.env.TOKEN);
     
     if (!response?.data) {
-      console.warn('No articles data received');
       return [];
     }
 
@@ -156,7 +152,6 @@ export async function generateStaticParams() {
       slug: article.pageLangId
     }));
   } catch (error) {
-    console.error('Error generating static params:', error);
     return []; 
   }
 }

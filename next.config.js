@@ -45,9 +45,11 @@ const nextConfig = {
     buildActivity: false
   },
   images: {
-    domains: [
-      'strapi.sheet2email.com',
-      'websitelm.com'  // 添加客户域名
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'strapi.sheet2email.com'
+      }
     ],
   },
   // 添加域名配置
