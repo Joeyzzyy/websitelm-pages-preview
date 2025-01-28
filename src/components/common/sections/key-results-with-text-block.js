@@ -6,16 +6,19 @@ import themeConfig from '../../../styles/themeConfig';
 const parseHtmlContent = (htmlString) => {
   if (!htmlString) return [];
   
+  // 首先移除所有的 <p> 标签，但保留内容
+  let cleanedHtml = htmlString.replace(/<\/?p>/g, '');
+  
   const result = [];
   let currentIndex = 0;
   // 同时匹配图片和链接标签
   const regex = /<(img|a)\s+[^>]*?(src|href)="([^"]*)"[^>]*>(?:(.*?)<\/a>)?/g;
   
   let match;
-  while ((match = regex.exec(htmlString)) !== null) {
+  while ((match = regex.exec(cleanedHtml)) !== null) {
     // 添加标签前的文本
     if (match.index > currentIndex) {
-      const textContent = htmlString.slice(currentIndex, match.index).trim();
+      const textContent = cleanedHtml.slice(currentIndex, match.index).trim();
       if (textContent) {
         result.push({
           type: 'text',
@@ -48,8 +51,8 @@ const parseHtmlContent = (htmlString) => {
   }
   
   // 添加最后剩余的文本
-  if (currentIndex < htmlString.length) {
-    const textContent = htmlString.slice(currentIndex).trim();
+  if (currentIndex < cleanedHtml.length) {
+    const textContent = cleanedHtml.slice(currentIndex).trim();
     if (textContent) {
       result.push({
         type: 'text',
