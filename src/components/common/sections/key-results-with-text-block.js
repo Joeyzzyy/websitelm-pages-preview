@@ -6,69 +6,128 @@ import themeConfig from '../../../styles/themeConfig';
 const parseContent = (content) => {
   if (!content) return [];
   
-  // 移除 <p> 标签
-  const cleanedContent = content.replace(/<\/?p>/g, '');
+  // 使用统一的解析方法，不区分服务器/客户端
+  const cleanContent = content.replace(/\r\n/g, '\n'); // 统一换行符
   
   const result = [];
   let currentIndex = 0;
   
-  // 使用单个正则表达式处理所有情况
-  const htmlRegex = /<(?:div class="video-container"><video|img|a|video)(?:[^>]*?\s+)?(?:src|href)="([^"]*)"[^>]*>(?:(.*?)<\/(?:a|video|div)>)?/g;
-  
+  // 使用正则表达式匹配所有标签
+  const tagRegex = /<(\/?)(\w+)(?:\s+[^>]*)?>/g;
   let match;
-  while ((match = htmlRegex.exec(cleanedContent)) !== null) {
-    // 处理匹配前的文本
+  let stack = [];
+  
+  while ((match = tagRegex.exec(cleanContent)) !== null) {
+    const [fullMatch, isClosing, tagName] = match;
+    
+    // 处理标签前的文本
     if (match.index > currentIndex) {
-      result.push({
-        type: 'text',
-        content: cleanedContent.slice(currentIndex, match.index)
-      });
+      const text = cleanContent.slice(currentIndex, match.index);
+      if (text) {
+        result.push({
+          type: 'text',
+          content: text
+        });
+      }
     }
     
-    // 判断标签类型
-    const tagType = match[0].startsWith('<div class="video-container">') ? 'video' :
-                   match[0].startsWith('<img') ? 'image' :
-                   match[0].startsWith('<a') ? 'link' :
-                   match[0].startsWith('<video') ? 'video' : null;
-    
-    // 根据类型添加对应的内容
-    switch (tagType) {
-      case 'image':
-        result.push({
-          type: 'image',
-          src: match[1],
-          alt: match[0].match(/alt="([^"]*)"/)?.[1] || ''
-        });
-        break;
-      case 'link':
-        let href = match[1];
-        if (!href.match(/^https?:\/\//)) {
-          href = `https://${href}`;
+    // 处理标签
+    const tag = tagName.toLowerCase();
+    if (!isClosing) { // 开始标签
+      switch (tag) {
+        case 'br':
+          result.push({
+            type: 'text',
+            content: '\n'
+          });
+          break;
+          
+        case 'img':
+          const src = fullMatch.match(/src="([^"]*)"/)?.[1] || '';
+          const alt = fullMatch.match(/alt="([^"]*)"/)?.[1] || '';
+          result.push({
+            type: 'image',
+            src,
+            alt
+          });
+          break;
+          
+        case 'video':
+          const videoSrc = fullMatch.match(/src="([^"]*)"/)?.[1] || '';
+          result.push({
+            type: 'video',
+            src: videoSrc,
+            controls: true,
+            preload: 'metadata'
+          });
+          break;
+          
+        case 'a':
+          stack.push({
+            type: 'link',
+            href: fullMatch.match(/href="([^"]*)"/)?.[1] || '',
+            startIndex: result.length
+          });
+          break;
+          
+        case 'b':
+          stack.push({
+            type: 'bold',
+            startIndex: result.length
+          });
+          break;
+          
+        case 'i':
+          stack.push({
+            type: 'italic',
+            startIndex: result.length
+          });
+          break;
+      }
+    } else { // 结束标签
+      const openTag = stack.pop();
+      if (openTag) {
+        const content = result.slice(openTag.startIndex);
+        result.length = openTag.startIndex;
+        
+        switch (openTag.type) {
+          case 'link':
+            result.push({
+              type: 'link',
+              href: openTag.href,
+              content: content.map(item => item.content).join('')
+            });
+            break;
+            
+          case 'bold':
+            result.push({
+              type: 'bold',
+              nested: content.length > 1,
+              children: content,
+              content: content.map(item => item.content).join('')
+            });
+            break;
+            
+          case 'italic':
+            result.push({
+              type: 'italic',
+              nested: content.length > 1,
+              children: content,
+              content: content.map(item => item.content).join('')
+            });
+            break;
         }
-        result.push({
-          type: 'link',
-          href,
-          content: match[2] || ''
-        });
-        break;
-      case 'video':
-        result.push({
-          type: 'video',
-          src: match[1],
-          controls: true,
-          preload: 'metadata'
-        });
-        break;
+      }
     }
     
-    currentIndex = match.index + match[0].length;
+    currentIndex = match.index + fullMatch.length;
   }
   
   // 处理剩余文本
-  if (currentIndex < cleanedContent.length) {
+  if (currentIndex < cleanContent.length) {
     result.push({
       type: 'text',
-      content: cleanedContent.slice(currentIndex)
+      content: cleanContent.slice(currentIndex)
     });
   }
   
@@ -196,62 +255,77 @@ const KeyResultsWithTextBlock = ({ data, theme = 'normal' }) => {
 
   // 修改 renderContent 函数以支持链接渲染
   const renderContent = (content) => {
-    const hasHtmlTags = /<[^>]*>/g.test(content);
-    
-    if (!hasHtmlTags) {
-      return (
-        <p key="simple-text" className={`${themeConfig[theme].typography.paragraph.fontSize} ${themeConfig[theme].typography.paragraph.color} mb-4 whitespace-pre-line`}>
-          {content}
-        </p>
-      );
-    }
-
     const parsedContent = parseContent(content);
-    return parsedContent.map((item, index) => {
-      switch (item.type) {
+    
+    return parsedContent.map((part, index) => {
+      switch (part.type) {
         case 'text':
-          return item.content ? (
-            <span key={`text-${index}`} className="whitespace-pre-line">
-              {item.content}
-            </span>
-          ) : null;
+          // 将文本内容中的 \n 分割并用 <br /> 连接
+          return part.content.split('\n').map((text, i, array) => (
+            <React.Fragment key={`text-${index}-${i}`}>
+              {text}
+              {i < array.length - 1 && <br />}
+            </React.Fragment>
+          ));
+        
         case 'image':
           return (
-            <div key={`image-${index}`} className="my-4">
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="w-full h-auto rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
-                loading="lazy"
-                onClick={() => setSelectedImage({ src: item.src, alt: item.alt })}
-              />
-            </div>
+            <img
+              key={`image-${index}`}
+              src={part.src}
+              alt={part.alt}
+              className="max-w-full h-auto my-4 rounded-lg shadow-sm"
+              onClick={() => setSelectedImage({ src: part.src, alt: part.alt })}
+            />
           );
+        
         case 'link':
           return (
-            <span key={`link-wrapper-${index}`}>{' '}<a
+            <a
               key={`link-${index}`}
-              href={item.href}
+              href={part.href}
               className="text-blue-500 hover:text-blue-700 hover:underline font-bold"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {item.content}
-            </a>{' '}</span>
+              {part.content}
+            </a>
           );
+        
         case 'video':
           return (
-            <div key={`video-${index}`} className="my-4 w-full aspect-video">
+            <div key={`video-${index}`} className="video-container my-4">
               <video
-                src={item.src}
-                controls
-                preload="metadata"
-                className="w-full h-full rounded-lg"
-              >
-                您的浏览器不支持视频播放。
-              </video>
+                src={part.src}
+                controls={part.controls}
+                preload={part.preload}
+                className="embedded-video w-full rounded-lg"
+              />
             </div>
           );
+        
+        case 'italic':
+          return part.nested ? (
+            <i key={`italic-${index}`} className="italic">
+              {part.children.map((child, childIndex) => renderContent([child])[0])}
+            </i>
+          ) : (
+            <i key={`italic-${index}`} className="italic">
+              {part.content}
+            </i>
+          );
+        
+        case 'bold':
+          return part.nested ? (
+            <b key={`bold-${index}`} className="font-bold">
+              {part.children.map((child, childIndex) => renderContent([child])[0])}
+            </b>
+          ) : (
+            <b key={`bold-${index}`} className="font-bold">
+              {part.content}
+            </b>
+          );
+        
         default:
           return null;
       }
