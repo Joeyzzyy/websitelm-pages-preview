@@ -113,18 +113,26 @@ const CommonLayout = ({ article, keywords }) => {
         />
       )}
 
-      <div className="flex-1 w-full max-w-[100vw] overflow-x-hidden pt-[80px]">
-        {sections.map(section => {
+      <div className="flex-1 w-full max-w-[100vw] overflow-x-hidden pt-[60px]">
+        {sections.map((section, index) => {
           const Component = COMPONENT_MAP[section.componentName];
           if (!Component) return null;
           
           return (
-            <Component 
-              key={`${section.componentName}-${section.position}`} 
-              data={section}
-              author={author}
-              date={article.createdAt}
-            />
+            <div 
+              key={`${section.componentName}-${section.position}`}
+              className={`w-full ${
+                index % 2 === 1 
+                  ? 'bg-gradient-to-b from-white via-[#E5EDFF] to-white' 
+                  : 'bg-white'
+              }`}
+            >
+              <Component 
+                data={section}
+                author={author}
+                date={article.createdAt}
+              />
+            </div>
           );
         })}
       </div>

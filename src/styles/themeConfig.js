@@ -17,9 +17,9 @@ const themeConfig = {
     section: {
       base: 'w-full transition-all duration-200',
       background: {
-        primary: 'bg-white',
-        secondary: 'bg-gray-50',
-        highlight: 'bg-[#3374FF]/5'
+        primary: '',
+        secondary: '',
+        highlight: 'bg-gray-100'
       },
       padding: {
         base: 'py-12 md:py-16',
@@ -118,9 +118,9 @@ const themeConfig = {
     section: {
       base: 'w-full transition-all duration-200',
       background: {
-        primary: 'bg-gradient-to-br from-slate-50 via-blue-50/70 to-violet-50/50 backdrop-blur-sm',
-        secondary: 'bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/10 via-indigo-200/5 to-violet-200/10 backdrop-blur-md',
-        highlight: 'bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-indigo-500/5 to-violet-500/10 backdrop-blur-lg'
+        primary: '',
+        secondary: '',
+        highlight: ''
       },
       padding: {
         base: 'py-12 md:py-16',

@@ -1,10 +1,8 @@
 'use client';
 import React from 'react';
 import themeConfig from '../../../styles/themeConfig';
-import { useRouter } from 'next/navigation';
 
 const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
-  const router = useRouter();
   const currentTheme = themeConfig[theme];
 
   const handleButtonClick = (type) => (e) => {

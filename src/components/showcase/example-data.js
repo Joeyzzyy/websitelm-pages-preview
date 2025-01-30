@@ -11,9 +11,12 @@ export const exampleData = {
         topContent: {
           buttonText: 'Book a Demo',
           buttonLink: '/demo',
+          showButton: true,
           ctaButtonText: 'Get Started',
           ctaButtonLink: '/get-started',
+          showCtaButton: true,
           title: 'AI-crafted Content That Delivers Results.',
+          subTitle: 'Dominate search results and drive more traffic with AI-generated landing pages.',
           description: 'Dominate search results and drive more traffic with AI-generated landing pages and blog posts that are optimized for your audience and search engines.',
         }
       }
