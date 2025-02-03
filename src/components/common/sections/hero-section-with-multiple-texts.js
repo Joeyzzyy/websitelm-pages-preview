@@ -66,6 +66,23 @@ const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
                 {data.topContent.ctaButtonText}
               </button>
             )}
+
+            {/* Product Hunt Widget */}
+            {data.topContent.enableProductHunt && data.topContent.productHuntId && (
+              <a 
+                href={`https://www.producthunt.com/posts/${data.topContent.productHuntId}?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-${data.topContent.productHuntId}`}
+                target="_blank"
+                className="transition-transform duration-200 hover:scale-105"
+              >
+                <img 
+                  src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=${data.topContent.productHuntId}&theme=light`}
+                  alt={`${data.topContent.productHuntId} - Featured on Product Hunt`}
+                  style={{ width: '250px', height: '54px' }}
+                  width="250"
+                  height="54"
+                />
+              </a>
+            )}
           </div>
         </div>
       </div>
