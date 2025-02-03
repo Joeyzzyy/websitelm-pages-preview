@@ -2,13 +2,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import themeConfig from '../../../styles/themeConfig';
 
-// 修改提取标题的函数，返回所有匹配的副标题
+// 修改提取标题的函数，使用正则表达式替代 DOMParser
 const extractContentTitle = (contentText) => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(contentText, 'text/html');
-  const subtitleSpans = doc.querySelectorAll('span.content-subtitle');
-  // 返回所有副标题文本组成的数组
-  return Array.from(subtitleSpans).map(span => span.textContent);
+  if (!contentText) return [];
+  
+  const subtitleRegex = /<span[^>]*class="content-subtitle"[^>]*>(.*?)<\/span>/g;
+  const titles = [];
+  let match;
+  
+  while ((match = subtitleRegex.exec(contentText)) !== null) {
+    // 移除可能存在的HTML标签
+    const cleanTitle = match[1].replace(/<\/?[^>]+(>|$)/g, '');
+    if (cleanTitle.trim()) {
+      titles.push(cleanTitle.trim());
+    }
+  }
+  
+  return titles;
 };
 
 // 修改 parseHtmlContent 函数以支持链接标签
