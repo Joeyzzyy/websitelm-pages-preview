@@ -375,7 +375,7 @@ export const exampleData = {
       },
     },
   
-    HowItWorksWithThreeBlocks: {
+    HowItWorksWithBlocks: {
       order: 11,
       usedForAILandingPage: true,
       usedForAIBlog: false,
@@ -877,63 +877,88 @@ export const exampleData = {
       }
     },
   
-    PricingWithThreeCards: {
+    SubscriptionCard: {
       order: 23,
       usedForAILandingPage: false,
       usedForAIBlog: false,
-      title: 'Pricing With Three Cards',
+      title: 'Subscription Card',
       description: 'Display pricing plans with feature comparison',
       recommendedPosition: 'Lower section, after FAQ and before final CTA',
       filePath: 'src/components/common_components/pricing-with-three-cards.js',
       props: {
         author: 'websitelm',
-        title: 'Choose Your Plan',
+        title: '[DEMO] Choose Your Plan',
+        subTitle: '[DEMO] Select a plan that suits your needs',
         bottomContent: {
-          planOne: {
-            name: 'Basic',
-            price: '$29',
-            discount: 'SAVE 20%',
-            buttonText: 'Start Basic',
-            buttonLink: '/start-basic',
-            features: [
-              '5 AI video generations/month',
-              'Basic templates',
-              '720p video quality',
-              '10 languages support',
-              'Email support'
-            ]
-          },
-          planTwo: {
-            name: 'Professional',
-            price: '$79',
-            discount: 'MOST POPULAR',
-            buttonText: 'Start Pro',
-            buttonLink: '/start-pro',
-            features: [
-              '20 AI video generations/month',
-              'Premium templates',
-              '1080p video quality',
-              '25 languages support',
-              'Priority support',
-              'Custom branding'
-            ]
-          },
-          planThree: {
-            name: 'Enterprise',
-            price: 'Custom',
-            discount: 'BEST VALUE',
-            buttonText: 'Contact Sales',
-            buttonLink: '/contact-sales',
-            features: [
-              'Unlimited video generations',
-              'Custom templates',
-              '4K video quality',
-              'All languages support',
-              '24/7 dedicated support',
-              'API access',
-              'Custom integration'
-            ]
-          }
+          yearlyDiscount: '20%',
+          plans: [
+            {
+              name: 'Basic',
+              price: {
+                monthly: '29',
+                yearly: '24'
+              },
+              discount: '20%',
+              description: 'Perfect for getting started',
+              buttonText: 'Get Started',
+              popular: false,
+              features: [
+                {
+                  title: 'Core Features',
+                  items: [
+                    'Up to 10 users',
+                    'Basic analytics',
+                    'Email support'
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'Professional',
+              price: {
+                monthly: '79',
+                yearly: '64'
+              },
+              discount: '20%',
+              description: 'Best for growing teams',
+              buttonText: 'Start Free Trial',
+              popular: true,
+              features: [
+                {
+                  title: 'Everything in Basic, plus:',
+                  items: [
+                    'Up to 50 users',
+                    'Advanced analytics',
+                    'Priority support',
+                    'Custom integrations'
+                  ]
+                }
+              ]
+            },
+            {
+              name: 'Enterprise',
+              price: {
+                monthly: '199',
+                yearly: '164'
+              },
+              discount: '20%',
+              description: 'For large organizations',
+              buttonText: 'Contact Sales',
+              popular: false,
+              features: [
+                {
+                  title: 'Everything in Pro, plus:',
+                  items: [
+                    'Unlimited users',
+                    'Custom reporting',
+                    'Dedicated support',
+                    'Advanced security',
+                    'SLA guarantee'
+                  ]
+                }
+              ]
+            }
+          ]
         }
       }
     },

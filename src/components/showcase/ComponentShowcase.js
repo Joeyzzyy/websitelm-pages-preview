@@ -35,6 +35,7 @@ import JobListNormal from '../common/sections/job-list-normal';
 import MeetOurTeam from '../common/sections/meet-our-team';
 import FeaturesTabbed from '../common/sections/features-tabbed';
 import WhyChooseUsWithStory from '../common/sections/why-choose-us-with-story';
+import SubscriptionCard from '../common/sections/subscription-card';
 
 // 添加一个简单的数据验证函数
 const validateComponentData = (key, data) => {
@@ -229,6 +230,7 @@ const ComponentShowcase = () => {
                           if (key === 'MeetOurTeam') return <MeetOurTeam data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'FeaturesTabbed') return <FeaturesTabbed data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'WhyChooseUsWithStory') return <WhyChooseUsWithStory data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'SubscriptionCard') return <SubscriptionCard data={data.props} author="WebsiteLM" theme={theme} />;
                         } catch (error) {
                           console.error(`渲染组件 ${key} 时发生错误:`, error);
                           return (
