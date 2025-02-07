@@ -1,3 +1,5 @@
+import FeatureComparisonTable from "../common/sections/feature-comparison-table";
+
 export const exampleData = {
     HeroSectionWithMultipleTexts: {
       order: 1,
@@ -1267,6 +1269,152 @@ export const exampleData = {
             contentText: 'Our platform is more than just a tool - it\'s a community of forward-thinking creators and businesses. We regularly host webinars, workshops, and user meetups to share best practices and gather feedback.\n\nWe\'re proud of the impact we\'ve had so far, but we\'re even more excited about what\'s ahead. Whether you\'re a solo creator or part of a large organization, we\'re here to help you achieve your content creation goals more efficiently and effectively.'
           }
         ]
+      }
+    },
+    FeatureComparisonTable: {
+      order: 32,
+      usedForAILandingPage: false,
+      usedForAIBlog: false,
+      title: 'Feature Comparison Table',
+      description: 'Display feature comparison table',
+      filePath: 'src/components/common/sections/feature-comparison-table.js',
+      props: {
+        title: '[DEMO] Compare All Features',
+        subTitle: '[DEMO] Choose the plan that best fits your needs',
+        bottomContent: {
+          columns: [
+            {
+              title: 'Essential',
+              subtitle: 'Basic features',
+              recommended: false
+            },
+            {
+              title: 'Professional',
+              subtitle: 'Most popular',
+              recommended: true
+            },
+            {
+              title: 'Enterprise',
+              subtitle: 'Custom solutions',
+              recommended: false
+            }
+          ],
+          featureGroups: [
+            {
+              name: 'Core Features',
+              features: [
+                {
+                  name: 'Number of Users',
+                  values: ['Up to 10 users', 'Up to 50 users', 'Unlimited users']
+                },
+                {
+                  name: 'Storage Space',
+                  values: ['50 GB', '500 GB', 'Unlimited storage']
+                },
+                {
+                  name: 'Monthly AI Generations',
+                  values: ['1,000 generations', '10,000 generations', 'Unlimited']
+                },
+                {
+                  name: 'Export Formats',
+                  values: ['PDF, Word', 'PDF, Word, HTML', 'All formats']
+                }
+              ]
+            },
+            {
+              name: 'AI Capabilities',
+              features: [
+                {
+                  name: 'AI Content Generation',
+                  values: ['Basic templates', 'Advanced templates', 'Custom templates']
+                },
+                {
+                  name: 'Language Support',
+                  values: ['10 languages', '30 languages', '100+ languages']
+                },
+                {
+                  name: 'SEO Optimization',
+                  values: ['Basic analysis', 'Deep analysis', 'Real-time optimization']
+                },
+                {
+                  name: 'Content Personalization',
+                  values: ['✖', '✔', '✔']
+                },
+                {
+                  name: 'Smart Proofreading',
+                  values: ['Basic check', 'Advanced check', 'AI deep check']
+                }
+              ]
+            },
+            {
+              name: 'Collaboration Tools',
+              features: [
+                {
+                  name: 'Team Collaboration',
+                  values: ['Basic', 'Advanced', 'Enterprise-grade']
+                },
+                {
+                  name: 'Version Control',
+                  values: ['Last 5 versions', 'Last 30 versions', 'Unlimited versions']
+                },
+                {
+                  name: 'Comments & Feedback',
+                  values: ['✖', '✔', '✔']
+                },
+                {
+                  name: 'Workflow Management',
+                  values: ['✖', 'Basic workflow', 'Advanced workflow']
+                }
+              ]
+            },
+            {
+              name: 'Analytics & Reporting',
+              features: [
+                {
+                  name: 'Performance Analytics',
+                  values: ['Basic reports', 'Detailed reports', 'Custom reports']
+                },
+                {
+                  name: 'Data Export',
+                  values: ['CSV', 'CSV, Excel', 'All formats']
+                },
+                {
+                  name: 'Custom Dashboard',
+                  values: ['✖', '✔', '✔']
+                },
+                {
+                  name: 'API Access',
+                  values: ['✖', 'Basic API', 'Full API']
+                }
+              ]
+            },
+            {
+              name: 'Support Services',
+              features: [
+                {
+                  name: 'Customer Support',
+                  values: ['Email support', 'Priority support', '24/7 Dedicated support']
+                },
+                {
+                  name: 'Response Time',
+                  values: ['48 hours', '24 hours', '2 hours']
+                },
+                {
+                  name: 'Training Resources',
+                  values: ['Documentation', 'Online training', 'On-site training']
+                },
+                {
+                  name: 'Dedicated Manager',
+                  values: ['✖', '✖', '✔']
+                },
+                {
+                  name: 'SLA Guarantee',
+                  values: ['✖', '99.9%', '99.99%']
+                }
+              ]
+            }
+          ]
+        }
       }
     }
   };

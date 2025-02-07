@@ -36,6 +36,7 @@ import MeetOurTeam from '../common/sections/meet-our-team';
 import FeaturesTabbed from '../common/sections/features-tabbed';
 import WhyChooseUsWithStory from '../common/sections/why-choose-us-with-story';
 import SubscriptionCard from '../common/sections/subscription-card';
+import FeatureComparisonTable from '../common/sections/feature-comparison-table';
 
 // 添加一个简单的数据验证函数
 const validateComponentData = (key, data) => {
@@ -231,6 +232,7 @@ const ComponentShowcase = () => {
                           if (key === 'FeaturesTabbed') return <FeaturesTabbed data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'WhyChooseUsWithStory') return <WhyChooseUsWithStory data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'SubscriptionCard') return <SubscriptionCard data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'FeatureComparisonTable') return <FeatureComparisonTable data={data.props} author="WebsiteLM" theme={theme} />;
                         } catch (error) {
                           console.error(`渲染组件 ${key} 时发生错误:`, error);
                           return (
