@@ -31,7 +31,7 @@ export async function getPageBySlug(slug, lang, domain) {
     console.log('请求 URL:', url, '参数:', { domain, lang });
     
     const response = await axios.get(url, { 
-      params: { domain, lang }
+      params: { lang, domain }
     });
     console.log('response', response.data)
     return response.data;
