@@ -1,5 +1,3 @@
-import FeatureComparisonTable from "../common/sections/feature-comparison-table";
-
 export const exampleData = {
     HeroSectionWithMultipleTexts: {
       order: 1,
@@ -415,7 +413,7 @@ export const exampleData = {
     },
   
     ProductComparisonTable: {
-      order: 12,
+      order: 21,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Product Comparison Table',
@@ -794,31 +792,38 @@ export const exampleData = {
       recommendedPosition: 'Lower section, before CTA',
       filePath: 'src/components/common_components/faqs.js',
       props: {
-        author: 'websitelm',
-        title: 'Frequently Asked Questions',
-        bottomContent: [
+        topContent: [
           {
-            question: 'How does AI video creation work?',
-            answer: 'Our AI analyzes your input text and automatically generates matching visuals, animations, and voiceovers to create professional videos.'
+            question: "What is your product/service?",
+            answer: "Our product/service is designed to help businesses improve their efficiency and productivity. It offers comprehensive solutions for [specific problem/need]."
           },
           {
-            question: 'What languages are supported?',
-            answer: 'We support over 40 languages for both text and voice generation, making it perfect for global marketing.'
+            question: "How does it work?",
+            answer: "Our solution works through a simple three-step process: 1) Initial setup and configuration 2) Integration with your existing systems 3) Automated optimization and reporting."
           },
           {
-            question: 'How long does it take to create a video?',
-            answer: 'Most videos can be generated within minutes, depending on length and complexity.'
+            question: "What are the key benefits?",
+            answer: "The main benefits include: increased productivity, cost savings, improved accuracy, and better customer satisfaction. Our clients typically see results within the first month of implementation."
           },
           {
-            question: 'Can I customize the output?',
-            answer: 'Yes, you can customize various aspects including style, tone, pace, and branding elements.'
+            question: "How much does it cost?",
+            answer: "We offer flexible pricing plans tailored to different business sizes and needs. Contact our sales team for a detailed quote based on your specific requirements."
+          },
+          {
+            question: "Is there customer support available?",
+            answer: "Yes, we provide 24/7 customer support through multiple channels including phone, email, and live chat. Our dedicated support team is always ready to help."
           }
-        ]
+        ],
+        bottomContent: {
+          showButton: true,
+          buttonText: "Learn More",
+          buttonLink: "#"
+        }
       }
     },
   
     SubscriptionCard: {
-      order: 23,
+      order: 22,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Subscription Card',
@@ -904,7 +909,7 @@ export const exampleData = {
     },
   
     CallToAction: {
-      order: 24,
+      order: 23,
       usedForAILandingPage: true,
       usedForAIBlog: true,
       title: 'Call To Action',
@@ -923,7 +928,7 @@ export const exampleData = {
     },
   
     CallToActionWithImage: {
-      order: 25,
+      order: 24,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Call To Action With Image',
@@ -946,7 +951,7 @@ export const exampleData = {
     },
   
     CallToActionComplex: {
-      order: 26,
+      order: 25,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Call To Action Complex',
@@ -991,7 +996,7 @@ export const exampleData = {
     },
   
     CallToActionWithInput: {
-      order: 27,
+      order: 26,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Call To Action With Input',
@@ -1007,7 +1012,7 @@ export const exampleData = {
     },
   
     JobListNormal: {
-      order: 28,
+      order: 27,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Job List Normal',
@@ -1075,7 +1080,7 @@ export const exampleData = {
       }
     },
     MeetOurTeam: {
-      order: 29,
+      order: 28,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Meet Our Team',
@@ -1126,7 +1131,7 @@ export const exampleData = {
       }
     },
     FeaturesTabbed: {
-      order: 30,
+      order: 29,
       usedForAILandingPage: true,
       usedForAIBlog: false,
       title: 'Features Tabbed',
@@ -1168,7 +1173,7 @@ export const exampleData = {
       }
     },
     WhyChooseUsWithStory: {
-      order: 31,
+      order: 30,
       usedForAILandingPage: true,
       usedForAIBlog: false,
       title: 'Why Choose Us With Story',
@@ -1210,7 +1215,7 @@ export const exampleData = {
       }
     },
     FeatureComparisonTable: {
-      order: 32,
+      order: 31,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Feature Comparison Table',
