@@ -30,11 +30,6 @@ const HowItWorksWithWorkflow = ({ data, theme = 'normal' }) => {
             <h2 className={`${commonStyles.heading} mb-2`}>
               {topContent.title}
             </h2>
-            {topContent.description && (
-              <p className="text-gray-500 text-lg mb-8">
-                {topContent.description}
-              </p>
-            )}
             {topContent.subTitle && (
               <h3 className="text-xl text-gray-600 leading-relaxed mb-6">
                 {topContent.subTitle}
