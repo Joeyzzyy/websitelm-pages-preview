@@ -33,11 +33,11 @@ const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
               {data.topContent.subTitle}
             </h2>
             
-            <div className="pt-8 flex justify-center gap-4">
+            <div className="pt-8 flex flex-col md:flex-row justify-center items-center gap-4">
               {data.topContent.showButton && (
                 <button 
                   onClick={handleButtonClick('demo')}
-                  className={`px-8 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${currentTheme.button.base} bg-transparent text-white border-2 border-white hover:scale-105`}
+                  className={`w-full md:w-auto px-8 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${currentTheme.button.base} bg-transparent text-white border-2 border-white hover:scale-105`}
                 >
                   {data.topContent.buttonText}
                 </button>
@@ -46,7 +46,7 @@ const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
               {data.topContent.showCtaButton && (
                 <button 
                   onClick={handleButtonClick('getStarted')}
-                  className={`px-8 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${currentTheme.button.base} ${currentTheme.button.variants.primary} hover:scale-105`}
+                  className={`w-full md:w-auto px-8 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${currentTheme.button.base} ${currentTheme.button.variants.primary} hover:scale-105`}
                 >
                   {data.topContent.ctaButtonText}
                 </button>
@@ -57,12 +57,12 @@ const HeroSectionWithMultipleTexts = ({ data, theme = 'normal' }) => {
                 <a 
                   href={`https://www.producthunt.com/posts/${data.topContent.productHuntId}?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-${data.topContent.productHuntId}`}
                   target="_blank"
-                  className="transition-transform duration-200 hover:scale-105"
+                  className="w-full md:w-auto flex justify-center transition-transform duration-200 hover:scale-105"
                 >
                   <img 
                     src={`https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=${data.topContent.productHuntId}&theme=light`}
                     alt={`${data.topContent.productHuntId} - Featured on Product Hunt`}
-                    style={{ width: '250px', height: '54px' }}
+                    style={{ maxWidth: '250px', height: '54px' }}
                     width="250"
                     height="54"
                   />
