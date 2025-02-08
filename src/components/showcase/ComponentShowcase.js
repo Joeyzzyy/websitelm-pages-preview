@@ -17,7 +17,7 @@ import ProductBenefitsWithATable from '../common/sections/product-benefits-with-
 import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
 import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
 import Faqs from '../common/sections/faqs';
-import FaqTwoColumnsWithSmallTitle from '../common/sections/faq-two-columns-with-small-title';
+import FaqTwoColumnsWithSmallTitle from '../common/sections/faq-standard';
 import FaqTwoColumnsWithBigTitle from '../common/sections/faq-two-columns-with-big-title';
 import ProductComparisonTable from '../common/sections/product-comparison-table';
 import KeyResultsWithTextBlock from '../common/sections/key-results-with-text-block';
