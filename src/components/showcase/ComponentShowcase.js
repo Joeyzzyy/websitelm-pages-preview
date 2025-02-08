@@ -212,8 +212,6 @@ const ComponentShowcase = () => {
                           if (key === 'ProductBenefitsWithATable') return <ProductBenefitsWithATable data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'HeroSectionWithVideo') return <HeroSectionWithVideo data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'Faqs') return <Faqs data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'FaqTwoColumnsWithSmallTitle') return <FaqTwoColumnsWithSmallTitle data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'FaqTwoColumnsWithBigTitle') return <FaqTwoColumnsWithBigTitle data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'UserReviews') return <UserReviews data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'UserReviewsMovingCards') return <UserReviewsMovingCards data={data.props} author="WebsiteLM" theme={theme} />;
                           if (key === 'UserReviewsSquareCards') return <UserReviewsSquareCards data={data.props} author="WebsiteLM" theme={theme} />;

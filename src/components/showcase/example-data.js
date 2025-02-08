@@ -817,68 +817,6 @@ export const exampleData = {
       }
     },
   
-    FaqTwoColumnsWithSmallTitle: {
-      order: 21,
-      usedForAILandingPage: false,
-      usedForAIBlog: false,
-      title: 'FAQ Two Columns With Small Title',
-      description: 'Two-column FAQ section with left title and right expandable Q&A',
-      recommendedPosition: 'Lower section, before pricing',
-      filePath: 'src/components/common_components/faq-two-columns-with-small-title.js',
-      props: {
-        author: 'websitelm',
-        bottomContent: [
-          {
-            question: 'How does the AI video creation process work?',
-            answer: 'Our AI technology analyzes your input content and automatically generates professional videos by selecting appropriate visuals, animations, and transitions. The process is fully automated and typically takes just minutes.'
-          },
-          {
-            question: 'What languages do you support?',
-            answer: 'We currently support over 40 languages including English, Spanish, Chinese, Japanese, French, German, and many more. Each language comes with natural-sounding AI voiceover capabilities.'
-          },
-          {
-            question: 'How long does it take to create a video?',
-            answer: 'Most videos can be generated within 5-10 minutes, depending on the length and complexity of your content. This is significantly faster than traditional video production methods.'
-          },
-          {
-            question: 'Can I customize the video style and branding?',
-            answer: 'Yes, you can customize various aspects including visual style, color schemes, fonts, logos, and other branding elements to match your company identity.'
-          }
-        ]
-      }
-    },
-  
-    FaqTwoColumnsWithBigTitle: {
-      order: 22,
-      usedForAILandingPage: false,
-      usedForAIBlog: false,
-      title: 'FAQ Two Columns With Big Title',
-      description: 'Two-column FAQ section with left large title and right expandable Q&A',
-      recommendedPosition: 'Lower section, before pricing',
-      filePath: 'src/components/common_components/faq-two-columns-with-big-title.js',
-      props: {
-        author: 'websitelm',
-        bottomContent: [
-          {
-            question: 'What is websitelm AI Video Generator?',
-            answer: 'websitelm AI is an advanced platform that automatically transforms your text content into professional marketing videos using artificial intelligence technology.'
-          },
-          {
-            question: 'How many languages are supported?',
-            answer: 'We support over 40 languages with automatic subTitle generation and AI voiceover capabilities, making it perfect for global marketing campaigns.'
-          },
-          {
-            question: 'What makes websitelm different from traditional video tools?',
-            answer: 'Our AI-powered approach allows for rapid video creation in minutes instead of days, with automatic language localization and significant cost savings.'
-          },
-          {
-            question: 'Do I need video editing experience?',
-            answer: 'No experience needed. Our AI handles all the technical aspects of video creation, making it accessible to everyone regardless of their video editing skills.'
-          }
-        ]
-      }
-    },
-  
     SubscriptionCard: {
       order: 23,
       usedForAILandingPage: false,
