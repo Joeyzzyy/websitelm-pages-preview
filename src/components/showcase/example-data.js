@@ -212,26 +212,25 @@ export const exampleData = {
       filePath: 'src/components/common_components/why-choose-us-with-small-blocks.js',
       props: {
         topContent: {
-          emoji: '🏆',
-          title: 'Trusted by Thousands of Businesses Worldwide',
-          subTitle: 'Join a growing community of entrepreneurs, marketers, and businesses who use WebsiteLM to supercharge their online presence.'
+          title: 'Why Choose Us',
+          description: 'Discover our unique advantages'
         },
         bottomContent: [
-          {
-            icon: '📈',
-            title: '10,000+ websites built with WebsiteLM.',
-            content: ''
+          { 
+            topText: 'Feature 1',
+            middleText: '1000',
+            bottomText: 'Description 1'
           },
-          {
-            icon: '🌟',
-            title: 'Featured in over 10 well-known websites.',
-            content: ''
+          { 
+            topText: 'Feature 2',
+            middleText: '2000',
+            bottomText: 'Description 2'
           },
-          {
-            icon: '⭐',
-            title: 'Rated 4.8/5 on leading review platforms.',
-            content: ''
-          },
+          { 
+            topText: 'Feature 3',
+            middleText: '3000',
+            bottomText: 'Description 3'
+          }
         ]
       }
     },
@@ -350,7 +349,8 @@ export const exampleData = {
           title: 'How It Works',
           subTitle: 'WebsiteLM is a comprehensive AI-powered platform that streamlines website content creation and optimization.',
           buttonText: 'Get Started',
-          buttonLink: '/get-started'
+          buttonLink: '/get-started',
+          imageUrl: 'https://picsum.photos/1200/600'
         },
         bottomContent: [
           {
