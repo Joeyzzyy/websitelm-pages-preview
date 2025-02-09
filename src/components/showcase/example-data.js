@@ -354,19 +354,19 @@ export const exampleData = {
         },
         bottomContent: [
           {
-            number: 'Step 1',
+            number: '01',
             title: 'Analyze and Plan Your Website',
             subTitle: 'Input Your Website & Competitor Links',
             content: 'Start by entering your website URL along with those of your competitors. Our AI will analyze content, structure, SEO performance, and user experience to uncover gaps and opportunities. By comparing your site with competitors, we\'ll highlight your unique advantages, helping your customers better understand what sets you apart.'
           },
           {
-            number: 'Step 2',
+            number: '02',
             title: 'Build & Optimize Content',
             subTitle: 'Generate SEO-Optimized Content',
             content: 'Using advanced AI algorithms and your site\'s unique data, WebsiteLM will generate high-quality, SEO-friendly content for landing pages, blog posts, and knowledge base articles. The AI personalizes content based on your audience and industry, ensuring relevance and engagement. You can refine the content manually to ensure accuracy, validate critical data, and align with key performance metrics.'
           },
           {
-            number: 'Step 3',
+            number: '03',
             title: 'Publish & Monitor',
             subTitle: 'Launch & Optimize for Results',
             content: 'Once your content is ready, you can easily publish it to your website with WebsiteLM, as we provide seamless hosting to simplify the process. Our platform continuously monitors the content\'s SEO performance, enabling data-driven optimizations over time. Analyze page performance metrics and use these insights to refine future publishing strategies, enhancing your website\'s effectiveness.'
