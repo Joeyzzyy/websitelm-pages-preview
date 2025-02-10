@@ -53,6 +53,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'example.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'websitelm.com'
       }
     ],
   },
@@ -60,7 +64,7 @@ const nextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        // 可以添加额外的重写规则
+        
       ]
     }
   }

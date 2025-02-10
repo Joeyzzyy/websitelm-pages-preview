@@ -111,7 +111,7 @@ const CommonLayout = ({ article, keywords }) => {
   const author = article?.author || 'default';
 
   return (
-    <div suppressHydrationWarning>
+    <div suppressHydrationWarning className="min-h-screen flex flex-col">
       {headerData && (
         <Header 
           data={headerData} 
