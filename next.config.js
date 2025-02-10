@@ -49,6 +49,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'strapi.sheet2email.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'example.com'
       }
     ],
   },

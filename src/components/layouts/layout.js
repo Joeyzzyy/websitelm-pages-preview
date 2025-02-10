@@ -68,7 +68,7 @@ const COMPONENT_MAP = {
   CallToAction: CallToAction,
   PageListCard: PageListCard,
   SubscriptionCard: SubscriptionCard,
-  FeatureComparisonTable: FeatureComparisonTable
+  FeatureComparisonTable: FeatureComparisonTable,
 };
 
 const generateSchemaMarkup = (article) => {
