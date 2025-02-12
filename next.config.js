@@ -48,17 +48,18 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'strapi.sheet2email.com'
-      },
-      {
-        protocol: 'https',
-        hostname: 'example.com'
+        hostname: 'websitelm-us-east-2.s3.us-west-2.amazonaws.com'
       },
       {
         protocol: 'https',
         hostname: 'websitelm.com'
+      },
+      {
+        protocol: 'https',
+        hostname: '*',
       }
     ],
+    domains: ['websitelm-us-east-2.s3.us-west-2.amazonaws.com'],
   },
   // 添加域名配置
   async rewrites() {
