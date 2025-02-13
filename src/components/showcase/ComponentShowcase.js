@@ -48,7 +48,6 @@ const validateComponentData = (key, data) => {
 const ComponentShowcase = () => {
   const [expandedCodes, setExpandedCodes] = useState({});
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [theme, setTheme] = useState('normal');
   const [showAIOnly, setShowAIOnly] = useState(false);
   const [showAIBlogOnly, setShowAIBlogOnly] = useState(false);
   const componentRefs = {};
@@ -199,36 +198,36 @@ const ComponentShowcase = () => {
                       {(() => {
                         try {
                           // 原有的组件渲染逻辑
-                          if (key === 'TitleSection') return <TitleSection data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'TitleSectionWithImage') return <TitleSectionWithImage data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'HeroSectionWithMultipleTexts') return <HeroSectionWithMultipleTexts data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'HowItWorksWithWorkflow') return <HowItWorksWithWorkflow data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'HowItWorksWithBlocks') return <HowItWorksWithBlocks data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'WhyChooseUsWithBlocks') return <WhyChooseUsWithBlocks data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'WhyChooseUsWithSmallBlocks') return <WhyChooseUsWithSmallBlocks data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'CallToActionWithImage') return <CallToActionWithImage data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'CallToAction') return <CallToAction data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'ProductBenefitsWithFourBlocks') return <ProductBenefitsWithFourBlocks data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'ProductBenefitsWithATable') return <ProductBenefitsWithATable data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'HeroSectionWithVideo') return <HeroSectionWithVideo data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'Faqs') return <Faqs data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'UserReviews') return <UserReviews data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'UserReviewsMovingCards') return <UserReviewsMovingCards data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'UserReviewsSquareCards') return <UserReviewsSquareCards data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'KeyResultsWithThreeCards') return <KeyResultsWithThreeCards data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'KeyResultsWithImage') return <KeyResultsWithImage data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'KeyResultsWithTextBlock') return <KeyResultsWithTextBlock data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'MoreInsightsWithFourCards') return <MoreInsightsWithFourCards data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'TrustedByLogos') return <TrustedByLogos data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'ProductComparisonTable') return <ProductComparisonTable data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'CallToActionComplex') return <CallToActionComplex data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'CallToActionWithInput') return <CallToActionWithInput data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'JobListNormal') return <JobListNormal data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'MeetOurTeam') return <MeetOurTeam data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'FeaturesTabbed') return <FeaturesTabbed data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'WhyChooseUsWithStory') return <WhyChooseUsWithStory data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'SubscriptionCard') return <SubscriptionCard data={data.props} author="WebsiteLM" theme={theme} />;
-                          if (key === 'FeatureComparisonTable') return <FeatureComparisonTable data={data.props} author="WebsiteLM" theme={theme} />;
+                          if (key === 'TitleSection') return <TitleSection data={data.props} author="WebsiteLM" />;
+                          if (key === 'TitleSectionWithImage') return <TitleSectionWithImage data={data.props} author="WebsiteLM" />;
+                          if (key === 'HeroSectionWithMultipleTexts') return <HeroSectionWithMultipleTexts data={data.props} author="WebsiteLM" />;
+                          if (key === 'HowItWorksWithWorkflow') return <HowItWorksWithWorkflow data={data.props} author="WebsiteLM" />;
+                          if (key === 'HowItWorksWithBlocks') return <HowItWorksWithBlocks data={data.props} author="WebsiteLM" />;
+                          if (key === 'WhyChooseUsWithBlocks') return <WhyChooseUsWithBlocks data={data.props} author="WebsiteLM" />;
+                          if (key === 'WhyChooseUsWithSmallBlocks') return <WhyChooseUsWithSmallBlocks data={data.props} author="WebsiteLM" />;
+                          if (key === 'CallToActionWithImage') return <CallToActionWithImage data={data.props} author="WebsiteLM" />;
+                          if (key === 'CallToAction') return <CallToAction data={data.props} author="WebsiteLM" />;
+                          if (key === 'ProductBenefitsWithFourBlocks') return <ProductBenefitsWithFourBlocks data={data.props} author="WebsiteLM" />;
+                          if (key === 'ProductBenefitsWithATable') return <ProductBenefitsWithATable data={data.props} author="WebsiteLM" />;
+                          if (key === 'HeroSectionWithVideo') return <HeroSectionWithVideo data={data.props} author="WebsiteLM" />;
+                          if (key === 'Faqs') return <Faqs data={data.props} author="WebsiteLM" />;
+                          if (key === 'UserReviews') return <UserReviews data={data.props} author="WebsiteLM" />;
+                          if (key === 'UserReviewsMovingCards') return <UserReviewsMovingCards data={data.props} author="WebsiteLM" />;
+                          if (key === 'UserReviewsSquareCards') return <UserReviewsSquareCards data={data.props} author="WebsiteLM" />;
+                          if (key === 'KeyResultsWithThreeCards') return <KeyResultsWithThreeCards data={data.props} author="WebsiteLM" />;
+                          if (key === 'KeyResultsWithImage') return <KeyResultsWithImage data={data.props} author="WebsiteLM" />;
+                          if (key === 'KeyResultsWithTextBlock') return <KeyResultsWithTextBlock data={data.props} author="WebsiteLM" />;
+                          if (key === 'MoreInsightsWithFourCards') return <MoreInsightsWithFourCards data={data.props} author="WebsiteLM" />;
+                          if (key === 'TrustedByLogos') return <TrustedByLogos data={data.props} author="WebsiteLM" />;
+                          if (key === 'ProductComparisonTable') return <ProductComparisonTable data={data.props} author="WebsiteLM" />;
+                          if (key === 'CallToActionComplex') return <CallToActionComplex data={data.props} author="WebsiteLM" />;
+                          if (key === 'CallToActionWithInput') return <CallToActionWithInput data={data.props} author="WebsiteLM" />;
+                          if (key === 'JobListNormal') return <JobListNormal data={data.props} author="WebsiteLM" />;
+                          if (key === 'MeetOurTeam') return <MeetOurTeam data={data.props} author="WebsiteLM" />;
+                          if (key === 'FeaturesTabbed') return <FeaturesTabbed data={data.props} author="WebsiteLM" />;
+                          if (key === 'WhyChooseUsWithStory') return <WhyChooseUsWithStory data={data.props} author="WebsiteLM" />;
+                          if (key === 'SubscriptionCard') return <SubscriptionCard data={data.props} author="WebsiteLM" />;
+                          if (key === 'FeatureComparisonTable') return <FeatureComparisonTable data={data.props} author="WebsiteLM" />;
                         } catch (error) {
                           console.error(`渲染组件 ${key} 时发生错误:`, error);
                           return (
@@ -246,39 +245,8 @@ const ComponentShowcase = () => {
           })}
         </div>
 
-        {/* Navigation Menu - Update floating navigation menu style */}
+        {/* Navigation Menu - 移除 Theme Switcher，只保留 Navigation Menu */}
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
-          {/* Theme Switcher */}
-          <div className="bg-slate-800 rounded-lg shadow-lg p-3 border border-slate-700 w-[180px]">
-            <div className="flex flex-col gap-2">
-              <span className="text-slate-300 text-sm">Theme:</span>
-              <div className="flex flex-col gap-2">
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="normal"
-                    checked={theme === 'normal'}
-                    onChange={(e) => setTheme(e.target.value)}
-                    className="text-blue-500 focus:ring-blue-500 h-4 w-4"
-                  />
-                  <span className="text-slate-300 text-sm">Default</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="tech"
-                    checked={theme === 'tech'}
-                    onChange={(e) => setTheme(e.target.value)}
-                    className="text-blue-500 focus:ring-blue-500 h-4 w-4"
-                  />
-                  <span className="text-slate-300 text-sm">Tech</span>
-                </label>
-              </div>
-            </div>
-          </div>
-
           {/* Navigation Menu */}
           {isNavOpen ? (
             <div className="bg-slate-800 rounded-lg shadow-lg p-3 w-[280px] border border-slate-700">

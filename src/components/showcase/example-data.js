@@ -18,6 +18,7 @@ export const exampleData = {
           title: 'AI-crafted Content That Delivers Results.',
           subTitle: 'Dominate search results and drive more traffic with AI-generated landing pages.',
           description: 'Dominate search results and drive more traffic with AI-generated landing pages and blog posts that are optimized for your audience and search engines.',
+          bannerImage: 'https://picsum.photos/1080/720'
         }
       }
     },
@@ -129,34 +130,33 @@ export const exampleData = {
       recommendedPosition: 'Upper section, after title',
       filePath: 'src/components/common_components/product-benefits-with-four-blocks.js',
       props: {
-        author: 'websitelm',
-        leftContent: {
-          title: 'Smart Video Creation Platform',
-          description: 'Make video creation easier and marketing more efficient',
-          buttonText: 'Free Trial',
-          buttonLink: '/free-trial'
+        "leftContent": {
+            "buttonLink": "#",
+            "buttonText": "Learn More",
+            "description": "Discover the advantages of our solution",
+            "title": "Product Benefits"
         },
-        rightContent: [
-          {
-            icon: '🎥',
-            title: 'AI Video Generation',
-            content: 'Just input text to automatically generate professional videos'
-          },
-          {
-            icon: '🎯',
-            title: 'Precise Marketing',
-            content: 'Customize multilingual video content for different markets'
-          },
-          {
-            icon: '⚡',
-            title: 'Efficiency Boost',
-            content: 'Reduce video production time by 90%'
-          },
-          {
-            icon: '💰',
-            title: 'Cost Saving',
-            content: 'Significantly reduce video production and localization costs'
-          }
+        "rightContent": [
+            {
+                "content": "Description of benefit 1, with a long description to test the layout",
+                "icon": "mdi:check",
+                "title": "Benefit 1"
+            },
+            {
+                "content": "Description of benefit 2, with a long description to test the layout",
+                "icon": "mdi:close",
+                "title": "Benefit 2"
+            },
+            {
+                "content": "Description of benefit 3, with a long description to test the layout",
+                "icon": "mdi:download",
+                "title": "Benefit 3"
+            },
+            {
+                "content": "Description of benefit 4, with a long description to test the layout",
+                "icon": "mdi:heart",
+                "title": "Benefit 4"
+            }
         ]
       }
     },
@@ -170,34 +170,37 @@ export const exampleData = {
       recommendedPosition: 'Upper section, after other benefits sections',
       filePath: 'src/components/common_components/product-benefits-with-a-table.js',
       props: {
-        leftContent: [
-          {
-            icon: '🎥',
-            contentTitle: 'AI Video Creation',
-            content: 'Generate professional videos automatically'
-          },
-          {
-            icon: '🌍',
-            contentTitle: 'Global Reach',
-            content: 'Support for 40+ languages'
-          },
-          {
-            icon: '⚡',
-            contentTitle: 'Fast Processing',
-            content: 'Complete videos in minutes'
-          },
-          {
-            icon: '💰',
-            contentTitle: 'Cost Effective',
-            content: 'Save up to 90% on video production'
-          }
+        "leftContent": {
+            "imageAlt": "Abstract image",
+            "imageUrl": "https://picsum.photos/1080/720"
+        },
+        "rightContent": [
+            {
+                "content": "Generate professional videos automatically",
+                "contentTitle": "AI Video Creation",
+                "icon": "mdi:help"
+            },
+            {
+                "content": "Support for 40+ languages",
+                "contentTitle": "Global Reach",
+                "icon": "mdi:heart"
+            },
+            {
+                "content": "Complete videos in minutes",
+                "contentTitle": "Fast Processing",
+                "icon": "mdi:sync"
+            },
+            {
+                "content": "Save up to 90% on video production",
+                "contentTitle": "Cost Effective",
+                "icon": "mdi:document"
+            }
         ],
-        rightContent: {
-          icon: '🚀',
-          title: 'Ready to Transform Your Video Marketing?',
-          subTitle: 'Join thousands of businesses using websitelm AI',
-          buttonText: 'Start Free Trial',
-          buttonLink: '/free-trial'
+        "topContent": {
+            "buttonLink": "https://websitelm.com",
+            "buttonText": "Start Free Trial",
+            "description": "Discover the benefits of using our product",
+            "title": "Product Benefits"
         }
       }
     },
@@ -256,7 +259,7 @@ export const exampleData = {
               title: 'Save Time and Effort',
               subTitle: 'Efficient Content Automation',
               content: 'WebsiteLM automates the content creation process, allowing you to focus on growing your business rather than spending hours generating content. With AI-driven technology, you can quickly produce high-quality SEO-optimized pages and blog posts.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -266,7 +269,7 @@ export const exampleData = {
               title: 'Improve SEO Performance',
               subTitle: 'SEO-Optimized Content',
               content: 'WebsiteLM ensures that all generated content follows the best SEO practices, enhancing your website\'s search engine rankings. From keyword analysis to content structuring, every piece is designed to drive organic traffic.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -276,7 +279,7 @@ export const exampleData = {
               title: 'Boost Conversion Rates',
               subTitle: 'Engaging and Persuasive Copy',
               content: 'With AI-crafted content that speaks directly to your audience\'s needs and pain points, WebsiteLM helps you build trust and drive more actions. Whether it\'s a landing page or a blog post, the content is optimized to convert visitors into loyal customers.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -286,7 +289,7 @@ export const exampleData = {
               title: 'Data-Driven Insights',
               subTitle: 'Real-Time Performance Monitoring',
               content: 'WebsiteLM provides detailed analytics, helping you track the performance of your SEO efforts. From traffic data to keyword rankings, you get actionable insights to continuously optimize your content and improve results.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -296,7 +299,7 @@ export const exampleData = {
               title: 'Scalable and Flexible',
               subTitle: 'Adaptable to Your Needs',
               content: 'WebsiteLM scales as your business grows. Whether you\'re managing a small blog or a large corporate website, our platform adapts to your needs, offering features like multi-language support and intelligent internal linking to enhance content discoverability and help you reach a broader audience.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -306,7 +309,7 @@ export const exampleData = {
               title: 'Seamless Content Integration',
               subTitle: 'Easy Publishing and Updates',
               content: 'Create, publish, and update content effortlessly. WebsiteLM automates the publishing process, ensuring that your website stays up-to-date with fresh, relevant content that ranks higher and attracts more traffic.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -316,7 +319,7 @@ export const exampleData = {
               title: 'Comprehensive Content Strategy',
               subTitle: 'All-in-One Content Management',
               content: 'From keyword analysis to content creation, optimization, and performance tracking, WebsiteLM is a comprehensive tool that helps you manage your entire content strategy in one place. Save time and streamline your content marketing efforts.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -326,7 +329,7 @@ export const exampleData = {
               title: 'Future-Proof AI Technology',
               subTitle: 'Constantly Evolving AI Models',
               content: 'WebsiteLM\'s AI technology is continuously improved to deliver better content quality, enhanced SEO performance, and smarter content strategies. Stay ahead of the curve with our constantly evolving platform that adapts to the latest trends and search engine algorithms.',
-              imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+              imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
               buttonLink: '/learn-more'
@@ -345,31 +348,33 @@ export const exampleData = {
       filePath: 'src/components/common_components/how-it-works-with-workflow.js',
       props: {
         topContent: {
-          icon: '🚀',
           title: 'How It Works',
           subTitle: 'WebsiteLM is a comprehensive AI-powered platform that streamlines website content creation and optimization.',
           buttonText: 'Get Started',
-          buttonLink: '/get-started',
-          imageUrl: 'https://picsum.photos/1200/600'
+          buttonLink: '#',
+          ctaButtonText: 'Learn More',
+          ctaButtonLink: '#',
+          imageUrl: 'https://picsum.photos/1200/600',
+          imageAlt: 'Workflow Diagram Example'
         },
         bottomContent: [
           {
             number: '01',
             title: 'Analyze and Plan Your Website',
             subTitle: 'Input Your Website & Competitor Links',
-            content: 'Start by entering your website URL along with those of your competitors. Our AI will analyze content, structure, SEO performance, and user experience to uncover gaps and opportunities. By comparing your site with competitors, we\'ll highlight your unique advantages, helping your customers better understand what sets you apart.'
+            content: 'Start by entering your website URL along with those of your competitors. Our AI will analyze content, structure, SEO performance, and user experience to uncover gaps and opportunities.'
           },
           {
             number: '02',
             title: 'Build & Optimize Content',
             subTitle: 'Generate SEO-Optimized Content',
-            content: 'Using advanced AI algorithms and your site\'s unique data, WebsiteLM will generate high-quality, SEO-friendly content for landing pages, blog posts, and knowledge base articles. The AI personalizes content based on your audience and industry, ensuring relevance and engagement. You can refine the content manually to ensure accuracy, validate critical data, and align with key performance metrics.'
+            content: 'Using advanced AI algorithms and your site\'s unique data, WebsiteLM will generate high-quality, SEO-friendly content for landing pages, blog posts, and knowledge base articles. The AI personalizes content based on your audience and industry, ensuring relevance and engagement.'
           },
           {
             number: '03',
             title: 'Publish & Monitor',
             subTitle: 'Launch & Optimize for Results',
-            content: 'Once your content is ready, you can easily publish it to your website with WebsiteLM, as we provide seamless hosting to simplify the process. Our platform continuously monitors the content\'s SEO performance, enabling data-driven optimizations over time. Analyze page performance metrics and use these insights to refine future publishing strategies, enhancing your website\'s effectiveness.'
+            content: 'Once your content is ready, you can easily publish it to your website with WebsiteLM, as we provide seamless hosting to simplify the process.'
           }
         ]
       },
@@ -384,9 +389,7 @@ export const exampleData = {
       recommendedPosition: 'Mid section, after workflow',
       filePath: 'src/components/common_components/how-it-works-with-three-blocks.js',
       props: {
-        author: 'websitelm',
         leftContent: {
-          icon: '🚀',
           title: 'How Our AI Works',
           subTitle: 'Transform your content into engaging videos with three simple steps',
           buttonText: 'Start Creating',
@@ -394,17 +397,14 @@ export const exampleData = {
         },
         rightContent: [
           {
-            icon: '📝',
             contentTitle: 'Input Content',
             content: 'Simply paste your text or upload your script to begin the creation process'
           },
           {
-            icon: '🎨',
             contentTitle: 'AI Processing',
             content: 'Our AI analyzes your content and generates matching visuals and animations'
           },
           {
-            icon: '🌐',
             contentTitle: 'Global Export',
             content: 'Export your video in multiple languages with auto-generated voiceovers'
           }
