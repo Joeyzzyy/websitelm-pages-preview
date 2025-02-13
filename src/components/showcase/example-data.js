@@ -3,7 +3,7 @@ export const exampleData = {
       order: 1,
       usedForAILandingPage: true,
       usedForAIBlog: false,
-      title: 'Hero Section With Multiple Texts',
+      title: 'Hero Section With Multiple Texts And Banner Image',
       description: 'Display main heading with gradient text effects and dual CTAs',
       recommendedPosition: 'Must be first component if Demo Showcase is not used',
       filePath: 'src/components/common/sections/hero-section-with-mutiple-texts.js',
@@ -18,7 +18,7 @@ export const exampleData = {
           title: 'AI-crafted Content That Delivers Results.',
           subTitle: 'Dominate search results and drive more traffic with AI-generated landing pages.',
           description: 'Dominate search results and drive more traffic with AI-generated landing pages and blog posts that are optimized for your audience and search engines.',
-          bannerImage: 'https://picsum.photos/1080/720'
+          bannerImage: 'https://picsum.photos/1920/1080'
         }
       }
     },
@@ -115,17 +115,17 @@ export const exampleData = {
           publishDate: '2024-11-23',
         },
         rightContent: {
-          imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+          imageUrl: 'https://picsum.photos/1080/720',
           imageAlt: 'Abstract image',
         }
       }
     },
     
-    ProductBenefitsWithFourBlocks: {
+    ProductBenefitsWithBlocks: {
       order: 6,
       usedForAILandingPage: true,
       usedForAIBlog: false,
-      title: 'Product Benefits With Four Blocks',
+      title: 'Product Benefits With Blocks',
       description: 'Display core product features or service highlights in four modules',
       recommendedPosition: 'Upper section, after title',
       filePath: 'src/components/common_components/product-benefits-with-four-blocks.js',

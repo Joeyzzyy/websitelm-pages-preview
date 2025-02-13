@@ -12,7 +12,7 @@ import WhyChooseUsWithSmallBlocks from '../common/sections/why-choose-us-with-sm
 import CallToAction from '../common/sections/call-to-action';
 import CallToActionWithImage from '../common/sections/call-to-action-with-image';
 import HowItWorksWithBlocks from '../common/sections/how-it-works-with-blocks';
-import ProductBenefitsWithFourBlocks from '../common/sections/product-benefits-with-blocks';
+import ProductBenefitsWithBlocks from '../common/sections/product-benefits-with-blocks';
 import ProductBenefitsWithATable from '../common/sections/product-benefits-with-table';
 import WhyChooseUsWithBlocks from '../common/sections/why-choose-us-with-blocks';
 import HeroSectionWithVideo from '../common/sections/hero-section-with-video';
@@ -207,7 +207,7 @@ const ComponentShowcase = () => {
                           if (key === 'WhyChooseUsWithSmallBlocks') return <WhyChooseUsWithSmallBlocks data={data.props} author="WebsiteLM" />;
                           if (key === 'CallToActionWithImage') return <CallToActionWithImage data={data.props} author="WebsiteLM" />;
                           if (key === 'CallToAction') return <CallToAction data={data.props} author="WebsiteLM" />;
-                          if (key === 'ProductBenefitsWithFourBlocks') return <ProductBenefitsWithFourBlocks data={data.props} author="WebsiteLM" />;
+                          if (key === 'ProductBenefitsWithBlocks') return <ProductBenefitsWithBlocks data={data.props} author="WebsiteLM" />;
                           if (key === 'ProductBenefitsWithATable') return <ProductBenefitsWithATable data={data.props} author="WebsiteLM" />;
                           if (key === 'HeroSectionWithVideo') return <HeroSectionWithVideo data={data.props} author="WebsiteLM" />;
                           if (key === 'Faqs') return <Faqs data={data.props} author="WebsiteLM" />;
