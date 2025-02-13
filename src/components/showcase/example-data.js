@@ -108,17 +108,27 @@ export const exampleData = {
       recommendedPosition: 'Upper section, after Hero Section',
       filePath: 'src/components/common_components/title-section-with-image.js',
       props: {
-        title: 'AI Video Creation Platform',
-        subTitle: 'Transform your content into engaging videos with AI technology',
+        title: '[DEMO] Enter Title Here',
+        subTitle: '[DEMO] Enter Subtitle Here',
         leftContent: {
-          author: 'websitelm',
-          publishDate: '2024-11-23',
+          author: 'Author Name',
+          publishDate: new Date().toISOString().split('T')[0],
+          breadcrumbs: [
+            {
+              text: 'Blog',
+              link: '/blog'
+            },
+            {
+              text: 'Category',
+              link: '#'
+            }
+          ]
         },
         rightContent: {
-          imageUrl: 'https://picsum.photos/1080/720',
-          imageAlt: 'Abstract image',
+          imageUrl: 'https://picsum.photos/1200/600',
+          imageAlt: '[SAMPLE] Image Description'
         }
-      }
+      },
     },
     
     ProductBenefitsWithBlocks: {

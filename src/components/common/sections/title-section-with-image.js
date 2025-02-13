@@ -13,17 +13,23 @@ const TitleSectionWithImage = ({ data }) => {
                 <div className="mb-6">
                   <nav className="flex" aria-label="Breadcrumb">
                     <ol className="flex items-center space-x-2">
-                      <li>
-                        <a href="/blog" className="text-xs text-gray-400 hover:text-blue-600">
-                          Blog
-                        </a>
-                      </li>
-                      <span className="text-xs text-gray-400">&gt;</span>
-                      <li>
-                        <a href="#" className="text-xs text-gray-400 hover:text-blue-600">
-                          Category
-                        </a>
-                      </li>
+                      {data?.leftContent?.breadcrumbs?.map((item, index) => (
+                        <React.Fragment key={index}>
+                          <li>
+                            <a 
+                              href={item.link} 
+                              className="text-xs text-gray-400 hover:text-blue-600"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {item.text}
+                            </a>
+                          </li>
+                          {index < data.leftContent.breadcrumbs.length - 1 && (
+                            <span className="text-xs text-gray-400">&gt;</span>
+                          )}
+                        </React.Fragment>
+                      ))}
                     </ol>
                   </nav>
                 </div>
