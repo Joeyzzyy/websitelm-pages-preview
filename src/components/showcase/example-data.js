@@ -9,6 +9,8 @@ export const exampleData = {
       filePath: 'src/components/common/sections/hero-section-with-mutiple-texts.js',
       props: {
         topContent: {
+          productHuntId: "",
+          enableProductHunt: false,
           buttonText: 'Book a Demo',
           buttonLink: '/demo',
           showButton: true,
@@ -260,14 +262,10 @@ export const exampleData = {
         topContent: {
             title: 'Why Choose WebsiteLM?',
             description: 'Among the many AI-powered website content creation tools available, WebsiteLM stands out for its comprehensive approach to website optimization. Our platform combines advanced AI algorithms with a deep understanding of your website\'s unique data to deliver results that are both efficient and effective.',
-            buttonText: 'Try Now',
-            buttonLink: '/try'
           },
           bottomContent: [
             {
-              icon: '⏱️',
               title: 'Save Time and Effort',
-              subTitle: 'Efficient Content Automation',
               content: 'WebsiteLM automates the content creation process, allowing you to focus on growing your business rather than spending hours generating content. With AI-driven technology, you can quickly produce high-quality SEO-optimized pages and blog posts.',
               imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
@@ -275,9 +273,7 @@ export const exampleData = {
               buttonLink: '/learn-more'
             },
             {
-              icon: '🎯',
               title: 'Improve SEO Performance',
-              subTitle: 'SEO-Optimized Content',
               content: 'WebsiteLM ensures that all generated content follows the best SEO practices, enhancing your website\'s search engine rankings. From keyword analysis to content structuring, every piece is designed to drive organic traffic.',
               imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
@@ -285,9 +281,7 @@ export const exampleData = {
               buttonLink: '/learn-more'
             },
             {
-              icon: '💡',
               title: 'Boost Conversion Rates',
-              subTitle: 'Engaging and Persuasive Copy',
               content: 'With AI-crafted content that speaks directly to your audience\'s needs and pain points, WebsiteLM helps you build trust and drive more actions. Whether it\'s a landing page or a blog post, the content is optimized to convert visitors into loyal customers.',
               imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
@@ -295,50 +289,8 @@ export const exampleData = {
               buttonLink: '/learn-more'
             },
             {
-              icon: '📊',
               title: 'Data-Driven Insights',
-              subTitle: 'Real-Time Performance Monitoring',
               content: 'WebsiteLM provides detailed analytics, helping you track the performance of your SEO efforts. From traffic data to keyword rankings, you get actionable insights to continuously optimize your content and improve results.',
-              imageUrl: 'https://picsum.photos/1080/720',
-              imageAlt: 'Abstract image',
-              buttonText: 'Learn More',
-              buttonLink: '/learn-more'
-            },
-            {
-              icon: '📈',
-              title: 'Scalable and Flexible',
-              subTitle: 'Adaptable to Your Needs',
-              content: 'WebsiteLM scales as your business grows. Whether you\'re managing a small blog or a large corporate website, our platform adapts to your needs, offering features like multi-language support and intelligent internal linking to enhance content discoverability and help you reach a broader audience.',
-              imageUrl: 'https://picsum.photos/1080/720',
-              imageAlt: 'Abstract image',
-              buttonText: 'Learn More',
-              buttonLink: '/learn-more'
-            },
-            {
-              icon: '💰',
-              title: 'Seamless Content Integration',
-              subTitle: 'Easy Publishing and Updates',
-              content: 'Create, publish, and update content effortlessly. WebsiteLM automates the publishing process, ensuring that your website stays up-to-date with fresh, relevant content that ranks higher and attracts more traffic.',
-              imageUrl: 'https://picsum.photos/1080/720',
-              imageAlt: 'Abstract image',
-              buttonText: 'Learn More',
-              buttonLink: '/learn-more'
-            },
-            {
-              icon: '💰️',
-              title: 'Comprehensive Content Strategy',
-              subTitle: 'All-in-One Content Management',
-              content: 'From keyword analysis to content creation, optimization, and performance tracking, WebsiteLM is a comprehensive tool that helps you manage your entire content strategy in one place. Save time and streamline your content marketing efforts.',
-              imageUrl: 'https://picsum.photos/1080/720',
-              imageAlt: 'Abstract image',
-              buttonText: 'Learn More',
-              buttonLink: '/learn-more'
-            },
-            {
-              icon: '💰',
-              title: 'Future-Proof AI Technology',
-              subTitle: 'Constantly Evolving AI Models',
-              content: 'WebsiteLM\'s AI technology is continuously improved to deliver better content quality, enhanced SEO performance, and smarter content strategies. Stay ahead of the curve with our constantly evolving platform that adapts to the latest trends and search engine algorithms.',
               imageUrl: 'https://picsum.photos/1080/720',
               imageAlt: 'Abstract image',
               buttonText: 'Learn More',
@@ -364,6 +316,8 @@ export const exampleData = {
           buttonLink: '#',
           ctaButtonText: 'Learn More',
           ctaButtonLink: '#',
+          showButton: true,
+          showCtaButton: true,
           imageUrl: 'https://picsum.photos/1200/600',
           imageAlt: 'Workflow Diagram Example'
         },
@@ -673,29 +627,29 @@ export const exampleData = {
       props: {
         bottomContent: [
           {
-            competitorLogo: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+            competitorLogo: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             competitorLogoAlt: 'Traditional Video Production',
             competitorName: 'Traditional Video Production',
             percentage: 85,
             metric: 'Cost Reduction',
             description: 'Businesses using websitelm AI report significant cost savings compared to traditional video production methods, with faster turnaround times.'
-          },
-          {
-            competitorLogo: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+        },
+        {
+            competitorLogo: 'https://ui-avatars.com/api/?name=Manual+Local&background=random',
             competitorLogoAlt: 'Manual Localization',
-            competitorName: 'Manual Localization',
+            competitorName: 'Manual Localization', 
             percentage: 90,
             metric: 'Time Saved',
             description: 'Our AI-powered localization process is dramatically faster than manual translation and voiceover recording methods.'
-          },
-          {
-            competitorLogo: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+        },
+        {
+            competitorLogo: 'https://ui-avatars.com/api/?name=Basic+Tools&background=random',
             competitorLogoAlt: 'Basic Video Tools',
             competitorName: 'Basic Video Tools',
             percentage: 73,
-            metric: 'Higher Engagement',
+            metric: 'Higher Engagement', 
             description: 'Videos created with websitelm AI show significantly higher viewer engagement rates compared to basic video creation tools.'
-          }
+        }
         ]
       }
     },
