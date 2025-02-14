@@ -4,9 +4,11 @@ import { FaFacebook, FaDiscord, FaXTwitter, FaYoutube, FaLinkedin, FaInstagram, 
 import { useEffect, useState } from 'react';
 
 export default function Footer({ data }) {
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    console.log('Footer socialMedia data:', data?.socialMedia);
-  }, [data]);
+    setMounted(true);
+  }, []);
 
   const socialIcons = {
     twitter: FaXTwitter,
@@ -34,6 +36,14 @@ export default function Footer({ data }) {
 
   if (!data) {
     return null;
+  }
+
+  if (!mounted) {
+    return (
+      <footer className="min-h-[200px]">
+        {/* 添加一个最小高度的占位符，避免布局跳动 */}
+      </footer>
+    );
   }
 
   return (
