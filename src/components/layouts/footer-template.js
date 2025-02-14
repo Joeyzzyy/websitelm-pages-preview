@@ -4,11 +4,9 @@ import { FaFacebook, FaDiscord, FaXTwitter, FaYoutube, FaLinkedin, FaInstagram, 
 import { useEffect, useState } from 'react';
 
 export default function Footer({ data }) {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    console.log('Footer socialMedia data:', data?.socialMedia);
+  }, [data]);
 
   const socialIcons = {
     twitter: FaXTwitter,
@@ -34,16 +32,27 @@ export default function Footer({ data }) {
     return <Icon className="h-6 w-6" />;
   };
 
-  if (!data) {
-    return null;
-  }
+  const footerStyles = {
+    container: {
+      width: '80%',
+      margin: '0 auto',
+      padding: '3rem 0'
+    },
+    grid: {
+      display: 'grid',
+      gridTemplateColumns: data?.sections 
+        ? `1fr ${data.sections.map(() => '0.8fr').join(' ')}`
+        : '1fr',
+      gap: '2rem',
+      marginBottom: '2rem'
+    },
+    section: {
+      padding: '0 1rem'
+    }
+  };
 
-  if (!mounted) {
-    return (
-      <footer className="min-h-[200px]">
-        {/* 添加一个最小高度的占位符，避免布局跳动 */}
-      </footer>
-    );
+  if (!data || !data.sections) {
+    return null;
   }
 
   return (
@@ -52,9 +61,9 @@ export default function Footer({ data }) {
         ? `linear-gradient(${data.styles.gradientAngle}deg, ${data.styles.gradientStart}, ${data.styles.gradientEnd})`
         : data.styles.backgroundColor
     }}>
-      <div className="w-[80%] mx-auto py-12">
-        <div className={`grid grid-cols-1 md:grid-cols-[1fr${data.sections?.map(() => '_0.8fr').join('')}] gap-8 mb-8`}>
-          <div className="px-4">
+      <div style={footerStyles.container}>
+        <div style={footerStyles.grid}>
+          <div style={footerStyles.section}>
             <h3 style={{ color: data.colors.companyName }} className="text-xl font-semibold mb-4">
               {data.companyName}
             </h3>
@@ -64,7 +73,7 @@ export default function Footer({ data }) {
           </div>
           
           {data.sections?.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="px-4">
+            <div key={sectionIndex} style={footerStyles.section}>
               <h4 
                 style={{ color: section.colors.title }} 
                 className="text-base font-semibold mb-4"
