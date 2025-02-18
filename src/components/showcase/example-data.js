@@ -688,25 +688,25 @@ export const exampleData = {
       props: {
         bottomContent: [
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+            imageUrl: 'https://picsum.photos/1920/1080',
             imageAlt: 'Abstract image',
             subTitle: 'AI TECHNOLOGY',
             title: 'The Future of Video Marketing'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+            imageUrl: 'https://picsum.photos/1920/1080',
             imageAlt: 'Abstract image',
             subTitle: 'CASE STUDY',
             title: 'Success Stories with AI Videos'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+            imageUrl: 'https://picsum.photos/1920/1080',
             imageAlt: 'Abstract image',
             subTitle: 'TUTORIAL',
             title: 'Getting Started with websitelm AI'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+            imageUrl: 'https://picsum.photos/1920/1080',
             imageAlt: 'Abstract image',
             subTitle: 'INDUSTRY NEWS',
             title: 'Latest Trends in AI Marketing'
