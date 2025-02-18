@@ -438,7 +438,7 @@ export const exampleData = {
           {
             name: "Sarah Chen",
             position: "Marketing Director - TechCorp",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Sarah Chen's avatar",
             title: "Dramatically Improved Our Marketing Efficiency",
             content: "After implementing websitelm AI, our video production time decreased by 90%. The AI-generated content quality is impressive, and the multilingual capabilities have made international expansion effortless."
@@ -446,21 +446,21 @@ export const exampleData = {
           {
             name: "Michael Zhang",
             position: "Content Lead - GlobalMedia",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             title: "Revolutionary Video Production Tool",
             content: "As a content team leader, I'm impressed by websitelm AI's efficiency. It not only saves significant time and resources but also maintains consistent high-quality video output."
           },
           {
             name: "Emily Wang",
             position: "E-commerce Manager - ShopNow",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             title: "Perfect Solution for E-commerce Videos",
             content: "We needed numerous product showcase videos, and websitelm AI solved this perfectly. The automated multilingual video generation helps us enter new markets quickly."
           },
           {
             name: "David Liu",
             position: "Founder - StartupX",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             title: "Ideal for Startups",
             content: "As a startup founder, websitelm AI has been a game-changer. It allows us to produce professional marketing videos at a fraction of the traditional cost and time."
           }
@@ -482,7 +482,7 @@ export const exampleData = {
           {
             name: "David Miller",
             position: "Innovation Director - FutureCorp",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "David Miller's avatar",
             title: "Revolutionary Content Creation",
             content: "websitelm AI has completely transformed our approach to video marketing. The AI-driven content generation is not just fast - it's incredibly intelligent and adaptable."
@@ -490,7 +490,7 @@ export const exampleData = {
           {
             name: "Alexandra Peters",
             position: "Global Marketing Head - TechVision",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Sarah Chen's avatar",
             title: "Exceptional Marketing Results",
             content: "The versatility and speed of websitelm AI's video generation have given us a competitive edge. Our marketing campaigns are now more dynamic and engaging than ever."
@@ -498,7 +498,7 @@ export const exampleData = {
           {
             name: "Thomas Wright",
             position: "Digital Strategy Lead - MediaPro",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Sarah Chen's avatar",
             title: "Game-Changing Efficiency",
             content: "What used to take our team weeks now happens in minutes. The quality and consistency of the AI-generated videos have exceeded all our expectations."
@@ -506,7 +506,7 @@ export const exampleData = {
           {
             name: "Caroline Foster",
             position: "Brand Director - GlobalBrands",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Sarah Chen's avatar",
             title: "Perfect for Brand Building",
             content: "websitelm AI maintains our brand consistency across all markets while allowing for local customization. It's the perfect balance of efficiency and brand control."
@@ -514,7 +514,7 @@ export const exampleData = {
           {
             name: "Richard Martinez",
             position: "Operations Manager - ScaleUp Inc",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Sarah Chen's avatar",
             title: "Streamlined Production Process",
             content: "The automated workflow and intelligent content generation have revolutionized our video production. We're creating more content with better results and lower costs."
@@ -537,7 +537,7 @@ export const exampleData = {
           {
             name: "Jennifer Lee",
             position: "Marketing VP - TechGrowth",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Jennifer Lee's avatar",
             title: "Exceeded All Expectations",
             content: "The AI-powered video generation has revolutionized our marketing approach. We're now producing high-quality content at unprecedented speed."
@@ -545,7 +545,7 @@ export const exampleData = {
           {
             name: "Robert Chen",
             position: "Digital Director - MediaForce",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Robert Chen's avatar",
             title: "Game-Changing Platform",
             content: "websitelm AI has transformed our content strategy. The multilingual capabilities and quick turnaround time are exactly what we needed."
@@ -553,7 +553,7 @@ export const exampleData = {
           {
             name: "Lisa Wang",
             position: "CEO - InnovateTech",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Lisa Wang's avatar",
             title: "Outstanding Results",
             content: "The efficiency and quality of videos produced through websitelm AI have significantly improved our marketing ROI across all channels."
@@ -561,7 +561,7 @@ export const exampleData = {
           {
             name: "Mark Zhang",
             position: "Growth Lead - StartupPro",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Mark Zhang's avatar",
             title: "Highly Recommended",
             content: "From quick social media content to full marketing campaigns, websitelm AI delivers consistent quality across all our video needs."
@@ -569,7 +569,7 @@ export const exampleData = {
           {
             name: "Sarah Johnson",
             position: "Content Manager - GlobalBrands",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Sarah Johnson's avatar",
             title: "Perfect for Global Marketing",
             content: "The ability to quickly generate localized content for multiple markets has been invaluable for our international expansion."
@@ -577,7 +577,7 @@ export const exampleData = {
           {
             name: "Kevin Liu",
             position: "Product Director - FutureTech",
-            avatarUrl: "https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg",
+            avatarUrl: "https://ui-avatars.com/api/?name=Traditional+Video&background=random",
             avatarAlt: "Kevin Liu's avatar",
             title: "Impressive Technology",
             content: "The AI's understanding of content and automatic visual matching capabilities are truly impressive. A must-have tool for modern marketing."
@@ -595,24 +595,7 @@ export const exampleData = {
       recommendedPosition: 'Content area, flexible positioning',
       filePath: 'src/components/common_components/key-results-with-text-block.js',
       props: {
-        leftContent: [
-          {
-            percentage: 90,
-            description: 'Reduction in video production time compared to traditional methods',
-            display: true
-          },
-          {
-            percentage: 40,
-            description: 'Languages supported for automatic localization and voiceover generation',
-            display: true
-          },
-          {
-            percentage: 70,
-            description: 'Average cost savings for businesses switching to AI-powered video creation',
-            display: true
-          }
-        ],
-        rightContent: 'AI technology has revolutionized the way we create and distribute video content. With advanced algorithms and machine learning capabilities, what once took days or weeks can now be accomplished in minutes. Our cutting-edge AI system analyzes your content requirements, automatically selects appropriate visuals, generates professional transitions, and ensures perfect timing for each scene. This breakthrough technology not only saves time but also maintains consistent quality across all your video productions.'
+        rightContent: '<p><strong><span class="content-subtitle">Introduction Of Our Available Plans</span></strong></p><p>WebsiteLM currently provides two plans that can be directly subscribed and purchased. <br>One of them is the standard version with the price of $45/mo. for monthly payment and $36/mo. for annual payment.</p><p>Another one is the professional version with the price of $129/mo. for monthly payment and $99/mo. for annual payment.</p><p></p><p>The key differences between those plans are:<br>1. Times you can use our AI keywords planning feature (30 times compared with 100times)<br>2. Pages you can generated with our AI page generation feature (30 indexed-ready page compared with 100 pages.)</p><p></p><p>We strongly recommended you to started with a standard version with a monthly payment. You will have a 15-day cash-back guarantee and you can update you plan smoothly any time if you are satisfied with WebsiteLM.<br><br>To know more about our pricing plans, <a target="_blank" rel="noopener noreferrer nofollow" class="content-link" href="https://websitelm.com/pricing"><strong>click here!</strong></a><br></p>'
       }
     },
   
@@ -1037,7 +1020,7 @@ export const exampleData = {
             name: 'Michael Zhang',
             title: 'Chief Executive Officer',
             description: '15 years of experience in the tech industry, having held leadership positions at several renowned technology companies. Focused on AI innovation and business applications.',
-            image: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg',
+            image: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             socials: {
               linkedin: 'https://linkedin.com/in/username',
               twitter: 'https://twitter.com/username',
@@ -1048,7 +1031,7 @@ export const exampleData = {
             name: 'Sarah Li',
             title: 'Product Director',
             description: '10 years of product management experience, specializing in user experience design and product strategy. Led teams in developing multiple successful enterprise products.',
-            image: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg',
+            image: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             socials: {
               linkedin: 'https://linkedin.com/in/username',
               twitter: 'https://twitter.com/username',
@@ -1059,7 +1042,7 @@ export const exampleData = {
             name: 'David Wang',
             title: 'Technical Director',
             description: 'Focused on AI and machine learning, with extensive experience in technical architecture design. Dedicated to transforming cutting-edge technology into practical solutions.',
-            image: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg',
+            image: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             socials: {
               linkedin: 'https://linkedin.com/in/username',
               twitter: 'https://twitter.com/username',
@@ -1085,7 +1068,7 @@ export const exampleData = {
             tabName: 'Authentic authorship',
             title: 'Verify authentic authorship',
             description: 'Ensure academic integrity with our authentication tools',
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Authentic authorship',
             buttonText: 'Learn More',
             buttonLink: '/learn-more'
@@ -1094,7 +1077,7 @@ export const exampleData = {
             tabName: 'Cite AI use',
             title: 'Make it easy to disclose your AI use',
             description: 'Our transparency features make it easy to acknowledge when you\'ve used AI',
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Cite AI use',
             buttonText: 'Learn More',
             buttonLink: '/learn-more'
@@ -1103,7 +1086,7 @@ export const exampleData = {
             tabName: 'AI checker',
             title: 'AI checker',
             description: 'Our AI checker helps you detect AI-generated content',
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'AI checker',
             buttonText: 'Learn More',
             buttonLink: '/learn-more'
@@ -1123,7 +1106,7 @@ export const exampleData = {
         title: 'Why Choose Us With Story',
         description: 'Display founder story and detailed product/service introduction',
         leftContent: {
-          avatarUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/WX20230106-214625@2x.jpg',
+          avatarUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
           avatarAlt: 'Michael Zhang',
           name: 'Michael Zhang',
           title: 'Founder & CEO',
