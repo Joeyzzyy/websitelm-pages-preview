@@ -608,31 +608,39 @@ export const exampleData = {
       recommendedPosition: 'Mid section, after features or case studies',
       filePath: 'src/components/common_components/key-results-with-three-cards.js',
       props: {
+        title: '[DEMO] Key Performance Metrics',
+        subTitle: '[DEMO] Comparison with Industry Standards',
         bottomContent: [
           {
-            competitorLogo: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
-            competitorLogoAlt: 'Traditional Video Production',
-            competitorName: 'Traditional Video Production',
+            competitorName: '[DEMO] Market Average',
             percentage: 85,
-            metric: 'Cost Reduction',
-            description: 'Businesses using websitelm AI report significant cost savings compared to traditional video production methods, with faster turnaround times.'
-        },
-        {
-            competitorLogo: 'https://ui-avatars.com/api/?name=Manual+Local&background=random',
-            competitorLogoAlt: 'Manual Localization',
-            competitorName: 'Manual Localization', 
-            percentage: 90,
-            metric: 'Time Saved',
-            description: 'Our AI-powered localization process is dramatically faster than manual translation and voiceover recording methods.'
-        },
-        {
-            competitorLogo: 'https://ui-avatars.com/api/?name=Basic+Tools&background=random',
-            competitorLogoAlt: 'Basic Video Tools',
-            competitorName: 'Basic Video Tools',
-            percentage: 73,
-            metric: 'Higher Engagement', 
-            description: 'Videos created with websitelm AI show significantly higher viewer engagement rates compared to basic video creation tools.'
-        }
+            metric: '[DEMO] Customer Satisfaction Rate',
+            description: '[SAMPLE] Industry benchmark for customer satisfaction based on recent market research',
+            competitorLogo: 'https://picsum.photos/800/800',
+            competitorLogoAlt: '[SAMPLE] Market Average Logo',
+            buttonText: 'View Details',
+            buttonLink: '#'
+          },
+          {
+            competitorName: '[DEMO] Leading Competitor',
+            percentage: 92,
+            metric: '[DEMO] Service Reliability',
+            description: '[SAMPLE] Top competitor performance metrics in service uptime and reliability',
+            competitorLogo: 'https://picsum.photos/800/800?random=1',
+            competitorLogoAlt: '[SAMPLE] Competitor Logo',
+            buttonText: 'Learn More',
+            buttonLink: '#'
+          },
+          {
+            competitorName: '[DEMO] Our Solution',
+            percentage: 97,
+            metric: '[DEMO] Performance Score',
+            description: '[SAMPLE] Our platform consistently outperforms industry standards',
+            competitorLogo: 'https://picsum.photos/800/800?random=2',
+            competitorLogoAlt: '[SAMPLE] Our Solution Logo',
+            buttonText: 'See Case Study',
+            buttonLink: '#'
+          }
         ]
       }
     },
@@ -646,22 +654,24 @@ export const exampleData = {
       recommendedPosition: 'Content area, flexible positioning',
       filePath: 'src/components/common_components/key-results-with-image.js',
       props: {
+        title: 'Key Performance Metrics',
+        subTitle: 'Comparison with Traditional Video Production',
         leftContent: [
           {
-            percentage: 95,
+            percentage: '95%',
             description: 'Customer Satisfaction Score, based on over 10,000 user feedbacks'
           },
           {
-            percentage: 80,
+            percentage: '80%',
             description: 'Average marketing efficiency improvement compared to traditional video production methods'
           },
           {
-            percentage: 70,
+            percentage: '70%',
             description: 'Investment return ratio in the first month'
           }
         ],
         rightContent: {
-          imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tutorial-cover.png',
+          imageUrl: 'https://picsum.photos/1920/1080',
           imageAlt: 'Abstract image',
         }
       }
