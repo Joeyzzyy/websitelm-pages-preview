@@ -56,27 +56,27 @@ export const exampleData = {
       props: {
         bottomContent: [
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Partner Company 1'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Partner Company 2'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Partner Company 3'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Partner Company 4'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Partner Company 5'
           },
           {
-            imageUrl: 'https://strapi.sheet2email.com/media/6768df5eb828c9bcfbec07af/tem-logo-websitelm.png',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             imageAlt: 'Partner Company 6'
           }
         ]
@@ -1030,7 +1030,7 @@ export const exampleData = {
             name: 'Michael Zhang',
             title: 'Chief Executive Officer',
             description: '15 years of experience in the tech industry, having held leadership positions at several renowned technology companies. Focused on AI innovation and business applications.',
-            image: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             socials: {
               linkedin: 'https://linkedin.com/in/username',
               twitter: 'https://twitter.com/username',
@@ -1041,7 +1041,7 @@ export const exampleData = {
             name: 'Sarah Li',
             title: 'Product Director',
             description: '10 years of product management experience, specializing in user experience design and product strategy. Led teams in developing multiple successful enterprise products.',
-            image: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             socials: {
               linkedin: 'https://linkedin.com/in/username',
               twitter: 'https://twitter.com/username',
@@ -1052,7 +1052,18 @@ export const exampleData = {
             name: 'David Wang',
             title: 'Technical Director',
             description: 'Focused on AI and machine learning, with extensive experience in technical architecture design. Dedicated to transforming cutting-edge technology into practical solutions.',
-            image: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
+            socials: {
+              linkedin: 'https://linkedin.com/in/username',
+              twitter: 'https://twitter.com/username',
+              website: 'https://personal-website.com'
+            }
+          },
+          {
+            name: 'Emily Chen',
+            title: 'Marketing Director',
+            description: '12 years of marketing experience, focused on digital marketing and content strategy. Led teams in developing multiple successful marketing campaigns.',
+            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
             socials: {
               linkedin: 'https://linkedin.com/in/username',
               twitter: 'https://twitter.com/username',
