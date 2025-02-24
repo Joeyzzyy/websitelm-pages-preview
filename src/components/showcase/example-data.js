@@ -1078,7 +1078,7 @@ export const exampleData = {
             tabName: 'Authentic authorship',
             title: 'Verify authentic authorship',
             description: 'Ensure academic integrity with our authentication tools',
-            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
+            imageUrl: 'https://picsum.photos/1920/1080',
             imageAlt: 'Authentic authorship',
             buttonText: 'Learn More',
             buttonLink: '/learn-more'
@@ -1087,7 +1087,7 @@ export const exampleData = {
             tabName: 'Cite AI use',
             title: 'Make it easy to disclose your AI use',
             description: 'Our transparency features make it easy to acknowledge when you\'ve used AI',
-            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
+            imageUrl: 'https://picsum.photos/1920/1080',
             imageAlt: 'Cite AI use',
             buttonText: 'Learn More',
             buttonLink: '/learn-more'
@@ -1096,7 +1096,7 @@ export const exampleData = {
             tabName: 'AI checker',
             title: 'AI checker',
             description: 'Our AI checker helps you detect AI-generated content',
-            imageUrl: 'https://ui-avatars.com/api/?name=Traditional+Video&background=random',
+            imageUrl: 'https://picsum.photos/1920/1080',
             imageAlt: 'AI checker',
             buttonText: 'Learn More',
             buttonLink: '/learn-more'
