@@ -104,6 +104,10 @@ const CommonLayout = ({ article, keywords }) => {
           const Component = COMPONENT_MAP[section.componentName];
           if (!Component) return null;
           
+          if (article.pageType === 'Landing Page' && section.componentName === 'TitleSection') {
+            return null;
+          }
+          
           return (
             <div 
               key={`${section.componentName}-${section.sectionId}`}
