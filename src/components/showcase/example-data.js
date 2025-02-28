@@ -377,7 +377,7 @@ export const exampleData = {
     },
   
     ProductComparisonTable: {
-      order: 21,
+      order: 12,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Product Comparison Table',
@@ -755,7 +755,7 @@ export const exampleData = {
     },
   
     SubscriptionCard: {
-      order: 22,
+      order: 21,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Subscription Card',
@@ -841,7 +841,7 @@ export const exampleData = {
     },
   
     CallToAction: {
-      order: 23,
+      order: 22,
       usedForAILandingPage: true,
       usedForAIBlog: true,
       title: 'Call To Action',
@@ -860,7 +860,7 @@ export const exampleData = {
     },
   
     CallToActionWithImage: {
-      order: 24,
+      order: 23,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Call To Action With Image',
@@ -883,7 +883,7 @@ export const exampleData = {
     },
   
     CallToActionComplex: {
-      order: 25,
+      order: 24,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Call To Action Complex',
@@ -928,7 +928,7 @@ export const exampleData = {
     },
   
     CallToActionWithInput: {
-      order: 26,
+      order: 25,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Call To Action With Input',
@@ -944,7 +944,7 @@ export const exampleData = {
     },
   
     JobListNormal: {
-      order: 27,
+      order: 26,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Job List Normal',
@@ -1012,7 +1012,7 @@ export const exampleData = {
       }
     },
     MeetOurTeam: {
-      order: 28,
+      order: 27,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Meet Our Team',
@@ -1074,7 +1074,7 @@ export const exampleData = {
       }
     },
     FeaturesTabbed: {
-      order: 29,
+      order: 28,
       usedForAILandingPage: true,
       usedForAIBlog: false,
       title: 'Features Tabbed',
@@ -1116,7 +1116,7 @@ export const exampleData = {
       }
     },
     WhyChooseUsWithStory: {
-      order: 30,
+      order: 29,
       usedForAILandingPage: true,
       usedForAIBlog: false,
       title: 'Why Choose Us With Story',
@@ -1158,7 +1158,7 @@ export const exampleData = {
       }
     },
     FeatureComparisonTable: {
-      order: 31,
+      order: 30,
       usedForAILandingPage: false,
       usedForAIBlog: false,
       title: 'Feature Comparison Table',
