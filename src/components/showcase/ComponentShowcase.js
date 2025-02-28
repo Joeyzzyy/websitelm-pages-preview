@@ -45,6 +45,9 @@ const validateComponentData = (key, data) => {
   return true;
 };
 
+// 添加检查是否在浏览器环境中的函数
+const isBrowser = () => typeof window !== 'undefined';
+
 const ComponentShowcase = () => {
   const [expandedCodes, setExpandedCodes] = useState({});
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -197,6 +200,9 @@ const ComponentShowcase = () => {
                     } w-full`}>
                       {(() => {
                         try {
+                          // 确保只在浏览器环境中渲染组件
+                          if (!isBrowser()) return <div>Loading component...</div>;
+                          
                           // 原有的组件渲染逻辑
                           if (key === 'TitleSection') return <TitleSection data={data.props} author="WebsiteLM" />;
                           if (key === 'TitleSectionWithImage') return <TitleSectionWithImage data={data.props} author="WebsiteLM" />;
