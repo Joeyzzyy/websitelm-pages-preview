@@ -71,7 +71,7 @@ const COMPONENT_MAP = {
   PageListCard: PageListCard,
   SubscriptionCard: SubscriptionCard,
   FeatureComparisonTable: FeatureComparisonTable,
-  ProductComparisonTable: ProductComparisonTable,
+  ProductComparison: ProductComparisonTable,
 };
 
 const CommonLayout = ({ article, keywords }) => {

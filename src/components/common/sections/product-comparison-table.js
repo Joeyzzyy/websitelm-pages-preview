@@ -205,7 +205,7 @@ const ProductComparisonTable = ({ data, theme = 'normal' }) => {
       w-full
     `}>
       <div className="comparison-table-container max-w-6xl mx-auto px-4">
-        <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} text-center mb-12`}>
+        <h2 className={`${themeConfig[theme].typography.h2.fontSize} ${themeConfig[theme].typography.h2.fontWeight} ${themeConfig[theme].typography.h2.color} text-center mb-12 text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600`}>
           {data.topContent?.title || data.title}
         </h2>
         
@@ -214,13 +214,13 @@ const ProductComparisonTable = ({ data, theme = 'normal' }) => {
             <div className="inline-block min-w-full align-middle">
               <table className={`min-w-full divide-y ${themeConfig[theme].table.border}`}>
                 <thead className={`${themeConfig[theme].table.header.background} ${themeConfig[theme].table.header.text}`}>
-                  <tr>
-                    <th className="py-3 px-4 text-left text-xs font-medium">Features</th>
-                    <th className="py-3 px-3 text-center text-xs font-medium">
+                  <tr className="bg-gradient-to-r from-gray-100 to-gray-200">
+                    <th className="py-5 px-4 text-left text-base font-semibold">Features</th>
+                    <th className="py-5 px-3 text-center text-base font-semibold">
                       {data.topContent?.companies?.competitor || 'Competitor'}
                     </th>
-                    <th className="py-3 px-3 text-center text-xs font-medium">
-                      {data.topContent?.companies?.us || 'Us'}
+                    <th className="py-5 px-3 text-center text-base font-semibold bg-blue-50 border-l-2 border-blue-400">
+                      <span className="text-blue-600">{data.topContent?.companies?.us || 'Us'}</span>
                     </th>
                   </tr>
                 </thead>
@@ -235,40 +235,40 @@ const ProductComparisonTable = ({ data, theme = 'normal' }) => {
                           ${feature.isEmpty ? 'empty-row bg-gray-50' : ''}
                         `}
                       >
-                        <td className="py-2 px-4 border-t border-gray-100">
+                        <td className="py-4 px-4 border-t border-gray-100">
                           {!feature.isEmpty ? (
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-3">
                               {(() => {
                                 const IconComponent = getIconByFeatureName(feature.name);
-                                return IconComponent ? <IconComponent className="text-[#3374FF] text-sm" /> : null;
+                                return IconComponent ? <IconComponent className="text-[#3374FF] text-xl" /> : null;
                               })()}
-                              <span className="text-black/80 text-xs font-medium">{feature.name}</span>
+                              <span className="text-black/80 text-base font-medium">{feature.name}</span>
                             </div>
                           ) : (
-                            <div className="empty-row-content w-full text-center text-gray-600 text-xs">
+                            <div className="empty-row-content w-full text-center text-gray-600 text-base">
                               {feature.name}
                             </div>
                           )}
                         </td>
-                        <td className="py-2 px-3 text-center border-t border-x border-gray-100">
+                        <td className="py-4 px-3 text-center border-t border-x border-gray-100">
                           {!feature.isEmpty && (
                             feature.competitor ? 
-                              <IoCheckmarkCircle className="inline text-green-500 text-base" /> : 
-                              <IoCloseCircle className="inline text-red-500 text-base" />
+                              <IoCheckmarkCircle className="inline text-green-500 text-2xl" /> : 
+                              <IoCloseCircle className="inline text-red-500 text-2xl" />
                           )}
                         </td>
-                        <td className="py-2 px-3 text-center border-t border-gray-100">
+                        <td className="py-4 px-3 text-center border-t border-gray-100 bg-blue-50/30">
                           {!feature.isEmpty && (
                             feature.us ? 
-                              <IoCheckmarkCircle className="inline text-green-500 text-base" /> : 
-                              <IoCloseCircle className="inline text-red-500 text-base" />
+                              <IoCheckmarkCircle className="inline text-green-600 text-2xl drop-shadow-sm" /> : 
+                              <IoCloseCircle className="inline text-red-500 text-2xl" />
                           )}
                         </td>
                       </tr>
                     ))
                   ) : (
                     <tr className="hover:bg-gray-50">
-                      <td className="py-2 px-4 border-t border-gray-100 text-center text-xs" colSpan="3">
+                      <td className="py-4 px-4 border-t border-gray-100 text-center text-base" colSpan="3">
                         No features added yet. Please add features to display here.
                       </td>
                     </tr>
@@ -278,8 +278,8 @@ const ProductComparisonTable = ({ data, theme = 'normal' }) => {
             </div>
           </div>
           
-          <div className="table-footer flex justify-center py-4 bg-gray-50 border-t border-gray-200">
-            <button className="action-button bg-[#3374FF] text-white font-medium py-2 px-6 rounded-md hover:bg-[#2361e6] transition-colors">
+          <div className="table-footer flex justify-center py-6 bg-gray-50 border-t border-gray-200">
+            <button className="action-button bg-[#3374FF] text-white font-medium py-3 px-8 rounded-md hover:bg-[#2361e6] transition-colors text-base shadow-md hover:shadow-lg">
               {data.buttonText || '了解更多'}
             </button>
           </div>
