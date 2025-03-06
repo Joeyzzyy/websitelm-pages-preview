@@ -18,8 +18,11 @@ const extractContentTitle = (content) => {
 const processHtml = (html) => {
   if (!html || typeof window === 'undefined') return html || '';
   
-  // 替换空段落为带有非断行空格的段落
-  let processedHtml = html.replace(/<p><\/p>/g, '<p>&nbsp;</p>');
+  // 移除开头的空 p 标签
+  let processedHtml = html.replace(/^(<p><\/p>)+/, '');
+  
+  // 替换其他空段落为带有非断行空格的段落
+  processedHtml = processedHtml.replace(/(?!^)<p><\/p>/g, '<p>&nbsp;</p>');
   
   // 为content-subtitle添加ID
   const parser = new DOMParser();
