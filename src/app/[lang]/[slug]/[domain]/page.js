@@ -18,6 +18,7 @@ export default async function ArticlePage({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
     const { lang, slug, domain } = resolvedParams;
+    console.log('resolvedParams', resolvedParams)
     
     const articleData = await getPageBySlug(slug, lang, domain);
 
