@@ -1,7 +1,7 @@
-import { getPageBySlug, getArticles, getCustomRecommendations } from '../../../../lib/api/index';
+import { getPageBySlug, getArticles } from '../../../lib/api/index';
 import { notFound } from 'next/navigation';
-import { ClientWrapper } from '../../../../components/layouts/client-wrapper';
-import CommonLayout from '../../../../components/layouts/layout';
+import { ClientWrapper } from '../../../components/layouts/client-wrapper';
+import CommonLayout from '../../../components/layouts/layout';
 import Script from 'next/script'
 
 // 添加这个配置来启用动态路由
@@ -17,10 +17,10 @@ export const revalidate = 30; // 1分钟重新验证一次
 export default async function ArticlePage({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
-    const { lang, slug, domain } = resolvedParams;
+    const { lang, pageid } = resolvedParams;
     console.log('resolvedParams', resolvedParams)
     
-    const articleData = await getPageBySlug(slug, lang, domain);
+    const articleData = await getPageBySlug(pageid, lang);
 
     if (!articleData?.data) {
       return notFound();
@@ -75,9 +75,9 @@ function joinArrayWithComma(arr) {
 export async function generateMetadata({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
-    const { lang = 'en', slug, domain } = resolvedParams;
+    const { lang = 'en', pageid } = resolvedParams;
     
-    const articleData = await getPageBySlug(slug, lang, domain);
+    const articleData = await getPageById(pageid, lang);
     
     if (!articleData?.data) {
       return {
@@ -115,13 +115,13 @@ export async function generateMetadata({ params }) {
         creator: ''
       },
       alternates: {
-        canonical: `https://${domain}/${lang}/${slug}`,
+        canonical: `https://your-domain.com/${lang}/${pageid}`,
         languages: {
-          'en': `https://${domain}/en/${slug}`,
-          'zh': `https://${domain}/zh/${slug}`,
+          'en': `https://your-domain.com/en/${pageid}`,
+          'zh': `https://your-domain.com/zh/${pageid}`,
         }
       },
-      metadataBase: new URL(`https://${domain}`),
+      metadataBase: new URL(`https://your-domain.com`),
       authors: [{ name: article.author }],
       category: article.category
     };
@@ -138,21 +138,30 @@ export async function generateStaticParams() {
   try {
     const response = await getArticles(process.env.CUSTOMER_ID, process.env.TOKEN);
     
+    console.log('generateStaticParams response:', response);
+    
     if (!response?.data) {
+      console.log('No data in response');
       return [];
     }
 
     const validArticles = response.data.filter(article => 
       article && 
       typeof article.lang === 'string' && 
-      typeof article.pageLangId === 'string'
+      typeof article.id === 'string'
     );
 
-    return validArticles.map((article) => ({
+    console.log('Valid articles:', validArticles);
+    
+    const params = validArticles.map((article) => ({
       lang: article.lang,
-      slug: article.pageLangId
+      pageid: article.id
     }));
+
+    console.log('Generated params:', params);
+    return params;
   } catch (error) {
+    console.error('Error in generateStaticParams:', error);
     return []; 
   }
 }
