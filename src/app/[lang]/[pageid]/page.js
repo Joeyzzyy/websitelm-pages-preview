@@ -77,7 +77,7 @@ export async function generateMetadata({ params }) {
     const resolvedParams = await Promise.resolve(params);
     const { lang = 'en', pageid } = resolvedParams;
     
-    const articleData = await getPageById(pageid, lang);
+    const articleData = await getPageBySlug(pageid, lang);
     
     if (!articleData?.data) {
       return {
