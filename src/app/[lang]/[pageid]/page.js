@@ -51,6 +51,14 @@ export default async function ArticlePage({ params }) {
       }
     };
 
+    if (typeof window !== 'undefined') {
+      window.__NEXT_DATA__ = window.__NEXT_DATA__ || {};
+      window.__NEXT_DATA__.pageProps = { 
+        ...window.__NEXT_DATA__.pageProps,
+        article: JSON.parse(JSON.stringify(article)) // 深度克隆避免引用差异
+      };
+    }
+
     return (
       <>
         <Script id="article-schema" type="application/ld+json">
