@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -21,8 +23,8 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-    serverComponentsExternalPackages: ['jsdom']
   },
+  serverExternalPackages: ['jsdom'],
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       config.optimization = {
@@ -49,6 +51,10 @@ const nextConfig = {
         child_process: false
       };
     }
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'html-react-parser': path.resolve('./node_modules/html-react-parser')
+    };
     return config;
   },
   reactStrictMode: true,

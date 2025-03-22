@@ -1,7 +1,7 @@
 'use client';
-import React, { useEffect, useMemo, memo, useState } from 'react';
-import parse from 'html-react-parser';
-import { Typography, message } from 'antd';
+import React, { useEffect, useMemo, memo, useState, useCallback } from 'react';
+import parse, { domToReact } from 'html-react-parser';
+import { Typography, message, Button, Drawer, Input, Modal } from 'antd';
 import Header from './header-template';
 import Footer from './footer-template';
 /* divider */
@@ -54,38 +54,14 @@ const { Paragraph, Text } = Typography;
  * Handles and renders HTML content with editable tags
  * @param {Object} props
  * @param {string} props.content - HTML string content
- * @param {boolean} props.isEditable - Enable/disable editing functionality
  */
-const HtmlRenderer = ({ content, isEditable = true }) => {
-  // 新增样式内容状态
-  const [styleContent, setStyleContent] = useState('');
-
-  // 转义处理函数（添加输入输出日志）
-  const unescapeHTML = (str) => {
-    console.log('[unescapeHTML] 输入内容:', str);
-    
-    const escapeMap = {
-      '\\n': '\n',  '\\t': '\t',  '\\r': '\r',
-      '\\"': '"',   "\\'": "'",   '\\\\': '\\',
-      '&lt;': '<', '&gt;': '>', '&amp;': '&'
-    };
-    
-    const result = str?.replace(/\\([ntr"'\\])|&(lt|gt|amp);/g, (_, escChar, htmlEntity) => {
-      if (escChar) return escapeMap[`\\${escChar}`];
-      if (htmlEntity) return escapeMap[`&${htmlEntity}`];
-      return _;
-    }) || '';
-
-    console.log('[unescapeHTML] 输出结果:', result);
-    return result;
-  };
-
+const HtmlRenderer = ({ content }) => {
   // 提取body和style内容（修改后的逻辑）
   const { bodyContent, extractedStyle } = useMemo(() => {
     console.log('[bodyContent] 原始内容:', content);
     
     if (!content) return { bodyContent: '', extractedStyle: '' };
-    const decoded = unescapeHTML(content);
+    const decoded = content;
     console.log('[bodyContent] 初次解码后:', decoded);
 
     // 匹配body和style标签内容
@@ -124,62 +100,22 @@ const HtmlRenderer = ({ content, isEditable = true }) => {
     }
   }, [extractedStyle]);
 
-  // HTML解析配置（添加节点处理日志）
+  // 简化后的解析配置
   const parseOptions = useMemo(() => ({
-    replace: domNode => {
-      console.log('[parse] 当前处理节点:', domNode);
-      
-      if (isEditable && domNode.attribs?.canEdit) {
-        console.log('[parse] 发现可编辑节点:', domNode);
-        return (
-          <EditableElement
-            onChange={value => handleContentChange(domNode, value)}
-            node={domNode}
-          />
-        );
-      }
+    replace: (domNode) => {
+      return domNode;
     }
-  }), [isEditable]);
+  }), []);
 
   // 开发环境调试输出（增强日志）
   useEffect(() => {
     if (process.env.NODE_ENV === 'development' && content) {
       console.groupCollapsed('HTML处理全流程调试');
       console.log('原始HTML:', content);
-      console.log('unescape处理结果:', unescapeHTML(content));
       console.log('body内容提取结果:', bodyContent);
       console.groupEnd();
     }
   }, [content, bodyContent]);
-
-  /**
-   * Handle content updates
-   * @param {string} newContent - Updated content
-   * @param {Object} element - Element information
-   */
-  const handleContentChange = async (newContent, element) => {
-    try {
-      // TODO: Implement save logic
-      console.log('Content update:', {
-        id: element.id,
-        type: element.type,
-        oldContent: element.content,
-        newContent: newContent
-      });
-      
-      // API call to save updated content
-      // await updateContent({
-      //   id: element.id,
-      //   content: newContent,
-      //   type: element.type
-      // });
-      
-      message.success('Content updated successfully');
-    } catch (error) {
-      console.error('Update failed:', error);
-      message.error('Failed to update content');
-    }
-  };
 
   // 动态加载 JSDOM（仅服务端）
   const createDOMPurify = () => {
@@ -196,14 +132,8 @@ const HtmlRenderer = ({ content, isEditable = true }) => {
   const purified = createDOMPurify();
 
   return (
-    <div 
-      className="html-content w-full"
-      style={{
-        margin: 0,
-        padding: 0,
-        width: '100%',
-      }}
-    >
+    <div className="html-content w-full relative">
+      {/* 原有渲染逻辑 */}
       {extractedStyle && (
         <style
           dangerouslySetInnerHTML={{
@@ -214,7 +144,7 @@ const HtmlRenderer = ({ content, isEditable = true }) => {
           }}
         />
       )}
-      {parse(bodyContent, parseOptions)}
+      {parse(bodyContent || '', parseOptions)}
     </div>
   );
 };
