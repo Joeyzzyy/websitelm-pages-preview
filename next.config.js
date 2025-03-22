@@ -21,6 +21,7 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+    serverComponentsExternalPackages: ['jsdom']
   },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
@@ -36,6 +37,16 @@ const nextConfig = {
             },
           },
         },
+      };
+    }
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        net: false,
+        tls: false,
+        dns: false,
+        fs: false,
+        child_process: false
       };
     }
     return config;

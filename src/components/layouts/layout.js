@@ -46,7 +46,6 @@ import SubscriptionCard from '../common/sections/subscription-card';
 import FeatureComparisonTable from '../common/sections/feature-comparison-table';
 /* divider */
 import ProductComparisonTable from '../common/sections/product-comparison-table';
-import DOMPurify from 'dompurify';
 
 const { Paragraph, Text } = Typography;
 
@@ -182,6 +181,20 @@ const HtmlRenderer = ({ content, isEditable = true }) => {
     }
   };
 
+  // 动态加载 JSDOM（仅服务端）
+  const createDOMPurify = () => {
+    if (typeof window === 'undefined') {
+      // 服务端环境动态加载
+      const { JSDOM } = require('jsdom');
+      const dom = new JSDOM('');
+      return require('dompurify')(dom.window);
+    }
+    // 客户端环境直接使用
+    return require('dompurify');
+  };
+
+  const purified = createDOMPurify();
+
   return (
     <div 
       className="html-content w-full"
@@ -194,7 +207,7 @@ const HtmlRenderer = ({ content, isEditable = true }) => {
       {extractedStyle && (
         <style
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(extractedStyle, {
+            __html: purified.sanitize(extractedStyle, {
               FORBID_TAGS: ['script', 'link'],
               FORBID_ATTR: ['onload', 'onerror']
             })
