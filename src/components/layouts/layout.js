@@ -198,9 +198,9 @@ const CommonLayout = ({ article }) => {
     return article?.pageLayout?.pageFooters;
   }, [article?.pageLayout?.pageFooters]);
 
-  // Determine if content is complete HTML
-  const isHtmlContent = article.html?.startsWith('<!DOCTYPE html>') || 
-                       article.html?.startsWith('<html');
+  // 确定内容是否为完整HTML - 改进版
+  const isHtmlContent = article.html?.trim().startsWith('<!DOCTYPE html>') || 
+                       article.html?.trim().startsWith('<html');
 
   return (
     <div suppressHydrationWarning className="min-h-screen flex flex-col">

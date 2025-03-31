@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'https://api.websitelm.com/v1';
+// const API_URL = 'http://192.168.10.89:9091/v1';
 
 // 创建 axios 实例，更新配置
 const apiClient = axios.create({
