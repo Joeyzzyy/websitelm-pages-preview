@@ -11,12 +11,16 @@ const Footer = dynamic(() => import('./footer-template'), {
   ssr: false
 });
 
-export function ClientWrapper({ children }) {
+export function ClientWrapper({ children, article }) {
+  // 检查是否是 HTML 内容
+  const isHtmlContent = article?.html?.trim().startsWith('<!DOCTYPE html>') || 
+                       article?.html?.trim().startsWith('<html');
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Header theme="light" />
+      {!isHtmlContent && <Header theme="light" />}
       {children}
-      <Footer />
+      {!isHtmlContent && <Footer />}
     </div>
   );
 }

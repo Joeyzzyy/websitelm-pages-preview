@@ -64,7 +64,7 @@ export default async function ArticlePage({ params }) {
         <Script id="article-schema" type="application/ld+json">
           {JSON.stringify(articleSchema)}
         </Script>
-        <ClientWrapper>
+        <ClientWrapper article={article}>
           <main className="flex-grow">
             <CommonLayout article={article} />
           </main>
