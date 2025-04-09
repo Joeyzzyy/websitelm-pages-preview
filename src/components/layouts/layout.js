@@ -204,8 +204,8 @@ const CommonLayout = ({ article }) => {
 
   return (
     <div suppressHydrationWarning className="min-h-screen flex flex-col">
-      {/* Render header only for non-HTML content */}
-      {headerData && !isHtmlContent && (
+      {/* 始终渲染header，无论内容类型 */}
+      {headerData && (
         <Header 
           data={headerData} 
           memo={() => JSON.stringify(headerData)}
@@ -213,7 +213,7 @@ const CommonLayout = ({ article }) => {
       )}
 
       {/* Main content area */}
-      <div className={`flex-1 w-full max-w-[100vw] overflow-x-hidden ${!isHtmlContent ? 'pt-[60px]' : ''}`}>
+      <div className={`flex-1 w-full max-w-[100vw] overflow-x-hidden ${!isHtmlContent ? 'pt-[60px]' : 'pt-[60px]'}`}>
         {isHtmlContent ? (
           // HTML content rendering mode
           <HtmlRenderer content={article.html} />
@@ -244,8 +244,8 @@ const CommonLayout = ({ article }) => {
         )}
       </div>
 
-      {/* Render footer only for non-HTML content */}
-      {footerData && !isHtmlContent && (
+      {/* 始终渲染footer，无论内容类型 */}
+      {footerData && (
         <Footer 
           data={footerData}
           memo={() => JSON.stringify(footerData)}
