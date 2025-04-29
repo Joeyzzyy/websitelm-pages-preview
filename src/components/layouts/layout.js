@@ -58,12 +58,8 @@ const { Paragraph, Text } = Typography;
 const HtmlRenderer = ({ content }) => {
   // 提取body和style内容（修改后的逻辑）
   const { bodyContent, extractedStyle } = useMemo(() => {
-    console.log('[bodyContent] 原始内容:', content);
-    
     if (!content) return { bodyContent: '', extractedStyle: '' };
     const decoded = content;
-    console.log('[bodyContent] 初次解码后:', decoded);
-
     // 匹配body和style标签内容
     const bodyMatch = decoded.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const styleMatch = decoded.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
