@@ -202,14 +202,16 @@ const CommonLayout = ({ article }) => {
   const isHtmlContent = article.html?.trim().startsWith('<!DOCTYPE html>') ||
                        article.html?.trim().startsWith('<html');
 
+  // --- 添加调试日志 ---
+  console.log('[CommonLayout] isHtmlContent:', isHtmlContent);
+  // --- 结束调试日志 ---
+
   // 当是 HTML 内容时，不再渲染外层的 min-h-screen div，
   // 因为 ClientWrapper 已经提供了这个结构。
   // 直接渲染内容区域和 HtmlRenderer。
   if (isHtmlContent) {
     return (
-      <div className={`flex-1 w-full max-w-[100vw] overflow-x-hidden`}>
         <HtmlRenderer content={article.html} />
-      </div>
     );
   }
 
