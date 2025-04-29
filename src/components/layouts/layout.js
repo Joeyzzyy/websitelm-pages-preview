@@ -202,51 +202,48 @@ const CommonLayout = ({ article }) => {
   const isHtmlContent = article.html?.trim().startsWith('<!DOCTYPE html>') ||
                        article.html?.trim().startsWith('<html');
 
+  // 当是 HTML 内容时，不再渲染外层的 min-h-screen div，
+  // 因为 ClientWrapper 已经提供了这个结构。
+  // 直接渲染内容区域和 HtmlRenderer。
+  if (isHtmlContent) {
+    return (
+      <div className={`flex-1 w-full max-w-[100vw] overflow-x-hidden`}>
+        <HtmlRenderer content={article.html} />
+      </div>
+    );
+  }
+
+  // 非 HTML 内容模式保持不变
   return (
     <div suppressHydrationWarning className="min-h-screen flex flex-col">
-      {/* 仅在非HTML内容模式下渲染header */}
-      {!isHtmlContent && headerData && (
+      {headerData && (
         <Header
           data={headerData}
           memo={() => JSON.stringify(headerData)}
         />
       )}
-
-      {/* Main content area */}
-      {/* 调整pt-[60px]的逻辑，仅在非HTML模式且有Header时应用 */}
-      <div className={`flex-1 w-full max-w-[100vw] overflow-x-hidden ${!isHtmlContent && headerData ? 'pt-[60px]' : ''}`}>
-        {isHtmlContent ? (
-          // HTML content rendering mode
-          <HtmlRenderer content={article.html} />
-        ) : (
-          // Component concatenation rendering mode
-          article.sections?.map((section, index) => {
-            const Component = COMPONENT_MAP[section.componentName];
-            if (!Component) return null;
-
-            // Special handling for Landing Page type pages
-            if (article.pageType === 'Landing Page' && section.componentName === 'TitleSection') {
-              return null;
-            }
-
-            return (
-              <div
-                key={`${section.componentName}-${section.sectionId}`}
-                className="w-full bg-white"
-              >
-                <Component
-                  data={section}
-                  author={article.author}
-                  date={article.createdAt}
-                />
-              </div>
-            );
-          })
-        )}
+      <div className={`flex-1 w-full max-w-[100vw] overflow-x-hidden ${headerData ? 'pt-[60px]' : ''}`}>
+        {article.sections?.map((section, index) => {
+          const Component = COMPONENT_MAP[section.componentName];
+          if (!Component) return null;
+          if (article.pageType === 'Landing Page' && section.componentName === 'TitleSection') {
+            return null;
+          }
+          return (
+            <div
+              key={`${section.componentName}-${section.sectionId}`}
+              className="w-full bg-white"
+            >
+              <Component
+                data={section}
+                author={article.author}
+                date={article.createdAt}
+              />
+            </div>
+          );
+        })}
       </div>
-
-      {/* 仅在非HTML内容模式下渲染footer */}
-      {!isHtmlContent && footerData && (
+      {footerData && (
         <Footer
           data={footerData}
           memo={() => JSON.stringify(footerData)}
