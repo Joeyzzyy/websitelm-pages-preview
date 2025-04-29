@@ -47,8 +47,6 @@ import FeatureComparisonTable from '../common/sections/feature-comparison-table'
 /* divider */
 import ProductComparisonTable from '../common/sections/product-comparison-table';
 
-const { Paragraph, Text } = Typography;
-
 /**
  * HTML Content Renderer Component
  * Handles and renders HTML content with editable tags
@@ -60,10 +58,8 @@ const HtmlRenderer = ({ content }) => {
   const { bodyContent, extractedStyle } = useMemo(() => {
     if (!content) return { bodyContent: '', extractedStyle: '' };
     const decoded = content;
-    // 匹配body和style标签内容
     const bodyMatch = decoded.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const styleMatch = decoded.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
-    
     const rawBody = bodyMatch ? bodyMatch[1] : decoded;
     const rawStyle = styleMatch ? styleMatch[1] : '';
 
