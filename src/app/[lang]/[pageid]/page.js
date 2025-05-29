@@ -8,7 +8,7 @@ export const dynamic = 'force-static'
 
 export const dynamicParams = true
 
-export const revalidate = 30; 
+export const revalidate = 0; 
 
 export default async function ArticlePage({ params }) {
   try {

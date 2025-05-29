@@ -11,7 +11,7 @@ export const dynamic = 'force-static'
 export const dynamicParams = true
 
 // 添加缓存控制
-export const revalidate = 30; // 1分钟重新验证一次
+export const revalidate = 0;
 
 // 主页面组件
 export default async function ArticlePage({ params }) {
