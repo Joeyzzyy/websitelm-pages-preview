@@ -4,16 +4,12 @@ import { ClientWrapper } from '../../../components/layouts/client-wrapper';
 import CommonLayout from '../../../components/layouts/layout';
 import Script from 'next/script'
 
-// 添加这个配置来启用动态路由
 export const dynamic = 'force-static'
 
-// 如果需要的话，也可以添加这个配置来处理不同的域名
 export const dynamicParams = true
 
-// 添加缓存控制
-export const revalidate = 30; // 1分钟重新验证一次
+export const revalidate = 30; 
 
-// 主页面组件
 export default async function ArticlePage({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
@@ -139,7 +135,6 @@ export async function generateMetadata({ params }) {
   }
 }
 
-// generateStaticParams 只预生成语言和 slug 的组合
 export async function generateStaticParams() {
   try {
     const response = await getArticles(process.env.CUSTOMER_ID, process.env.TOKEN);
