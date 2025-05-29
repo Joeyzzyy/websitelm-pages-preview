@@ -52,16 +52,19 @@ import ProductComparisonTable from '../common/sections/product-comparison-table'
  * Handles and renders HTML content with editable tags
  * @param {Object} props
  * @param {string} props.content - HTML string content
+ * @param {Object} props.article - Article data object (新增)
  */
-const HtmlRenderer = ({ content }) => {
-  // 提取body和style内容（修改后的逻辑）
-  const { bodyContent, extractedStyle } = useMemo(() => {
-    if (!content) return { bodyContent: '', extractedStyle: '' };
+const HtmlRenderer = ({ content, article }) => {
+  // 提取body、style和title内容（修改后的逻辑）
+  const { bodyContent, extractedStyle, extractedTitle } = useMemo(() => {
+    if (!content) return { bodyContent: '', extractedStyle: '', extractedTitle: null };
     const decoded = content;
     const bodyMatch = decoded.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     const styleMatch = decoded.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+    const titleMatch = decoded.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
     const rawBody = bodyMatch ? bodyMatch[1] : decoded;
     const rawStyle = styleMatch ? styleMatch[1] : '';
+    const rawTitle = titleMatch ? titleMatch[1] : null;
 
     // 公共转义处理
     const commonUnescape = (str) => str
@@ -72,29 +75,60 @@ const HtmlRenderer = ({ content }) => {
       .replace(/&lt;/g, '<')
       .replace(/&gt;/g, '>');
 
-    return {
-      bodyContent: commonUnescape(rawBody),
-      extractedStyle: commonUnescape(rawStyle)
-    };
-  }, [content]);
+    let processedBody = commonUnescape(rawBody);
 
-  // 动态插入样式（新增效果）
+    // 如果需要移除水印，处理HTML内容
+    if (article?.removeWatermark === true) {
+      // 移除水印的正则表达式 - 匹配 | Independently Generated via ... 部分
+      const watermarkPattern = /\s*\|\s*Independently Generated via\s*<a[^>]*href="https:\/\/www\.altpage\.ai"[^>]*>.*?<\/a>/gi;
+      processedBody = processedBody.replace(watermarkPattern, '');
+      
+      // 也处理可能的变体（防止HTML编码等情况）
+      const watermarkPatternEncoded = /\s*\|\s*Independently Generated via\s*&lt;a[^&]*href=&quot;https:\/\/www\.altpage\.ai&quot;[^&]*&gt;.*?&lt;\/a&gt;/gi;
+      processedBody = processedBody.replace(watermarkPatternEncoded, '');
+    }
+
+    return {
+      bodyContent: processedBody,
+      extractedStyle: commonUnescape(rawStyle),
+      extractedTitle: rawTitle ? commonUnescape(rawTitle) : null
+    };
+  }, [content, article?.removeWatermark]); // 添加 removeWatermark 到依赖数组
+
+  // 动态插入样式（现有效果）
   useEffect(() => {
     if (extractedStyle) {
       const styleTag = document.createElement('style');
       styleTag.innerHTML = extractedStyle;
       document.head.appendChild(styleTag);
-      
+
       // 清理函数
       return () => {
-        document.head.removeChild(styleTag);
+        // 检查 styleTag 是否仍然是 document.head 的子节点
+        if (styleTag.parentNode === document.head) {
+          document.head.removeChild(styleTag);
+        }
       };
     }
   }, [extractedStyle]);
 
+  // 新增：动态更新文档标题
+  useEffect(() => {
+    if (extractedTitle) {
+      document.title = extractedTitle;
+    }
+    // 注意：这里没有添加清理函数来恢复原始标题，
+    // 因为通常我们希望这个组件设置的标题在组件卸载前一直保持。
+    // 如果需要恢复，可以在返回的清理函数中设置回之前的标题。
+  }, [extractedTitle]);
+
+
   // 简化后的解析配置
   const parseOptions = useMemo(() => ({
     replace: (domNode) => {
+      // 可以在这里添加更复杂的节点替换逻辑，如果需要的话
+      // 例如，处理特定的自定义标签或属性
+      // 目前保持原样，直接返回节点
       return domNode;
     }
   }), []);
@@ -104,10 +138,13 @@ const HtmlRenderer = ({ content }) => {
     if (process.env.NODE_ENV === 'development' && content) {
       console.groupCollapsed('HTML处理全流程调试');
       console.log('原始HTML:', content);
+      console.log('removeWatermark:', article?.removeWatermark); // 新增日志
       console.log('body内容提取结果:', bodyContent);
+      console.log('style内容提取结果:', extractedStyle);
+      console.log('title内容提取结果:', extractedTitle);
       console.groupEnd();
     }
-  }, [content, bodyContent]);
+  }, [content, bodyContent, extractedStyle, extractedTitle, article?.removeWatermark]); // 更新依赖
 
   // 动态加载 JSDOM（仅服务端）
   const createDOMPurify = () => {
@@ -125,7 +162,7 @@ const HtmlRenderer = ({ content }) => {
 
   return (
     <div className="html-content w-full relative">
-      {/* 原有渲染逻辑 */}
+      {/* 样式注入 */}
       {extractedStyle && (
         <style
           dangerouslySetInnerHTML={{
@@ -136,6 +173,7 @@ const HtmlRenderer = ({ content }) => {
           }}
         />
       )}
+      {/* Body 内容渲染 */}
       {parse(bodyContent || '', parseOptions)}
     </div>
   );
@@ -195,15 +233,14 @@ const CommonLayout = ({ article }) => {
                        article.html?.trim().startsWith('<html');
 
   // --- 添加调试日志 ---
-  console.log('[CommonLayout] isHtmlContent:', isHtmlContent);
+  // console.log('[CommonLayout] isHtmlContent:', isHtmlContent); // 可以保留或移除
   // --- 结束调试日志 ---
 
-  // 当是 HTML 内容时，不再渲染外层的 min-h-screen div，
-  // 因为 ClientWrapper 已经提供了这个结构。
-  // 直接渲染内容区域和 HtmlRenderer。
+  // 当是 HTML 内容时，直接渲染 HtmlRenderer。
+  // HtmlRenderer 内部会处理 body、style 和 title。
   if (isHtmlContent) {
     return (
-        <HtmlRenderer content={article.html} />
+        <HtmlRenderer content={article.html} article={article} />
     );
   }
 
