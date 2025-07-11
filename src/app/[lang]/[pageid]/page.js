@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ClientWrapper } from '../../../components/layouts/client-wrapper';
 import CommonLayout from '../../../components/layouts/layout';
 import Script from 'next/script'
+import { JSDOM } from 'jsdom';
 
 export const dynamic = 'force-static'
 
@@ -75,64 +76,21 @@ function joinArrayWithComma(arr) {
 }
 
 export async function generateMetadata({ params }) {
-  try {
-    const resolvedParams = await Promise.resolve(params);
-    const { lang = 'en', pageid } = resolvedParams;
-    
-    const articleData = await getPageBySlug(pageid, lang);
-    
-    if (!articleData?.data) {
-      return {
-        title: 'Not Found',
-        description: 'The page you are looking for does not exist.'
-      };
-    }
+  const htmlString = await getHtmlContentSomehow(params); // 这里替换成你的获取 HTML 的方法
+  if (!htmlString) return {};
 
-    const article = articleData.data;
-    return {
-      title: article.title, 
-      description: article.description,
-      keywords: joinArrayWithComma(article.pageStats?.genKeywords),
-      robots: 'index, follow',
-      openGraph: { 
-        title: article.title,
-        description: article.description,
-        type: 'article',
-        publishedTime: article.updatedAt,
-        modifiedTime: article.updatedAt,  
-        locale: lang,
-        siteName: '',
-        images: [{
-          url: '',
-          width: 1200,
-          height: 630,
-          alt: article.title
-        }]
-      },
-      twitter: { 
-        card: 'summary_large_image',
-        title: article.title,
-        description: article.description,
-        images: article.coverImage,
-        creator: ''
-      },
-      alternates: {
-        canonical: `https://your-domain.com/${lang}/${pageid}`,
-        languages: {
-          'en': `https://your-domain.com/en/${pageid}`,
-          'zh': `https://your-domain.com/zh/${pageid}`,
-        }
-      },
-      metadataBase: new URL(`https://your-domain.com`),
-      authors: [{ name: article.author }],
-      category: article.category
-    };
-  } catch (error) {
-    return {
-      title: 'Error',
-      description: 'An error occurred while generating metadata.'
-    };
-  }
+  const dom = new JSDOM(htmlString);
+  const { document } = dom.window;
+
+  const title = document.querySelector('title')?.textContent || '';
+  const description = document.querySelector('meta[name="description"]')?.content || '';
+  const keywords = document.querySelector('meta[name="keywords"]')?.content || '';
+
+  return {
+    title,
+    description,
+    keywords,
+  };
 }
 
 export async function generateStaticParams() {
