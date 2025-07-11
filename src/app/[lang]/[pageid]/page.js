@@ -76,21 +76,51 @@ function joinArrayWithComma(arr) {
 }
 
 export async function generateMetadata({ params }) {
-  const htmlString = await getHtmlContentSomehow(params); // 这里替换成你的获取 HTML 的方法
-  if (!htmlString) return {};
+  try {
+    const resolvedParams = await Promise.resolve(params);
+    const { lang = 'en', pageid } = resolvedParams;
+    
+    const articleData = await getPageBySlug(pageid, lang);
 
-  const dom = new JSDOM(htmlString);
-  const { document } = dom.window;
+    // 兜底
+    if (!articleData?.data) {
+      return {
+        title: 'Not Found',
+        description: 'The page you are looking for does not exist.'
+      };
+    }
 
-  const title = document.querySelector('title')?.textContent || '';
-  const description = document.querySelector('meta[name="description"]')?.content || '';
-  const keywords = document.querySelector('meta[name="keywords"]')?.content || '';
+    // 这里假设 articleData.data.html 就是完整 HTML 字符串
+    const htmlString = articleData.data.html;
+    if (!htmlString) {
+      // 没有 html 字段时，走原有逻辑
+      return {
+        title: articleData.data.title,
+        description: articleData.data.description
+      };
+    }
 
-  return {
-    title,
-    description,
-    keywords,
-  };
+    // 用 jsdom 解析 html 字符串
+    const dom = new JSDOM(htmlString);
+    const { document } = dom.window;
+
+    const title = document.querySelector('title')?.textContent || articleData.data.title || '';
+    const description = document.querySelector('meta[name="description"]')?.content || articleData.data.description || '';
+    const keywords = document.querySelector('meta[name="keywords"]')?.content || '';
+    // 你可以继续提取 og、twitter 等 meta
+
+    return {
+      title,
+      description,
+      keywords,
+      // 你可以继续补充 openGraph、twitter 等
+    };
+  } catch (error) {
+    return {
+      title: 'Error',
+      description: 'An error occurred while generating metadata.'
+    };
+  }
 }
 
 export async function generateStaticParams() {
