@@ -74,13 +74,6 @@ function joinArrayWithComma(arr) {
   return Array.isArray(arr) ? arr.filter(Boolean).join(',') : '';
 }
 
-// 新增：从 HTML 字符串中提取 meta[name="description"] 的 content
-function extractDescriptionFromHtml(html) {
-  if (!html) return '';
-  const match = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
-  return match ? match[1] : '';
-}
-
 export async function generateMetadata({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
@@ -96,17 +89,14 @@ export async function generateMetadata({ params }) {
     }
 
     const article = articleData.data;
-    // 用新函数提取 description
-    const description = extractDescriptionFromHtml(article.html) || article.description;
-
     return {
       title: article.title, 
-      description, // 用提取到的 description
+      description: article.description,
       keywords: joinArrayWithComma(article.pageStats?.genKeywords),
       robots: 'index, follow',
       openGraph: { 
         title: article.title,
-        description,
+        description: article.description,
         type: 'article',
         publishedTime: article.updatedAt,
         modifiedTime: article.updatedAt,  
@@ -122,7 +112,7 @@ export async function generateMetadata({ params }) {
       twitter: { 
         card: 'summary_large_image',
         title: article.title,
-        description,
+        description: article.description,
         images: article.coverImage,
         creator: ''
       },
