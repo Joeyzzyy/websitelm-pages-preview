@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { ClientWrapper } from '../../../components/layouts/client-wrapper';
 import CommonLayout from '../../../components/layouts/layout';
 import Script from 'next/script'
-import { JSDOM } from 'jsdom';
 
 export const dynamic = 'force-static'
 
@@ -75,14 +74,20 @@ function joinArrayWithComma(arr) {
   return Array.isArray(arr) ? arr.filter(Boolean).join(',') : '';
 }
 
+// 新增：从 HTML 字符串中提取 meta[name="description"] 的 content
+function extractDescriptionFromHtml(html) {
+  if (!html) return '';
+  const match = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i);
+  return match ? match[1] : '';
+}
+
 export async function generateMetadata({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
     const { lang = 'en', pageid } = resolvedParams;
     
     const articleData = await getPageBySlug(pageid, lang);
-
-    // 兜底
+    
     if (!articleData?.data) {
       return {
         title: 'Not Found',
@@ -90,30 +95,47 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    // 这里假设 articleData.data.html 就是完整 HTML 字符串
-    const htmlString = articleData.data.html;
-    if (!htmlString) {
-      // 没有 html 字段时，走原有逻辑
-      return {
-        title: articleData.data.title,
-        description: articleData.data.description
-      };
-    }
-
-    // 用 jsdom 解析 html 字符串
-    const dom = new JSDOM(htmlString);
-    const { document } = dom.window;
-
-    const title = document.querySelector('title')?.textContent || articleData.data.title || '';
-    const description = document.querySelector('meta[name="description"]')?.content || articleData.data.description || '';
-    const keywords = document.querySelector('meta[name="keywords"]')?.content || '';
-    // 你可以继续提取 og、twitter 等 meta
+    const article = articleData.data;
+    // 用新函数提取 description
+    const description = extractDescriptionFromHtml(article.html) || article.description;
 
     return {
-      title,
-      description,
-      keywords,
-      // 你可以继续补充 openGraph、twitter 等
+      title: article.title, 
+      description, // 用提取到的 description
+      keywords: joinArrayWithComma(article.pageStats?.genKeywords),
+      robots: 'index, follow',
+      openGraph: { 
+        title: article.title,
+        description,
+        type: 'article',
+        publishedTime: article.updatedAt,
+        modifiedTime: article.updatedAt,  
+        locale: lang,
+        siteName: '',
+        images: [{
+          url: '',
+          width: 1200,
+          height: 630,
+          alt: article.title
+        }]
+      },
+      twitter: { 
+        card: 'summary_large_image',
+        title: article.title,
+        description,
+        images: article.coverImage,
+        creator: ''
+      },
+      alternates: {
+        canonical: `https://your-domain.com/${lang}/${pageid}`,
+        languages: {
+          'en': `https://your-domain.com/en/${pageid}`,
+          'zh': `https://your-domain.com/zh/${pageid}`,
+        }
+      },
+      metadataBase: new URL(`https://your-domain.com`),
+      authors: [{ name: article.author }],
+      category: article.category
     };
   } catch (error) {
     return {
