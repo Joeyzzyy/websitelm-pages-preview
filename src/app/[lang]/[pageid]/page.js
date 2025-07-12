@@ -70,10 +70,6 @@ export default async function ArticlePage({ params }) {
   }
 }
 
-function joinArrayWithComma(arr) {
-  return Array.isArray(arr) ? arr.filter(Boolean).join(',') : '';
-}
-
 export async function generateMetadata({ params }) {
   try {
     const resolvedParams = await Promise.resolve(params);
