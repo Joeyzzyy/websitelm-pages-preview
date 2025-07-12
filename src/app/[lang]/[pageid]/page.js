@@ -89,23 +89,28 @@ export async function generateMetadata({ params }) {
     }
 
     const article = articleData.data;
+    console.log('article.html:', article.html);
 
-    // === 新增：从 meta 标签提取 description 和 keywords ===
     let description = '';
     let keywords = '';
-    if (article.html) {
-      const $ = cheerio.load(article.html);
-      description = $('meta[name="description"]').attr('content') || '';
-      keywords = $('meta[name="keywords"]').attr('content') || '';
-      console.log('description', description)
-      console.log('keywords', keywords)
+    if (article.html && typeof article.html === 'string') {
+      // 兼容属性顺序的正则
+      const descMatch = article.html.match(
+        /<meta\s+[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>|<meta\s+[^>]*content=["']([^"']*)["'][^>]*name=["']description["'][^>]*>/i
+      );
+      description = descMatch ? (descMatch[1] || descMatch[2]) : '';
+      const keywordsMatch = article.html.match(
+        /<meta\s+[^>]*name=["']keywords["'][^>]*content=["']([^"']*)["'][^>]*>|<meta\s+[^>]*content=["']([^"']*)["'][^>]*name=["']keywords["'][^>]*>/i
+      );
+      keywords = keywordsMatch ? (keywordsMatch[1] || keywordsMatch[2]) : '';
+      console.log('正则提取到的 description:', description);
+      console.log('正则提取到的 keywords:', keywords);
     }
-    // === 新增结束 ===
 
     return {
       title: article.title, 
       description: description || article.description,
-      keywords: keywords || joinArrayWithComma(article.pageStats?.genKeywords),
+      keywords: "AI SEO, competitor traffic, alternative pages, SEO automation, high-intent traffic, AltPage.ai, marketing, comparison pages",
       robots: 'index, follow',
       openGraph: { 
         title: article.title,
