@@ -97,6 +97,8 @@ export async function generateMetadata({ params }) {
       const $ = cheerio.load(article.html);
       description = $('meta[name="description"]').attr('content') || '';
       keywords = $('meta[name="keywords"]').attr('content') || '';
+      console.log('description', description)
+      console.log('keywords', keywords)
     }
     // === 新增结束 ===
 
