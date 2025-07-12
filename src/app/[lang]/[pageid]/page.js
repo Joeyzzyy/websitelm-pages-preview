@@ -1,6 +1,5 @@
 import { getPageBySlug, getArticles } from '../../../lib/api/index';
 import { notFound } from 'next/navigation';
-import { ClientWrapper } from '../../../components/layouts/client-wrapper';
 import CommonLayout from '../../../components/layouts/layout';
 import Script from 'next/script'
 
