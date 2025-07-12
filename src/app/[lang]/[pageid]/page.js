@@ -2,6 +2,7 @@ import { getPageBySlug, getArticles } from '../../../lib/api/index';
 import { notFound } from 'next/navigation';
 import CommonLayout from '../../../components/layouts/layout';
 import Script from 'next/script'
+import cheerio from 'cheerio'; // 需要安装 cheerio: npm install cheerio
 
 export const dynamic = 'force-static'
 
@@ -88,14 +89,25 @@ export async function generateMetadata({ params }) {
     }
 
     const article = articleData.data;
+
+    // === 新增：从 meta 标签提取 description 和 keywords ===
+    let description = '';
+    let keywords = '';
+    if (article.html) {
+      const $ = cheerio.load(article.html);
+      description = $('meta[name="description"]').attr('content') || '';
+      keywords = $('meta[name="keywords"]').attr('content') || '';
+    }
+    // === 新增结束 ===
+
     return {
       title: article.title, 
-      description: article.description,
-      keywords: joinArrayWithComma(article.pageStats?.genKeywords),
+      description: description || article.description,
+      keywords: keywords || joinArrayWithComma(article.pageStats?.genKeywords),
       robots: 'index, follow',
       openGraph: { 
         title: article.title,
-        description: article.description,
+        description: description || article.description,
         type: 'article',
         publishedTime: article.updatedAt,
         modifiedTime: article.updatedAt,  
@@ -111,7 +123,7 @@ export async function generateMetadata({ params }) {
       twitter: { 
         card: 'summary_large_image',
         title: article.title,
-        description: article.description,
+        description: description || article.description,
         images: article.coverImage,
         creator: ''
       },
