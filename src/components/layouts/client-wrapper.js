@@ -2,7 +2,6 @@
 
 import dynamic from 'next/dynamic';
 
-// 直接导入组件
 const Header = dynamic(() => import('./header-template'), {
   ssr: false
 });
@@ -12,7 +11,6 @@ const Footer = dynamic(() => import('./footer-template'), {
 });
 
 export function ClientWrapper({ children, article }) {
-  // 检查是否是 HTML 内容
   const isHtmlContent = article?.html?.trim().startsWith('<!DOCTYPE html>') || 
                        article?.html?.trim().startsWith('<html');
 
